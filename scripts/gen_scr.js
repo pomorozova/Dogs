@@ -1,5 +1,5 @@
 function generate_news(){
-    let cont_news = $(".container-news")[0];
+    let cont_news = $(".container-news-1")[0];
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
