@@ -1,0 +1,223 @@
+/* NAVIGATE MENU */
+@media(max-width: 1200px){
+
+
+    /* puppies */
+    
+    .block-booking-1{
+        display: inline-block;
+    }
+    .header1{
+        padding-bottom:0px;  
+        padding-top: 0px;
+        height: 87px;
+    }
+
+    
+    .block-history-right{
+        margin-left: 0;
+    }
+    .block-history-left{
+        text-align: center;
+    }
+    
+.header{
+    padding-top: 0px;
+}
+
+.header__nav {
+    display: block;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    background: #2a2727;
+    box-shadow: #ccc;
+    width: 100%;
+    box-shadow: 0 4px 2px -2px rgba(36, 36, 36, 0.37);
+    transition: all 0.4s ease;
+    left:-100%;
+}
+.header_logo{
+    display: none;
+}
+.header__menu {
+    display: block;
+}
+.header__nav.open-menu{
+    left:0;
+}
+.header__nav li+ li{
+    border:none;
+}
+.dropbtn {
+    font-size: 14px;
+    margin-left: 4px;
+}
+.header__menu li {
+    margin: 40px 0px 40px 33px;
+    font-size: 14px;
+    }
+.menu-burger__header {
+    position: relative;
+    width: 40px;
+    height: 35px;
+    display: block;
+    margin-left: 10px;
+   }
+.menu-burger__header span, .menu-burger__header:after, .menu-burger__header:before{
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    background: #515758;
+    margin: 0 auto;
+}
+.menu-burger__header span{
+    top: 16px;
+}
+.menu-burger__header:after, .menu-burger__header:before{
+    content: '';
+}
+.menu-burger__header:after{
+    bottom: 5px;
+}
+.menu-burger__header:before{
+    top: 5px;
+}
+.menu-burger__header.open-menu span {
+    opacity:0; 
+    transition: 0.5s; 
+}
+.menu-burger__header.open-menu:before {
+    transform: rotate(38deg);
+    top: 16px;
+    transition: 0.4s;
+}
+.menu-burger__header.open-menu:after {
+    transform: rotate(-38deg);
+    bottom: 16px;
+    transition: 0.4s;
+}
+
+header {
+    height: 200px;
+}
+.content-wrapper {
+    margin-top: 48px;
+}
+.fixed-pade {
+    overflow: hidden;
+}
+.header__nav ul {
+    display: block;
+}
+.space-between{
+    justify-content: left;
+}
+.news_icon{
+    width: 300px;
+}
+
+
+/* MAIN */
+
+.main-title{
+    padding-left: 50px;
+    padding-top: 150px;
+    width: 30%;
+}
+.main-title h3{
+    font-size: 13px;
+
+}
+.main-title-heading{
+    font-size: 30px;
+}
+}
+
+@media(max-width: 767px){
+
+    /* MAIN */
+
+    .main-title{
+        padding-left: 50px;
+        padding-top: 100px;
+        width: 30%;
+    }
+    .main-title h3{
+        font-size: 13px;
+
+    }
+    .main-title-heading{
+        font-size: 30px;
+    }
+
+
+    /* NEWS */
+    .block-news{
+        display: inline-block;
+    }
+    .block-news-right{
+        margin-left: 0;
+    }
+    .block-news-left{
+        text-align: center;
+    }
+    .line{
+        width:100%;
+    }
+    .container-news h1{
+        padding-bottom: 0px;
+    }
+    .block-news-right h2{
+        margin-top: 50px;
+        font-size: 20px;
+    }
+    .container-news{
+        background-size: cover;
+    }
+
+    /* our dog */
+    .block-history-right h3{
+        text-align: center;
+        padding-top: 20px;
+    }
+    .block-history-right span{
+        text-align: center;
+        margin-left: 40px;
+    }
+   .container-dog1{
+    text-align: center;
+   }
+   .container-dog1 h3{
+    text-align: left;
+   }
+
+
+
+
+    /* gallery */
+
+    .image-gallery{
+        text-align: center;
+    }
+     /* exhibition */
+     .exhibition img{
+        width: 360px;
+     } 
+     /* puppies */
+     .block-puppies{
+        display: inline-block;
+     } 
+     .block-puppies-left{
+        padding-right: 0;
+    }
+    .block-puppies-img {
+        text-align: center;
+    }
+    .block-puppies-img img{
+        width: 300px;
+    }
+    .block-booking-1{
+        display: inline-block;
+    }
+}

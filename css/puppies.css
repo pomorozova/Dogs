@@ -1,0 +1,144 @@
+.line1{
+    border-bottom: 3px solid #d49e20;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+}
+.line2{
+    border-bottom: 3px solid #d49e20;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+}
+.container-puppies{
+    font-family:'TT Norms';
+    padding: 0 9%;
+    margin: 0 auto;
+}
+.container-puppies h1{
+    text-align: center;
+    font-size: 60px;
+    padding-top: 50px;
+    color: #2a2727;
+}
+.block-puppies{
+    display: flex;
+    padding-top: 40px;
+}
+.block-news-puppies{
+    margin-left: 80px;
+}
+.container-puppies p{
+    line-height: 20px;
+    margin: 0;
+    font-size: large;
+    line-height: 30px;
+    text-align: justify;
+    color:#828282;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.block-puppies h3{
+   font-size: 20px;
+   margin-top: 0;
+   color:#2a2727;
+   text-align: center;
+}
+.block-puppies-left{
+    padding-right: 50px;
+}
+.description-puppies h3{
+    font-size: 20px;
+    margin-top: 15px;
+    color:#2a2727;
+    margin-left: 10px;
+}
+.block-puppies-img{
+    text-align: center;
+}
+.block-puppies-img img{
+    margin-left: 30px;
+    padding-top: 20px;
+}
+.container-booking{
+    font-family:'TT Norms';
+    padding: 0 9%;
+    margin: 0 auto;
+}
+.container-booking h1{
+    padding-top: 80px;
+    padding-bottom: 50px;
+    text-align: center;
+    font-family:'TT Norms';
+    color: white;
+    font-size: 50px;
+}
+/* Бронирование*/
+.block-booking{
+    background-color:white;
+    padding-bottom: 30px;
+    padding-top: 15px;
+}
+.input-form{
+    margin: 15px 30px;
+    width: 280px;
+}
+.input-form1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+.input-form input{
+	padding-top: 0;
+	color: white;
+	font-size: 20px;
+	background: none;
+	outline: none;
+	border: 3px solid transparent;
+	border-bottom: 3px solid #828282;
+	box-sizing: border-box;
+    width: 220px; 
+    color: #2a2727;
+    font-family:'TT Norms';
+    font-size: 15px;
+    
+}
+.input-form p{
+    color: #2a2727;
+}
+.block-booking-1{
+    display: flex;
+}
+.block-booking-text{
+    color: #2a2727;
+}
+.input-form1 button {
+	font-size: 13px;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	background: #2a2727;
+	transition: .3s;
+    height:40px;
+	border-radius: 30px;
+	width: 300px;
+    text-decoration: none;
+    font-family:'TT Norms';
+    font-weight:500;
+    margin: 0 auto;
+    display: block;
+
+}
+.input-form1 button:hover {
+	background: #d49e20;
+}
+.block-booking-1{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+
