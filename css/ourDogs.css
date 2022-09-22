@@ -1,0 +1,145 @@
+
+/* MAIN about dog */
+.container-dog1{
+    padding: 0 9%;
+    margin: 0 auto;
+    font-family:'TT Norms';
+    padding-bottom: 100px;
+}
+.container-dog1 p{
+    line-height: 20px;
+    margin: 0, 0;
+    font-size: large;
+    line-height: 30px;
+    text-align: justify;
+    color:#bbbbbb;
+}
+.container-dog1 span{
+    margin-left: 50px;
+}
+.container-dog1 h3{
+    margin-left: 50px;
+    color: #fccd04;
+}
+.news_icon{
+    box-shadow: 0 2px 5px rgba(0,0,0,.2), 0 4px 6px rgba(0,0,0,.2);
+} 
+.block-news-left{
+    margin-left: 20px;
+}
+.container-history{
+    display: block;
+    text-align: center;
+}
+.container-dog1 .content-ourDogs{
+    text-align: center;
+}
+.container-dog1 h3{
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* MAIN history */
+.block-history-right span{
+    opacity: 0;
+}
+
+.container-history h1{
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 50px;
+    padding-top: 110px;
+    color: #2a2727;
+}
+
+.block-history-right{
+    margin-left: 20px;
+}
+
+.container-history p{
+    line-height: 20px;
+    padding: 10px;
+    margin: 0, 0;
+    font-size: large;
+    line-height: 30px;
+    text-align: justify;
+}
+.block-history-right h3{
+   margin-top: 0;
+   color:#d49e20;
+}
+.block-history img{
+    padding-right: 50px;
+}
+.container-history{
+    font-family:'TT Norms';  
+}
+
+.content-history{
+    font-size: 20px;
+    color:#828282;
+}
+.container-history {
+    padding: 0 9%;
+    margin: 0 auto;
+}
+.block-history-text span{
+    margin-left: 50px;
+}
+.line{
+    border-bottom: 2px solid #d49e20;
+    padding-bottom: 0;
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+
+
+/* MAIN standart */
+
+.container-standart{
+    font-family:'TT Norms'; 
+    padding: 0 9%;
+    margin: 0 auto;
+}
+
+.container-standart h1{
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 50px;
+    padding-top: 110px;
+    color: white;
+     
+}
+.block-standart-text span{
+    color: #fccd04;
+    margin-left: 40px;
+}
+.container-standart p{
+    line-height: 20px;
+    padding: 10px;
+    margin: 0, 0;
+    font-size: large;
+    line-height: 30px;
+    text-align: justify;
+    color: #bbbbbb;
+}
+
+
+
+
+
+
+
+
+

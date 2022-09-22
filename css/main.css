@@ -1,0 +1,480 @@
+html {
+    scroll-behavior: smooth; /* свойство scroll-behavior не наследуется, применяется к прокручиваемым блокам */ 
+}
+body{
+    margin: 0;
+    background-color: #2a2727;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    color: white;
+}
+.scroll {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+/*BACE*/
+.row{
+    display: flex;
+}
+/*HEADER*/
+
+.wrapper{
+    width: 100%;  
+}
+
+.navigate_menu{
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    z-index: 1000;
+}
+.nav_color{
+    background: #2a2727;
+    box-shadow: 0 30px 30px 0 rgba(0,0,0,.1);
+}
+.nav_color1{
+    background: #2a2727;
+}
+.header{
+    font-family:'TT Norms';
+    padding-bottom:200px; 
+}
+.header1{
+    font-family:'TT Norms';
+    padding-bottom:87px; 
+    background-color: #2a2727;  
+}
+
+.header_logo{
+    margin-left: 130px;
+    margin-right: 50px;
+}
+.header__nav ul {
+    width: 120%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    align-items:center;
+    font-size: 18px;
+}
+
+.header__nav li+ li{
+    margin-left:10px;
+    border-left: 2px solid #bbbbbb;
+    padding-left: 10px;
+}
+.header__nav a{
+    text-decoration: none;
+    color: #bbbbbb;
+    transition: color 0.2s ease-in;
+}
+.header__nav a:hover{
+    color:white;
+    border-bottom: 2px solid #d49e20;
+    padding-bottom: 10px;
+}
+
+/* MAIN TITLE */
+
+.main-title{
+    padding-left: 130px;
+    font-family:'TT Norms';
+    padding-top: 200px;
+}
+.main-title-heading{
+    font-size: 60px;
+  
+}
+.text-heading{
+    color:white;
+}
+.main-title button {
+	margin-top: 20px;
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: none;
+	background: #2a2727;
+	transition: .3s;
+    height:40px;
+	border-radius: 30px;
+	width: 200px;
+    border: 2px solid white;
+}
+
+.main-title button:hover {
+	background: #d49e20;
+    border: 2px solid #2a2727;
+}
+
+/* MAIN NEWS */
+.block-news-1{
+    padding-bottom: 100px;
+}
+.container-news h1{
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 50px;
+    padding-top: 110px;
+    color: #2a2727;
+}
+.block-news{
+    display: flex;
+    padding-top: 40px;
+}
+.block-news-right{
+    margin-left: 80px;
+}
+
+.block-news p{
+    line-height: 20px;
+    padding: 10px;
+    margin: 0, 0;
+    font-size: large;
+    line-height: 30px;
+    text-align: justify;
+}
+.block-news-right h2{
+   font-size: 25px;
+   margin-top: 0;
+   color:#2a2727
+}
+.block-news-right img{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.container-news{
+    font-family:'TT Norms';
+    padding: 0;
+    margin: 0 auto;
+    padding-right: 40px;
+}
+.line{
+    border-bottom: 2px solid #d49e20;
+    padding-bottom: 0;
+    width: 40%;
+    margin-bottom: 20px;
+
+}
+
+.content-news{
+    font-size: 20px;
+    color:#828282;
+}
+.container-news {
+    padding: 0 9%;
+    margin: 0 auto;
+}
+
+.container-news button {
+	margin-top: 20px;
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: none;
+	background: #2a2727;
+	transition: .3s;
+    height:40px;
+	border-radius: 30px;
+	width: 200px;
+}
+.next{
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 80px;
+
+}
+.container-news button:hover {
+	background: #d49e20;
+}
+
+/* OUR DOGS*/
+.title{
+    text-align: center;
+    font-family:'TT Norms';
+    color: white;
+    font-size: 60px;
+}
+.main-title-dogs{
+    text-align: center;
+    font-family:'TT Norms';
+    padding-top: 40px;
+}
+.container-our_dogs{
+    text-align: center;
+}
+.product-wrap img{
+    background-color: white;
+}
+.product-wrap {
+    width: 300px;
+    text-align: center;
+    background: white;
+    display: inline-block;
+    margin: 40px;
+ }
+.list-product{
+    text-align: center;
+ }
+ .product-image {
+    overflow: hidden;
+ }
+ .product-image a {
+    display: block;
+ }
+ .product-image img {
+    display: block;
+    width: 100%;
+ }
+ 
+ 
+ .product-list h3 {
+    color: #2a2727;
+    font-size: 25px;
+    font-family:'TT Norms';
+    text-align: left;
+    margin: 20px;
+ }
+ .description{
+    padding: 0;
+    margin: 20px;
+    font-size: small;
+    color: #2a2727;
+    font-family:'TT Norms';
+    text-align: left;
+ }
+ .option {
+	font-size: 13px;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	background: #2a2727;
+	transition: .3s;
+    height:40px;
+	border-radius: 30px;
+	width: 300px;
+    text-decoration: none;
+    padding: 10px 40px;
+    font-family:'TT Norms';
+    font-weight:500;
+    
+}
+.product-list p{
+    padding-bottom: 10px;
+}
+.option:hover {
+	background: #d49e20;
+}
+.product-list{
+    padding-bottom: 30px;
+}
+.container-news{
+    margin: 0;
+    background-color: #2a2727;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+
+/*USEFUL*/
+.container-useful{
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.title-useful{
+    font-family:'TT Norms';
+    color: #2a2727;
+    font-size: 60px;
+    padding-top: 80px;
+}
+
+.product-wrap-useful {
+    width: 350px;
+    text-align: center;
+    background: white;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2), 0 4px 6px rgba(0,0,0,.2);
+    
+ }
+
+.product-wrap-useful-2 {
+    width: 350px;
+    background: #fccd04;
+    display: inline-block;
+    margin-left: -.22em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2), 0 4px 6px rgba(0,0,0,.2);
+    margin-top: 40px;
+
+ }
+ .product-image-useful-2 {
+    overflow: hidden;
+ }
+ 
+ .product-image-useful img {
+    display: block;
+    width: 80%;
+    margin: 34px 34px 0 34px;
+    text-align: center;
+ }
+ .product-image-useful-2 img {
+    margin: 0 0 20px 20px;
+ }
+
+ .product-list-useful-2 h3 {
+    color: #2a2727;
+    font-size: 25px;
+    font-family:'TT Norms';
+    text-align: left;
+    margin: 20px;
+    width: 200px;
+    padding-top: 51px;
+ }
+ .description{
+    padding: 0;
+    margin: 20px;
+    font-size: small;
+    color: #2a2727;
+    font-family:'TT Norms';
+    text-align: left;
+ }
+ 
+.product-list-usrful p{
+    padding-bottom: 40px;
+    text-align: right;
+    width: 200px;
+    padding-left: 93px;
+    font-size: 15px;
+}
+.product-list-usrful{
+    padding-bottom: 30px;
+}
+.product-list-useful-2 img{
+    padding-left: 20px;
+
+}
+.product-list-useful-2 {
+    padding-bottom: 30px;
+}
+.option1 {
+	font-size: 13px;
+	color: #fccd04;
+	border: none;
+	background: #fccd04;
+    height:40px;
+    text-decoration: none;
+    padding: 10px 40px;
+    font-weight:500;
+}
+
+
+/* FOOTER*/
+footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color:white;
+    width: 100%;
+    font-family:'TT Norms';
+    text-align: center;
+}
+.nav-footer ul{
+    list-style-type: none;
+}
+.img-contact li{
+    display: inline-block;
+}
+.contact li{
+    margin: 10px;
+}
+
+/* Галерея*/
+.image-gallery img {
+    margin: 6px;
+}
+.image-gallery {
+    text-align: center;
+}
+
+/*Выставка*/
+
+.container-exhibition h1{
+    text-align: center;
+    font-size: 60px;
+
+    padding-top: 110px;
+    color: #2a2727;
+}
+.container-exhibition h3{
+    text-align: center;
+    font-size: 30px;
+    color: #2a2727;
+}
+.exhibition h2{
+    color: #2a2727;
+    font-size: 20px;
+}
+.container-exhibition{
+    padding: 0 9%;
+    margin: 0 auto;
+    font-family:'TT Norms';
+}
+
+.block-exhibition p{
+    line-height: 20px;
+    padding-bottom: 10px;
+    margin: 0, 0;
+    font-size: large;
+    line-height: 30px;
+    text-align: justify;
+    color:#828282;
+}
+.block-exhibition{
+    padding-bottom: 50px;
+}
+
+
+.dropbtn {
+   
+    background-color: #2a2727;
+    color: #bbbbbb;
+    font-size: 18px;
+    border: none;
+    font-family:'TT Norms';
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2a2727;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: #bbbbbb;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #2a2727;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #2a2727;}
+
+
+
+
+
+
