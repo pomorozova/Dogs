@@ -10,23 +10,19 @@ function generate_puppies(){
         url: "db/datawork.php",
         data: JSON.stringify(idenf_data),
         success: function(data)
-        {        
-            console.log(data);    
+        {            
             data.forEach(el => {
                 $(cont_puppies).append(`
                     <div class="block-puppies">
                         <div class="block-puppies-left">
                             <h3>Мать</h3>
-                                <p class="content-puppies">${el.desc_mom}</p>
+                            <p class="content-puppies">${el.desc_mom}</p>
                         </div>
-                        <div class="adapt_puppies_icon">
-                            <div class="block-puppies-right">
-                                <h3>Отец</h3>
-                                <p class="content-puppies">${el.desc_father}</p>
-                            </div>
-                        </div>
-                    </div>
-                    
+                        <div class="block-puppies-right">
+                            <h3>Отец</h3>
+                            <p class="content-puppies">${el.desc_father}</p>
+                        </div>                        
+                    </div>                    
                     <div class="description-puppies">
                         <h3>Описание щенков</h3>
                         <p>${el.desc_puppie}</p>

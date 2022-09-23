@@ -5,6 +5,11 @@
     margin-right: auto;
     padding-bottom: 20px;
 }
+
+.block-puppies > div{
+    flex-basis: 100%;
+}
+
 .line2{
     border-bottom: 3px solid #d49e20;
     margin-left: auto;

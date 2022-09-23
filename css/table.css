@@ -27,16 +27,16 @@
     border: 1px solid #bbbbbb;
 }
 .table-btn button{
-    color: #bbbbbb;
+  color: #bbbbbb;
 	text-transform: capitalize;
 	background: none;
 	transition: .3s;
-	width: 150px;
-    border: none;
-    font-size: 15px;
+	width: 80px;
+  border: none;
+  font-size: 15px;
 }
 .table-btn button:hover{
-    color: #c7a046;
+  color: #c7a046;
 }
 .btn-news-1 button{
 	color: #202226;
@@ -127,12 +127,10 @@ a{
 /* CREATE*/
 
 .form {
-
 	background: rgba(0,0,0,.7);
-    width: 100%;
-    position: relative;
-
- 
+  width: 100%;
+  position: relative;
+    
 }
 
 .input-form textarea{
@@ -300,13 +298,14 @@ input[type="number"]::-webkit-inner-spin-button {
     max-width: 700px;
     padding: 50px;
     background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(../image/Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 3px;
     position: relative;
     box-shadow: 0 5px 15px black;
   }
    
   .modal__close-button {
-    background: #ff0000;
     height: 30px;
     width: 30px;
     display: flex;
@@ -322,10 +321,7 @@ input[type="number"]::-webkit-inner-spin-button {
     outline: none;
   }
    
-  .modal__close-button:hover {
-    transition: .3s;
-    transform: rotate(180deg);
-  }
+  
    
   .modal__title {
     font-size: 1.8rem;

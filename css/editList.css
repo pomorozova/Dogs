@@ -1,0 +1,48 @@
+body {
+	background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(../image/Background.jpg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-attachment: fixed;
+	font-family: sans-serif;
+}
+.form {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background: rgba(0,0,0,.7);
+    width: 500px;
+    height: 350px;
+}
+.form h1 {
+	margin: 30px 100px;
+	padding: 0;
+	text-align: center;
+	color: #fff;
+	font-size: 30px;
+}
+
+.list__menu a{
+    align-items:center;
+    color: white;
+    text-decoration: none;
+}
+.list__menu a:hover{
+    color: #d49e20;
+    transition: 0.3s;
+}
+.list__menu li{
+    margin-left:10px;
+    text-decoration: none;
+    list-style-type: none;
+}
+.list__menu li+li{
+    margin-top:20px;
+}
+.list__nav{
+    padding-top: 20px;
+}
+
+
+
+
