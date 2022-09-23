@@ -12,17 +12,34 @@ function generate_gallery(){
         success: function(data)
         {
             data.forEach(el => {
-                $(cont_dogs).append(`
+                let cont_imgs = $(`<div class= "image-gallery"></div>`);
+                let cont_dog = $(`
                     <div class="container-dog1">
-                        <h3>${el.title_dog}</h3>
-                        <p><span></span>${el.desc_dog}</p>
-                        <div class= "image-gallery"> 
-                            <img class="news_icon" src="image/Шпиц.jpg" width="350px">
-                            <img class="news_icon" src="image/Шпиц.jpg" width="350px">
-                            <img class="news_icon" src="image/Шпиц.jpg" width="350px">
-                        </div>
+                        <h3>${el.name_dog}</h3>
+                        <p><span></span>${el.desc_dog}</p>                    
                     </div>
                 `);
+                
+
+                let idenf_data_dog = {
+                    act: 'gallery_imgs',
+                    id: el.id
+                }
+
+                $.ajax({
+                    method: "POST",
+                    url: "db/datawork.php",
+                    data: JSON.stringify(idenf_data_dog),
+                    success: function(data)
+                    {
+                        data.forEach(el => {                            
+                            $(cont_imgs).append(`<img class="news_icon" src="image/${el.img}" width="350px">`);
+                        });
+                        
+                    }            
+                });
+                $(cont_dog).append(cont_imgs);
+                $(cont_dogs).append(cont_dog);
             });
             
         }            

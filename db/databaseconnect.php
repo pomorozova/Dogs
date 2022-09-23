@@ -31,8 +31,8 @@ function get_news($conn){
     echo json_encode($data);
 }
 
-function get_dogs($conn){
-    $sth = $conn->prepare("SELECT * FROM `dog`");
+function get_breeds($conn){
+    $sth = $conn->prepare("SELECT * FROM `dog_breeds`");
     $sth->execute();
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');
@@ -56,8 +56,16 @@ function get_exhibitions($conn){
 }
 
 function get_gallery($conn){
-    $sth = $conn->prepare("SELECT * FROM `gallery`");
+    $sth = $conn->prepare("SELECT * FROM `dog`");
     $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+function get_gallery_imgs($conn, $id){
+    $sth = $conn->prepare("SELECT img FROM `dog_imgs` where id_dog=:id;");
+    $sth->execute(array("id"=>$id));
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($data);
