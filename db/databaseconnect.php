@@ -47,6 +47,22 @@ function get_puppies($conn){
     echo json_encode($data);
 }
 
+function get_exhibitions($conn){
+    $sth = $conn->prepare("SELECT * FROM `exhibitions`");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+function get_gallery($conn){
+    $sth = $conn->prepare("SELECT * FROM `gallery`");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
 //
 function add_test($conn){
     $sth = $conn->prepare("INSERT INTO `dog` values (2,'sdfs','bdbdda','sdfsgw1')");

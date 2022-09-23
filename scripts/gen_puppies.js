@@ -26,8 +26,7 @@ function generate_puppies(){
                     <div class="description-puppies">
                         <h3>Описание щенков</h3>
                         <p>${el.desc_puppie}</p>
-                    </div>
-                    
+                    </div>                    
                     <div class="block-puppies-img">
                         <div class="block-puppies-left">
                             <img class="puppies_icon" src="image/News.jpg" width="400px">
