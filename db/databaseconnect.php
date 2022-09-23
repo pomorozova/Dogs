@@ -32,7 +32,7 @@ function get_news($conn){
 }
 
 function get_dogs($conn){
-    $sth = $conn->prepare("SELECT * FROM `dogs`");
+    $sth = $conn->prepare("SELECT * FROM `dog`");
     $sth->execute();
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');

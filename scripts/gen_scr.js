@@ -1,7 +1,7 @@
 function generate_news(){
     let cont_news = $(".container-news-1")[0];
     let idenf_data = {
-        act: "news"
+        act: 'news'
     }
     
     $.ajax({

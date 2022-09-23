@@ -1,8 +1,11 @@
 <?php 
 require_once 'databaseconnect.php';
 
-if($_POST['act'] == "news"){
+$json = file_get_contents('php://input');
+$act = json_decode($json, true);
+
+if($act['act'] == "news"){
     get_news($conn);
-} else if($_POST['act'] == "dogs") {
+} else if($act['act'] == "dogs") {
     get_dogs($conn);
 }
