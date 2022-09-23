@@ -1,9 +1,13 @@
 function generate_news(){
     let cont_news = $(".container-news-1")[0];
+    let idenf_data = {
+        act: "news"
+    }
+    
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: "",
+        data: JSON.stringify(idenf_data),
         success: function(data)
         {            
             data.forEach(el => {

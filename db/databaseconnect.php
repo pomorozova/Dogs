@@ -31,6 +31,14 @@ function get_news($conn){
     echo json_encode($data);
 }
 
+function get_dogs($conn){
+    $sth = $conn->prepare("SELECT * FROM `dogs`");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
 
 function add_test($conn){
     $sth = $conn->prepare("INSERT INTO `dog` values (2,'sdfs','bdbdda','sdfsgw1')");
