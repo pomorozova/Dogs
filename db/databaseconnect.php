@@ -39,7 +39,15 @@ function get_dogs($conn){
     echo json_encode($data);
 }
 
+function get_puppies($conn){
+    $sth = $conn->prepare("SELECT * FROM `puppies`");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
 
+//
 function add_test($conn){
     $sth = $conn->prepare("INSERT INTO `dog` values (2,'sdfs','bdbdda','sdfsgw1')");
     $sth->execute();
@@ -48,11 +56,13 @@ function add_test($conn){
     echo json_encode($data);
 }
 
+//
 function update_test($conn){
     $sth = $conn->prepare("UPDATE `category` SET `name` = :name WHERE `id` = :id");
     $sth->execute(array('name' => 'Виноград', 'id' => 22));
 }
 
+//
 function del_test($conn)
 {
     $sth = $conn->prepare("DELETE FROM `category` WHERE `parent` = :parent");

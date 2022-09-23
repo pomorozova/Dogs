@@ -11,8 +11,8 @@ function generate_dogs(){
         data: JSON.stringify(idenf_data),
         success: function(data)
         {                      
-            console.log(data);
-
+            console.log(data)
+            
             data.forEach(el => {
                 $(cont_dogs).append(`
                     <div class="product-wrap">

@@ -9,8 +9,10 @@ function generate_news(){
         url: "db/datawork.php",
         data: JSON.stringify(idenf_data),
         success: function(data)
-        {            
+        {    
+            console.log(data)        
             data.forEach(el => {
+                
                 $(cont_news).append(`
                     <div class="block-news">
                         <div class="block-news-left">
