@@ -1,5 +1,5 @@
 /* NAVIGATE MENU */
-@media(max-width: 1200px){
+@media(max-width: 1280px){
 
 
     /* puppies */
@@ -12,8 +12,6 @@
         padding-top: 0px;
         height: 87px;
     }
-
-    
     .block-history-right{
         margin-left: 0;
     }

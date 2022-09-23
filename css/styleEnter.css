@@ -38,9 +38,7 @@ body {
 	box-sizing: border-box;
     
 }
-.input-form input:hover {
-	border-bottom: 1px solid #5b481b;
-}
+
 .input-form button {
 	margin-top: 20px;
 	color: #fff;

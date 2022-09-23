@@ -3,7 +3,7 @@ html {
 }
 body{
     margin: 0;
-    background-color: #2a2727;
+    background-color: #2a2727; 
     background-size: 100% auto;
     background-repeat: no-repeat;
     color: white;
@@ -12,7 +12,6 @@ body{
     margin-left: 10px;
     margin-right: 10px;
 }
-
 /*BACE*/
 .row{
     display: flex;
@@ -35,7 +34,6 @@ body{
 .nav_color{
     background: #2a2727;
     box-shadow: 0 30px 30px 0 rgba(0,0,0,.1);
-   
 }
 .nav_color1{
     background: #2a2727;

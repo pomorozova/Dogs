@@ -6,8 +6,8 @@
     <meta name='viewport' content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel = "stylesheet" href="css/editList.css">
-    <link rel = "stylesheet" href="font/stylesheet.css"> 
     <link rel = "stylesheet" href="css/main.css">
+    <link rel = "stylesheet" href="font/stylesheet.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="scripts/navigate-menu light.js"></script> 
     <title>Список для редактирования</title>
@@ -35,14 +35,22 @@
     <div class="container mt-4">
         <form class="list_menu">
             <div class = "form">
+                <h1>Страницы для редактирования:</h1>
                 <nav class="list__nav">
                     <ul class="list__menu"> 
-                        <li><a class="change" href="tonors.php">- Новости;</a></li>
-                        <li><a class="change" href="event.php">- Наши собаки;</a></li>
-                        <li><a class="change" href="adminPerformance.php">- Полезное;</a></li>
-                        <li><a class="change" href="photo.php">- Выставки;</a></li>
-                        <li><a class="change" href="poster.php">- Щенки;</a></li>
-                        <li><a class="change" href="staff.php">- Галерея.</a></li>
+                        <li><a class="change" href="editing/news.html">- Новости;</a></li>
+                        <li><a class="change" href="editing/ourDogs.html">- Наши собаки;</a></li>
+                        <li><a class="change" href="editing/useful.html">- Полезное;</a></li>
+                        <li><a class="change" href="editing/exhibition.html">- Выставки;</a></li>
+                        <li><a class="change" href="editing/puppies.html">- Щенки;</a></li>
+                        <li><div class="dropdown">
+                            <button class="dropbtn1">- Галерея;</button>
+                            <div class="dropdown-content">
+                              <a href="editing/gallery.html">Имя собаки 1</a>
+                              <a href="#">Имя собаки 2</a>
+                              <a href="#">Имя собаки 3</a>
+                            </div>
+                          </div></a></li>
                     </ul>
                 </div>
             </div>
