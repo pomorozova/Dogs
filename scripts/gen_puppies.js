@@ -12,6 +12,28 @@ function generate_puppies(){
         success: function(data)
         {            
             data.forEach(el => {
+                let cont_imgs_puppies = $(`<div class="block-puppies-img"></div>`);
+                let cont_imgs = $(`<div class="block-puppies-left"></div>`);
+
+                let idenf_data_imgs = {
+                    act: 'puppies_imgs',
+                    id:el.id
+                }
+
+                $.ajax({
+                    method: "POST",
+                    url: "db/datawork.php",
+                    data: JSON.stringify(idenf_data_imgs),
+                    success: function(data)
+                    {
+                        data.forEach(el => {
+                            cont_imgs.append(`<img class="puppies_icon" src="image/${el.img}" width="400px">`)
+                        })
+                    }
+                });
+
+                $(cont_imgs_puppies).append(cont_imgs);
+
                 $(cont_puppies).append(`
                     <div class="block-puppies">
                         <div class="block-puppies-left">
@@ -26,14 +48,10 @@ function generate_puppies(){
                     <div class="description-puppies">
                         <h3>Описание щенков</h3>
                         <p>${el.desc_puppie}</p>
-                    </div>                    
-                    <div class="block-puppies-img">
-                        <div class="block-puppies-left">
-                            <img class="puppies_icon" src="image/News.jpg" width="400px">
-                            <img class="puppies_icon" src="image/News.jpg" width="400px">
-                        </div>
                     </div>
                 `);
+
+                $(cont_puppies).append(cont_imgs_puppies);
             });
             
         }            

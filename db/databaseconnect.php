@@ -47,6 +47,14 @@ function get_puppies($conn){
     echo json_encode($data);
 }
 
+function get_puppies_imgs($conn,$id){
+    $sth = $conn->prepare("SELECT img FROM `imgs_puppies` WHERE id_pup=:id;");
+    $sth->execute(array('id'=>$id));
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
 function get_exhibitions($conn){
     $sth = $conn->prepare("SELECT * FROM `exhibitions`");
     $sth->execute();
