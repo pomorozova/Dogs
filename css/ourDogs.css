@@ -37,7 +37,25 @@
 .container-dog1 h3{
     text-align: left;
 }
+.block-news{
+    display: grid;
+    padding-top: 40px;
+    grid-template: auto/ 1fr 2fr 2fr;
+    grid-template-areas: 
+    "img text1 text2"
+    ;
+}
 
+.block-news .block-history-left{
+    grid-area: img;
+}
+
+.block-news .adapt_history_icon:first-child{
+    grid-area: text1;
+}
+.block-news .adapt_history_icon:last-child{
+    grid-area: text2;
+}
 
 
 
