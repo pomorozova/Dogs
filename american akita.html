@@ -3,17 +3,15 @@
 <head>
 	<meta charset="UTF-8">
     <meta name='viewport' content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <link rel = "stylesheet" href="css/adaptation.css"> 
-   
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <link rel = "stylesheet" href="css/adaptation.css">    
     <link rel = "stylesheet" href="css/main.css"> 
     <link rel = "stylesheet" href="css/ourDogs.css"> 
     <link rel = "stylesheet" href="font/stylesheet.css" type = "text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
     <script src="scripts/menu.js"></script> 
     <script src="scripts/navigate-menu.js"></script>
-    <script src="scripts/gen_ourDog.js"></script>
+    <script src="scripts/gen_ourDog.js?v=2"></script>
     <title>Наши собаки</title>
 </head>
 <body class = "body-background-img" >
@@ -32,7 +30,7 @@
                             <li><div class="dropdown">
                                 <button class="dropbtn"> Наши собаки</button>
                                 <div class="dropdown-content">
-                                  <a href="american akita.html" id="active_breed" data-act-breed="breed_1">Американская акита</a>
+                                  <a href="american akita.html" id="active_breed" data-actbreed="breed_1">Американская акита</a>
                                   <a href="Russian toy terrier.html">Русский той терьер</a>
                                   <a href="Pomeranian.html">Пурмиранский шпиц</a>
                                 </div>
@@ -49,22 +47,8 @@
         </div>
     </header>
 <main>
-    <div class="main-title-ourDogs">
-        <h1 class="title">Американская акита</h1>
-    </div>
-    <div class="container-dog1">
-        <h3>Заголовок</h3>
-        <p><span></span> Lipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-        <div class="block-news">
-                <div class="block-news-left">
-                    <img class="news_icon" src="image/News.jpg" width="320px">
-                    <p class="content-ourDogs">Имя собаки</p>
-                </div>
-                <div class="block-news-left">
-                    <img class="news_icon" src="image/News.jpg" width="320px">
-                    <p class="content-ourDogs">Имя собаки</p>
-                </div>
-        </div>
+    <div id="container_dog_breed">
+
     </div>
 
     <div class="container-history" style = "background-image: url(image/Background1.jpg);">

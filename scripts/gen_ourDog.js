@@ -1,8 +1,11 @@
 function generate_ourDog(){
     let cont_breed = $("#container_dog_breed");
-    let idenf_data = {
+    let breed = $("#active_breed").data("actbreed");
+    let id_breed = breed.split('_')[1];
+    
+    let idenf_data = {        
         act: 'our_dog',
-        id: $("#active_breed").attr("data-act-breed").split('_')[1]
+        id: id_breed
     }
     
     $.ajax({
@@ -11,6 +14,7 @@ function generate_ourDog(){
         data: JSON.stringify(idenf_data),
         success: function(data)
         {       
+            console.log(data)
             data.forEach(el => {                
                 $(cont_breed).append(`
                     <div class="main-title-ourDogs">
