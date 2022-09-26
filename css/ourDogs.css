@@ -56,6 +56,11 @@
 .block-news .adapt_history_icon:last-child{
     grid-area: text2;
 }
+.image-dog img{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
 
 
 
@@ -143,15 +148,26 @@
     color: #fccd04;
     margin-left: 40px;
 }
-.container-standart p{
-    line-height: 20px;
-    padding: 10px;
-    margin: 0, 0;
+.container-standart p, .indent{
+    padding-bottom: 10px;
     font-size: large;
     line-height: 30px;
     text-align: justify;
     color: #bbbbbb;
 }
+.indent{
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 40px;
+    padding-bottom: 0;
+}
+.fci{
+    margin-left: 40px;
+}
+.indent span{
+    margin-left: 0;
+}
+
 
 
 

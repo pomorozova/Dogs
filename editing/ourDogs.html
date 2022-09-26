@@ -36,6 +36,51 @@
     </div>
 </header>
 <main>
+
+<!-- Модальное окно изменения-->
+<div class="modal" id="modal-3">
+    <div class="modal__content">
+        <button class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
+      <!-- Контент модального окна -->
+
+      <h1>Изменить</h1>
+      <form action = "" method="post">
+        <div class = "form">
+            <p>Заголовок</p>
+            <div class ="input-form">
+            <input type="text" name="heading"></div>
+            <p>Основной текст</p>
+            <div class ="input-form">
+            <textarea name="description1" cols="60" rows="5" ></textarea> </div> <br> <br>
+                <div class="btn-news"> <button type="submit">Изменить</button></div></div>
+            </div>
+    </form>
+    </div>
+</div>
+
+<h1>Основная информация</h1>
+<table class="container">
+    <thead>
+        <tr>
+            <th><h1>№</h1></th>
+            <th><h1>Заголовок</h1></th>
+            <th><h1>Описание</h1></th>
+            <th><h1>Изменение</h1></th>
+            <th><h1>Удаление</h1></th>
+        </tr>   
+    </thead>
+    <tbody>
+        <!-- Цикл вывода инфорамации из БД -->
+        <tr>
+            <td>1</td>
+            <td>Заголовок</td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+            <td><div class="table-btn"><button type="submit" id="callback-button3" class="header__button">Изменить</div></button></td> 
+            <td><div class="table-btn"><button type="submit">Удалить</button></div></td>
+    </tr>   
+    </tbody>
+</table>
+
     <p><a name=""></a></p> 
     <h1>Добавить</h1>
     <div class="btn-news"> 
