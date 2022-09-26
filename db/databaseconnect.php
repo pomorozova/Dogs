@@ -87,6 +87,22 @@ function get_useful($conn){
     echo json_encode($data);
 }
 
+function get_our_dog($conn, $id){
+    $sth = $conn->prepare("SELECT id_breed, title, text_desc,(select name_breed from `dog_breeds` where `dog_breeds`.`id`=:id) as breed FROM `our_breeds` WHERE id_breed = :id;");
+    $sth->execute(array("id"=>$id));
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+function get_our_dog_breed($conn, $id){
+    $sth = $conn->prepare("SELECT name_dog,img FROM `dog` INNER JOIN `dog_imgs` on `dog`.`id`=`dog_imgs`.`id_dog` WHERE dog_breed=:id GROUP BY name_dog;");
+    $sth->execute(array("id"=>$id));
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
 function get_gallery_imgs($conn, $id){
     $sth = $conn->prepare("SELECT img FROM `dog_imgs` where id_dog=:id;");
     $sth->execute(array("id"=>$id));

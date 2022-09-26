@@ -12,6 +12,8 @@ switch($act["act"]){
     case "exhibition": get_exhibitions($conn);break;
     case "gallery": get_gallery($conn);break;
     case "useful": get_useful($conn);break;
+    case "our_dog": get_our_dog($conn, $act['id']);break;
+    case "our_dog_imgs": get_our_dog_breed($conn, $act['id']);break;
     case "gallery_imgs": get_gallery_imgs($conn,$act['id']);break;
     case "puppies_imgs": get_puppies_imgs($conn,$act['id']);break;
 }
