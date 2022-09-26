@@ -20,6 +20,8 @@
     font-family:'TT Norms';
     padding: 0 9%;
     margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .container-puppies h1{
     text-align: center;

@@ -1,6 +1,4 @@
-
-
-  function f1(){
+function f1(){
     // Кнопка по которой происходит клик
     let callBackButton = $('#callback-button');
    

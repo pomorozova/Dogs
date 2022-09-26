@@ -151,6 +151,9 @@ header {
 
 
     /* NEWS */
+    .block-news-left img{
+        width: 250px;
+    }
     .block-news{
         display: inline-block;
     }
@@ -189,6 +192,23 @@ header {
    .container-dog1 h3{
     text-align: left;
    }
+   .product-wrap {
+    width: 250px;
+    }
+
+   .container-standart h1, .main-title-ourDogs h1{
+    font-size: 40px;
+     
+    }
+   .block-news-left img{
+    width: 250px;
+    }
+   .fci{
+    margin-left: 0;
+    }
+    .indent{
+        margin-left: 0;
+    }
 
 
 
