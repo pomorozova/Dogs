@@ -2,7 +2,7 @@ function generate_ourDog(){
     let cont_breed = $("#container_dog_breed");
     let idenf_data = {
         act: 'our_dog',
-        id: $("#active_breed").attr("id").split('_')[1]
+        id: $("#active_breed").attr("data-act-breed").split('_')[1]
     }
     
     $.ajax({

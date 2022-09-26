@@ -40,7 +40,7 @@ function get_breeds($conn){
 }
 
 function get_breeds_menu($conn){
-    $sth = $conn->prepare("SELECT id, name_breed FROM `dog_breeds`;");
+    $sth = $conn->prepare("SELECT id, name_breed, page_breed FROM `dog_breeds`;");
     $sth->execute();
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');

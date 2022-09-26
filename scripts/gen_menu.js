@@ -12,7 +12,7 @@ function create_menu_our_dogs(){
         success: function(data)
         {   
             data.forEach(el => {
-                let menu_breed_element = $(`<a href="ourDogs.html" id="breed_${el.id}">${el.name_breed}</a>`);
+                let menu_breed_element = $(`<a href="${el.page_breed}" id="breed_${el.id}">${el.name_breed}</a>`);
                 $(menu_breeds).append(menu_breed_element);
             });
             
