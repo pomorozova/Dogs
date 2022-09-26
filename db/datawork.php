@@ -7,9 +7,11 @@ $act = json_decode($json, true);
 switch($act["act"]){
     case "news": get_news($conn);break;
     case "breeds": get_breeds($conn);break;
+    case "menu_breeds": get_breeds_menu($conn);break;
     case "puppies": get_puppies($conn);break;
     case "exhibition": get_exhibitions($conn);break;
     case "gallery": get_gallery($conn);break;
+    case "useful": get_useful($conn);break;
     case "gallery_imgs": get_gallery_imgs($conn,$act['id']);break;
     case "puppies_imgs": get_puppies_imgs($conn,$act['id']);break;
 }

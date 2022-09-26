@@ -39,6 +39,14 @@ function get_breeds($conn){
     echo json_encode($data);
 }
 
+function get_breeds_menu($conn){
+    $sth = $conn->prepare("SELECT id, name_breed FROM `dog_breeds`;");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
 function get_puppies($conn){
     $sth = $conn->prepare("SELECT * FROM `puppies`");
     $sth->execute();
@@ -65,6 +73,14 @@ function get_exhibitions($conn){
 
 function get_gallery($conn){
     $sth = $conn->prepare("SELECT * FROM `dog`");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+function get_useful($conn){
+    $sth = $conn->prepare("SELECT * FROM `useful`");
     $sth->execute();
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');

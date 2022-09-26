@@ -9,5 +9,5 @@ $(document).scroll(function(e) {
     $(window).scrollTop() > 90 ? 
     $('.header_logo').addClass('header_logo2') : 
     $('header_logo').removeClass('header_logo2');
-
 });
+
