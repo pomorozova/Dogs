@@ -12,7 +12,6 @@ body {
 	transform: translate(-50%,-50%);
 	background: rgba(0,0,0,.7);
     width: 500px;
-    height: 350px;
 }
 .form h1 {
 	margin: 30px 100px;
@@ -22,17 +21,45 @@ body {
 	font-size: 30px;
 }
 
-.list__menu a{
+
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    padding-right: 40px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: #bbbbbb;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+.list__menu a, .dropbtn1{
     align-items:center;
     color: white;
     text-decoration: none;
+    display: block;
+    border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  font-size: 17px;
+}
+
+.change{
+    padding-left: 5px;
 }
 .list__menu a:hover{
     color: #d49e20;
     transition: 0.3s;
 }
 .list__menu li{
-    margin-left:10px;
     text-decoration: none;
     list-style-type: none;
 }
@@ -41,7 +68,10 @@ body {
 }
 .list__nav{
     padding-top: 20px;
+    padding-bottom: 20px;
 }
+
+
 
 
 
