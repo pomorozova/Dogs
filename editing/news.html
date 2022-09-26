@@ -10,9 +10,10 @@
     <link rel = "stylesheet" href="../css/adaptation.css"> 
     <link rel = "stylesheet" href="../font/stylesheet.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-    <script src="../scripts/scripts.js"></script> 
+    <script src="js/news_scr.js?v=4"></script>     
     <script src="../scripts/menu.js"></script> 
-    <script src="../scripts/navigate-menu light.js"></script> 
+    <script src="../scripts/navigate-menu light.js"></script>
+    <script src="../scripts/scripts.js?v=8"></script>    
     <title>Новости</title>
 </head>
 
@@ -29,7 +30,7 @@
                         <img class="header_logo" src="../image/logo1.png" width="50px" height="50px"> 
                         <li><a class="scroll" href="../list.html">Назад</a></li>
                         <li><a class="scroll" href="../index.html">Выйти</a></li>
-                        </ul>
+                    </ul>
                 </nav>
             </div>
         </div>
@@ -47,7 +48,7 @@
     <!-- Модальное окно добавления-->
     <div class="modal" id="modal-1">
         <div class="modal__content">
-            <button class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
+            <button id="btn_close_modalAdd" class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
 
           <h1>Добавить новость</h1>
@@ -83,7 +84,7 @@
     <!-- Модальное окно изменения-->
     <div class="modal" id="modal-2">
         <div class="modal__content">
-            <button class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
+            <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
 
           <h1>Изменить новость</h1>
@@ -130,16 +131,7 @@
                 <th><h1>Удаление</h1></th>
             </tr>   
         </thead>
-        <tbody>
-            <!-- Цикл вывода инфорамации из БД -->
-            <tr>
-                <td>1</td>
-                <td>29/05/2021 Выставка басенджи ранга КЧК "Африканский амулет"</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</td>
-                <td>../image/Картинка1</td>
-                <td><div class="table-btn"><button type="submit" id="callback-button2" class="header__button">Изменить</div></button></td> 
-                <td><div class="table-btn"><button type="submit">Удалить</button></div></td>
-        </tr>   
+        <tbody id="news_table_body">  
         </tbody>
     </table>
 </main>
