@@ -14,7 +14,6 @@ function generate_ourDog(){
         data: JSON.stringify(idenf_data),
         success: function(data)
         {       
-            console.log(data)
             data.forEach(el => {                
                 $(cont_breed).append(`
                     <div class="main-title-ourDogs">
