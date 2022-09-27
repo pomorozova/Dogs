@@ -5,10 +5,15 @@ function AddNewNews(){
         let act_form_change = {
             part: 'admin',
             adm:"adm_news_add",
-            data: $(this).serializeArray()
+            data: {
+                main_data:$(this).serializeArray(),
+                img: $('#input__file_add').val()
+            }
         }
-
+        console.log(act_form_change);
+        
         e.preventDefault();
+        return;
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",

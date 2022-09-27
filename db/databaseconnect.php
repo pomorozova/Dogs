@@ -111,8 +111,9 @@ function get_gallery_imgs($conn, $id){
     echo json_encode($data);
 }
 
-// ---------------------------- админ часть
+// -------------------------------------------------------------------- админ часть
 
+//изменяем существующую запись рубрики новостей по id
 function adm_change_news($conn, $id, $data){
     $title = $data[0]['value'];
     $desc_news = $data[1]['value'];
@@ -120,9 +121,11 @@ function adm_change_news($conn, $id, $data){
     $sth->execute(array('title' => $title, 'id' => $id, 'desc_news'=>$desc_news ));
 }
 
+//добавляем новую запись рубрики новостей
 function adm_add_news($conn, $data){
     $title = $data[0]['value'];
     $desc_news = $data[1]['value'];
+    $link_to_img = $data[2]['value'];
     $sth = $conn->prepare("INSERT INTO `news` SELECT (COUNT(*) + 1) AS id,:title,'2022-09-27',:desc_news,'dog3.jpg' FROM `news`;");
     $sth->execute(array('title' => $title, 'desc_news'=>$desc_news ));
 }
