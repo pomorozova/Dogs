@@ -1,15 +1,26 @@
 let change_id_news_now = 0;
 
-function ChangeNewsCloseModal(){
-    // Кнопка "закрыть" внутри модального окна
-    let closeButton = $('#modal-2 .modal__close_button')[0];
+function AddNewNews(){
+    $('#form_news_add').on("submit", function(e){
+        let act_form_change = {
+            part: 'admin',
+            adm:"adm_news_add",
+            data: $(this).serializeArray()
+        }
 
-    $(closeButton).on("click",function (e) {
-        $('#modal-2').removeClass('modal_active');
-        $('body').removeClass('hidden');
-        gen_news_table();
+        e.preventDefault();
+        $.ajax({
+            method: "POST",
+            url: "../db/datawork.php",
+            data: JSON.stringify(act_form_change),
+            success: function(data){
+                gen_news_table();
+            }
+        })
     });
 }
+
+
 
 function ChangeNews(){
     $('#form_news_change').on("submit", function(e){
@@ -19,7 +30,6 @@ function ChangeNews(){
             id: change_id_news_now,
             data: $(this).serializeArray()
         }
-        console.log(act_form_change.data);
 
         e.preventDefault();
         $.ajax({
@@ -27,8 +37,7 @@ function ChangeNews(){
             url: "../db/datawork.php",
             data: JSON.stringify(act_form_change),
             success: function(data){
-                console.log(data);
-                console.log("success change");
+                gen_news_table();
             }
         })
     });
@@ -89,5 +98,5 @@ function gen_news_table(){
 $(document).ready(function(){
     gen_news_table();
     ChangeNews();
-    ChangeNewsCloseModal();
+    AddNewNews();
 })

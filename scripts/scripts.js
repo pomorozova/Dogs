@@ -40,7 +40,7 @@ function f1(){
     let callBackButton = $('.table-btn .but_change_note');
    
     // Модальное окно, которое необходимо открыть
-    let modal1 = $('#modal-2');
+    let modal_add = $('#modal-2');
    
     
    
@@ -51,16 +51,22 @@ function f1(){
     $(callBackButton).each(function(index, elem){
       $(elem).on("click", function(e){
         e.preventDefault();
-        $(modal1).addClass('modal_active');
+        $(modal_add).addClass('modal_active');
         $(tagBody).addClass('hidden');
       })      
     });
         
-  
+    // Кнопка "закрыть" внутри модального окна
+    let closeButton = $('#modal-2 .modal__close_button')[0];
+
+    $(closeButton).on("click",function (e) {
+        $(modal_add).removeClass('modal_active');
+        $(tagBody).removeClass('hidden');
+    });
    
-    modal1.onmousedown = function (e) {
+    modal_add.onmousedown = function (e) {
       let target = e.target;
-      let modalContent = modal1.getElementsByClassName('modal__content')[0];
+      let modalContent = modal_add.getElementsByClassName('modal__content')[0];
       if (e.target.closest('.' + modalContent.className) === null) {
         this.classList.remove('modal_active');
         tagBody.classList.remove('hidden');

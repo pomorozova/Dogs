@@ -111,11 +111,20 @@ function get_gallery_imgs($conn, $id){
     echo json_encode($data);
 }
 
-function adm_change_news($conn,$id, $data){
+// ---------------------------- админ часть
+
+function adm_change_news($conn, $id, $data){
     $title = $data[0]['value'];
     $desc_news = $data[1]['value'];
     $sth = $conn->prepare("UPDATE `news` SET `title` = :title, `desc_news` = :desc_news WHERE `id` = :id");
     $sth->execute(array('title' => $title, 'id' => $id, 'desc_news'=>$desc_news ));
+}
+
+function adm_add_news($conn, $data){
+    $title = $data[0]['value'];
+    $desc_news = $data[1]['value'];
+    $sth = $conn->prepare("INSERT INTO `news` SELECT (COUNT(*) + 1) AS id,:title,'2022-09-27',:desc_news,'dog3.jpg' FROM `news`;");
+    $sth->execute(array('title' => $title, 'desc_news'=>$desc_news ));
 }
 
 //
