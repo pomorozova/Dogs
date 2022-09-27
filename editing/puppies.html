@@ -100,7 +100,7 @@
         </div>
     </div>
     <!-- Модальное окно изменения-->
-    <div class="modal" id="modal-2">
+    <div class="modal-2" id="modal-2">
         <div class="modal__content">
             <button class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
@@ -154,7 +154,19 @@
           </form>
         </div>
     </div>
-
+    <!-- Модальное окно удаления-->
+    <div class="modal-delete" id="modal-delete">
+        <div class="modal__content">
+        <button class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
+        <!-- Контент модального окна -->
+        <div class="modal_content-2">
+            <h1 class="modal__title">Удаление записи</h1>
+            <p class="modal__description">Вы действительно хотите удалить запись?</p>
+            <button class="btn-delete-yes">Да</button>
+            <button class="btn-delete-no">Нет</button>
+        </div>
+        </div>
+    </div>
 
     <h1>Щенки</h1>
     <table class="container">
@@ -180,7 +192,7 @@
                 <td>../image/Картинка1</td>
                 <td>../image/Картинка1</td>
                 <td><div class="table-btn"><button type="submit" id="callback-button2" class="header__button">Изменить</div></button></td> 
-                <td><div class="table-btn"><button type="submit">Удалить</button></div></td>
+                <td><div class="table-btn"><button  id="callback-button-delete" class="header__button">Удалить</div></td>
         </tr>   
         </tbody>
     </table>
