@@ -2,6 +2,7 @@ function generate_gallery(){
     let cont_dogs = $("main");
 
     let idenf_data = {
+        part: 'main',
         act: 'gallery'
     }
     

@@ -42,13 +42,12 @@ function f1(){
     // Модальное окно, которое необходимо открыть
     let modal1 = $('#modal-2');
    
-    // Кнопка "закрыть" внутри модального окна
-    let closeButton = $('#modal-2 .modal__close_button')[0];
+    
    
     // Тег body для запрета прокрутки
     let tagBody = $('body');
     
-    console.log(callBackButton)
+    
     $(callBackButton).each(function(index, elem){
       $(elem).on("click", function(e){
         e.preventDefault();
@@ -56,13 +55,8 @@ function f1(){
         $(tagBody).addClass('hidden');
       })      
     });
-    
-    
-    $(closeButton).on("click",function (e) {
-      e.preventDefault();
-      $(modal1).removeClass('modal_active');
-      $(tagBody).removeClass('hidden');
-    });
+        
+  
    
     modal1.onmousedown = function (e) {
       let target = e.target;

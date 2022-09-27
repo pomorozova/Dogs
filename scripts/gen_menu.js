@@ -2,6 +2,7 @@ function create_menu_our_dogs(){
     let menu_breeds = $('.dropdown-content')[0];
 
     let idenf_data = {
+        part: 'main',
         act: 'menu_breeds'
     }
     

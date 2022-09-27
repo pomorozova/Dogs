@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
     <meta name='viewport' content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel = "stylesheet" href="../css/main.css"> 
+    <link rel = "stylesheet" href="../css/main.css">
     <link rel = "stylesheet" href="../css/table.css"> 
     <link rel = "stylesheet" href="../css/adaptation.css"> 
     <link rel = "stylesheet" href="../font/stylesheet.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-    <script src="js/news_scr.js?v=4"></script>     
+    <script src="js/news_scr.js?v=13"></script>     
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
-    <script src="../scripts/scripts.js?v=8"></script>    
+    <script src="../scripts/scripts.js?v=10"></script>    
     <title>Новости</title>
 </head>
 <body>
@@ -39,14 +39,14 @@
     <h1>Добавить новость</h1>
     <div class="btn-news"> 
         <div class="btn-news-1">
-            <button type="submit" id="callback-button" class="header__button">Добавить</button>
+            <button id="callback-button" class="header__button">Добавить</button>
         </div>
     </div>
 
     <!-- Модальное окно добавления-->
     <div class="modal" id="modal-1">
         <div class="modal__content">
-            <button id="btn_close_modalAdd" class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
+            <button id="btn_close_modalAdd" class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
 
           <h1>Добавить новость</h1>
@@ -74,7 +74,7 @@
                                   <span class="input__file-button-text">Выберите файл</span>
                               </label>
                           </div> <br> <br>
-                      <div class="btn-news"> <button type="submit"> Добавить новость</button></div></div>
+                      <div class="btn-news"> <button> Добавить новость</button></div></div>
                   </div>
           </form>
         </div>
@@ -86,19 +86,18 @@
           <!-- Контент модального окна -->
 
           <h1>Изменить новость</h1>
-          <form action = "" method="post">
+          <form id="form_news_change" action = "" method="post">
               <div class = "form">
                   <p>Заголовок</p>
                   <div class ="input-form">
-                  <input type="text" name="heading"></div>
+                  <input id="frm_chg_title" type="text" name="heading"></div>
       
                   <p>Основной текст</p>
                   <div class ="input-form">
-                  <textarea name="description" cols="60" rows="5" ></textarea> </div>
+                  <textarea id="frm_chg_desc" name="description" cols="60" rows="5" ></textarea> </div>
       
                   <p>Изображение</p>
                   <div class ="input-form">
-                     
                           <div class="input__wrapper">
                               <input name="img" type="file" id="input__file" class="input input__file" multiple>
                               <label for="input__file" class="input__file-button">
@@ -110,13 +109,11 @@
                                   <span class="input__file-button-text">Выберите файл</span>
                               </label>
                           </div> <br> <br>
-                      <div class="btn-news"> <button type="submit"> Изменить новость</button></div></div>
+                      <div class="btn-news"> <button  type="submit">Изменить новость</button></div></div>
                   </div>
           </form>
         </div>
     </div>
-
-
     <h1>Новости</h1>
     <table class="container">
         <thead>

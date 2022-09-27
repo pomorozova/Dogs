@@ -2,6 +2,7 @@ function generate_dogs(){
     let cont_dogs = $(".container-our_dogs")[0];
 
     let idenf_data = {
+        part: 'main',
         act: 'breeds'
     }
     

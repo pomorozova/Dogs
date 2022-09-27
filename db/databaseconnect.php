@@ -111,6 +111,13 @@ function get_gallery_imgs($conn, $id){
     echo json_encode($data);
 }
 
+function adm_change_news($conn,$id, $data){
+    $title = $data[0]['value'];
+    $desc_news = $data[1]['value'];
+    $sth = $conn->prepare("UPDATE `news` SET `title` = :title, `desc_news` = :desc_news WHERE `id` = :id");
+    $sth->execute(array('title' => $title, 'id' => $id, 'desc_news'=>$desc_news ));
+}
+
 //
 function add_test($conn){
     $sth = $conn->prepare("INSERT INTO `dog` values (2,'sdfs','bdbdda','sdfsgw1')");
