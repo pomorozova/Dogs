@@ -1,111 +1,188 @@
-$(function f4() {
-  $('#callback-button-delete').click(function () {
-    $('.modal-delete').addClass('modal_active');
-    $('body').addClass('hidden');
-  });
+document.addEventListener('DOMContentLoaded', () => {  
  
-  $('.modal__close-button').click(function () {
-    $('.modal-delete').removeClass('modal_active');
-    $('body').removeClass('hidden');
-  });
+  // Кнопка по которой происходит клик
+  let callBackButton = document.getElementById('callback-button');
  
-  $('.modal-delete').mouseup(function (e) {
-    let modalContent = $(".modal__content");
-    if (!modalContent.is(e.target) && modalContent.has(e.target).length === 0) {
-      $(this).removeClass('modal_active');
-      $('body').removeClass('hidden');
+  // Модальное окно, которое необходимо открыть
+  let modal1 = document.getElementById('modal-1');
+ 
+  // Кнопка "закрыть" внутри модального окна
+  let closeButton = modal1.getElementsByClassName('modal__close-button')[0];
+ 
+  // Тег body для запрета прокрутки
+  let tagBody = document.getElementsByTagName('body');
+ 
+  callBackButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.add('modal_active');
+    tagBody.classList.add('hidden');
+  }
+ 
+  closeButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.remove('modal_active');
+    tagBody.classList.remove('hidden');
+  }
+ 
+  modal1.onmousedown = function (e) {
+    let target = e.target;
+    let modalContent = modal1.getElementsByClassName('modal__content')[0];
+    if (e.target.closest('.' + modalContent.className) === null) {
+      this.classList.remove('modal_active');
+      tagBody.classList.remove('hidden');
     }
-  });
-});
-
-$(function f5() {
-  $('#callback-button-delete-2').click(function () {
-    $('.modal-delete').addClass('modal_active');
-    $('body').addClass('hidden');
-  });
+  };
  
-  $('.modal__close-button').click(function () {
-    $('.modal-delete').removeClass('modal_active');
-    $('body').removeClass('hidden');
-  });
- 
-  $('.modal-delete').mouseup(function (e) {
-    let modalContent = $(".modal__content");
-    if (!modalContent.is(e.target) && modalContent.has(e.target).length === 0) {
-      $(this).removeClass('modal_active');
-      $('body').removeClass('hidden');
-    }
-  });
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {  
 
-  $(function f1() {
-    $('#callback-button').click(function () {
-      $('.modal').addClass('modal_active');
-      $('body').addClass('hidden');
-    });
-   
-    $('.modal__close-button').click(function () {
-      $('.modal').removeClass('modal_active');
-      $('body').removeClass('hidden');
-    });
-   
-    $('.modal').mouseup(function (e) {
-      let modalContent = $(".modal__content");
-      if (!modalContent.is(e.target) && modalContent.has(e.target).length === 0) {
-        $(this).removeClass('modal_active');
-        $('body').removeClass('hidden');
-      }
-    });
-  });
-       
+  // Кнопка по которой происходит клик
+  let callBackButton = document.getElementById('callback-button2');
+ 
+  // Модальное окно, которое необходимо открыть
+  let modal1 = document.getElementById('modal-2');
+ 
+  // Кнопка "закрыть" внутри модального окна
+  let closeButton = modal1.getElementsByClassName('modal__close-button')[0];
+ 
+  // Тег body для запрета прокрутки
+  let tagBody = document.getElementsByTagName('body');
+ 
+  callBackButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.add('modal_active');
+    tagBody.classList.add('hidden');
+  }
+ 
+  closeButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.remove('modal_active');
+    tagBody.classList.remove('hidden');
+  }
+ 
+  modal1.onmousedown = function (e) {
+    let target = e.target;
+    let modalContent = modal1.getElementsByClassName('modal__content')[0];
+    if (e.target.closest('.' + modalContent.className) === null) {
+      this.classList.remove('modal_active');
+      tagBody.classList.remove('hidden');
+    }
+  };
+ 
+});
+document.addEventListener('DOMContentLoaded', () => {  
 
-  $(function f2() {
-    $('#callback-button2').click(function () {
-      $('.modal-2').addClass('modal_active');
-      $('body').addClass('hidden');
-    });
-   
-    $('.modal__close-button').click(function () {
-      $('.modal-2').removeClass('modal_active');
-      $('body').removeClass('hidden');
-    });
-   
-    $('.modal-2').mouseup(function (e) {
-      let modalContent = $(".modal__content");
-      if (!modalContent.is(e.target) && modalContent.has(e.target).length === 0) {
-        $(this).removeClass('modal_active');
-        $('body').removeClass('hidden');
-      }
-    });
-  });
+  // Кнопка по которой происходит клик
+  let callBackButton = document.getElementById('callback-button3');
+ 
+  // Модальное окно, которое необходимо открыть
+  let modal1 = document.getElementById('modal-3');
+ 
+  // Кнопка "закрыть" внутри модального окна
+  let closeButton = modal1.getElementsByClassName('modal__close-button')[0];
+ 
+  // Тег body для запрета прокрутки
+  let tagBody = document.getElementsByTagName('body');
+ 
+  callBackButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.add('modal_active');
+    tagBody.classList.add('hidden');
+  }
+ 
+  closeButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.remove('modal_active');
+    tagBody.classList.remove('hidden');
+  }
+ 
+  modal1.onmousedown = function (e) {
+    let target = e.target;
+    let modalContent = modal1.getElementsByClassName('modal__content')[0];
+    if (e.target.closest('.' + modalContent.className) === null) {
+      this.classList.remove('modal_active');
+      tagBody.classList.remove('hidden');
+    }
+  };
+ 
+});
 
-  $(function f3() {
-    $('#callback-button3').click(function () {
-      $('.modal-3').addClass('modal_active');
-      $('body').addClass('hidden');
-    });
-   
-    $('.modal__close-button').click(function () {
-      $('.modal-3').removeClass('modal_active');
-      $('body').removeClass('hidden');
-    });
-   
-    $('.modal-3').mouseup(function (e) {
-      let modalContent = $(".modal__content");
-      if (!modalContent.is(e.target) && modalContent.has(e.target).length === 0) {
-        $(this).removeClass('modal_active');
-        $('body').removeClass('hidden');
-      }
-    });
-  });
+document.addEventListener('DOMContentLoaded', () => {  
 
-  $(document).ready(function() { 
-    f1(); 
-    f2();
-    f3();
-    f4();
-    f5();
-  });
+  // Кнопка по которой происходит клик
+  let callBackButton = document.getElementById('callback-button-delete');
+ 
+  // Модальное окно, которое необходимо открыть
+  let modal1 = document.getElementById('modal-4');
+ 
+  // Кнопка "закрыть" внутри модального окна
+  let closeButton = modal1.getElementsByClassName('modal__close-button')[0];
+ 
+  // Тег body для запрета прокрутки
+  let tagBody = document.getElementsByTagName('body');
+ 
+  callBackButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.add('modal_active');
+    tagBody.classList.add('hidden');
+  }
+ 
+  closeButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.remove('modal_active');
+    tagBody.classList.remove('hidden');
+  }
+ 
+  modal1.onmousedown = function (e) {
+    let target = e.target;
+    let modalContent = modal1.getElementsByClassName('modal__content')[0];
+    if (e.target.closest('.' + modalContent.className) === null) {
+      this.classList.remove('modal_active');
+      tagBody.classList.remove('hidden');
+    }
+  };
+ 
+});
+
+document.addEventListener('DOMContentLoaded', () => {  
+
+  // Кнопка по которой происходит клик
+  let callBackButton = document.getElementById('callback-button-delete-2');
+ 
+  // Модальное окно, которое необходимо открыть
+  let modal1 = document.getElementById('modal-5');
+ 
+  // Кнопка "закрыть" внутри модального окна
+  let closeButton = modal1.getElementsByClassName('modal__close-button')[0];
+ 
+  // Тег body для запрета прокрутки
+  let tagBody = document.getElementsByTagName('body');
+ 
+  callBackButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.add('modal_active');
+    tagBody.classList.add('hidden');
+  }
+ 
+  closeButton.onclick = function (e) {
+    e.preventDefault();
+    modal1.classList.remove('modal_active');
+    tagBody.classList.remove('hidden');
+  }
+ 
+  modal1.onmousedown = function (e) {
+    let target = e.target;
+    let modalContent = modal1.getElementsByClassName('modal__content')[0];
+    if (e.target.closest('.' + modalContent.className) === null) {
+      this.classList.remove('modal_active');
+      tagBody.classList.remove('hidden');
+    }
+  };
+ 
+});
+
+
+
 
