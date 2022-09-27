@@ -269,7 +269,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .modal_content-2{
   text-align: center;
 }
-.modal, .modal-delete, .modal-2, .modal-delete,.modal-3{
+.modal, .modal-delete, .modal-2, .modal-delete, .modal-3{
     position: absolute;
     visibility: hidden;
     opacity: 0;

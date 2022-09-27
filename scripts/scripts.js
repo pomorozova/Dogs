@@ -1,4 +1,4 @@
-function f1(){
+function setting_modal_add(){
     // Кнопка по которой происходит клик
     let callBackButton = $('#callback-button');
    
@@ -32,9 +32,9 @@ function f1(){
       }
     };
        
-  }
+}
 
-  function f2(){
+function setting_modal_change(){
 
     // Кнопка по которой происходит клик
     let callBackButton = $('.table-btn .but_change_note');
@@ -72,9 +72,9 @@ function f1(){
         tagBody.classList.remove('hidden');
       }
     };
-  }
+}
 
-  function f3(){
+function setting_modal_3(){
 
     // Кнопка по которой происходит клик
     let callBackButton = document.getElementById('callback-button3');
@@ -93,13 +93,13 @@ function f1(){
       $(modal1).addClass('modal_active');
       $(tagBody).addClass('hidden');
     })
-   
-    closeButton.onclick = function (e) {
-      e.preventDefault();
-      $(modal1).removeClass('modal_active');
-      $(tagBody).removeClass('hidden');
-    }
-  }
+   $(closeButton).on("click",function (e) {
+    e.preventDefault();
+    $(modal1).removeClass('modal_active');
+    $(tagBody).removeClass('hidden');
+  })
+  
+}
   
 
 function f5() {
@@ -186,12 +186,12 @@ function f5() {
   }
 
   $(document).ready(function() { 
-    f1(); 
-    f2();
-    f3();
-    f5();
     f1_del();
     f2_del();
     f3_del();
+    f5();
+    setting_modal_add(); 
+    setting_modal_change();
+    setting_modal_3();
   });
 
