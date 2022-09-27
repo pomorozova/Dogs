@@ -1,4 +1,4 @@
-function f1(){
+function setting_modal_add(){
     // Кнопка по которой происходит клик
     let callBackButton = $('#callback-button');
    
@@ -34,7 +34,7 @@ function f1(){
        
   }
 
-  function f2(){
+  function setting_modal_change(){
 
     // Кнопка по которой происходит клик
     let callBackButton = $('.table-btn .but_change_note');
@@ -74,7 +74,7 @@ function f1(){
     };
   }
 
-  function f3(){
+  function setting_modal_3(){
 
     // Кнопка по которой происходит клик
     let callBackButton = document.getElementById('callback-button3');
@@ -111,8 +111,8 @@ function f1(){
   }
 
   $(document).ready(function() { 
-    f1(); 
-    f2();
-    f3();
+    setting_modal_add(); 
+    setting_modal_change();
+    setting_modal_3();
   });
 
