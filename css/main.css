@@ -4,7 +4,7 @@ html {
 body{
     margin: 0;
     background-color: #2a2727; 
-    background-size: 100% auto;
+    background-size: 100%;
     background-repeat: no-repeat;
     color: white;
     background-image: url('../image/Фон.jpg');
@@ -66,9 +66,9 @@ body{
 }
 
 .header__nav li+ li{
-    margin-left:10px;
+    margin-left:5px;
     border-left: 2px solid #bbbbbb;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 .header__nav a{
     text-decoration: none;
@@ -93,7 +93,8 @@ body{
   
 }
 .text-heading{
-    color:white;
+    color:#bbbbbb;
+    font-weight:500;
 }
 .main-title button {
 	margin-top: 20px;
