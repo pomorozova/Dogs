@@ -34,6 +34,42 @@ function setting_modal_add(){
      
 }
 
+function setting_modal_add2(){
+  // Кнопка по которой происходит клик
+  let callBackButton = $('#callback-button2');
+ 
+  // Модальное окно, которое необходимо открыть
+  let modal1 = $('#modal-2');
+ 
+  // Кнопка "закрыть" внутри модального окна
+  let closeButton = $('#btn_close_modalAdd');
+ 
+  // Тег body для запрета прокрутки
+  let tagBody = $('body');
+
+  $(callBackButton).on("click", function (e) {
+    e.preventDefault();
+    $(modal1).addClass('modal_active');
+    $(tagBody).addClass('hidden');
+  })
+  
+  $(closeButton).on("click", function (e) {
+    e.preventDefault();
+    $(modal1).removeClass('modal_active');
+    $(tagBody).removeClass('hidden');
+  })
+ 
+  modal1.onmousedown = function (e) {
+    let target = e.target;
+    let modalContent = modal1.getElementsByClassName('modal__content')[0];
+    if (e.target.closest('.' + modalContent.className) === null) {
+      this.classList.remove('modal_active');
+      tagBody.classList.remove('hidden');
+    }
+  };
+     
+}
+
 function setting_modal_change(){
 
   // Кнопка по которой происходит клик
@@ -112,6 +148,7 @@ function setting_modal_3(){
 
 $(document).ready(function() { 
   setting_modal_add(); 
+  setting_modal_add2(); 
   setting_modal_change();
   setting_modal_3();
 });
