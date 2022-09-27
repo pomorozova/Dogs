@@ -7,6 +7,8 @@ body{
     background-size: 100% auto;
     background-repeat: no-repeat;
     color: white;
+    background-image: url('../image/Фон.jpg');
+    
 }
 .scroll {
     margin-left: 10px;

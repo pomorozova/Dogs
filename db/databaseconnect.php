@@ -124,8 +124,8 @@ function adm_change_news($conn, $id, $data){
 //добавляем новую запись рубрики новостей
 function adm_add_news($conn, $data, $img_link){
     $title = $data[0]['value'];
-    $desc_news = $data[1]['value'];
-    $link_to_img = $data[2]['value'];
+    $desc_news = $data[1]['value'];    
+    $res_copy = copy($img_link, "bb.jpg");
     $sth = $conn->prepare("INSERT INTO `news` SELECT (COUNT(*) + 1) AS id,:title,'2022-09-27',:desc_news,'dog3.jpg' FROM `news`;");
     $sth->execute(array('title' => $title, 'desc_news'=>$desc_news ));
 }

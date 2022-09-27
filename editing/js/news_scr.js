@@ -13,7 +13,7 @@ function AddNewNews(){
         console.log(act_form_change);
         
         e.preventDefault();
-        return;
+        
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
