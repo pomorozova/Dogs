@@ -122,7 +122,7 @@ function adm_change_news($conn, $id, $data){
 }
 
 //добавляем новую запись рубрики новостей
-function adm_add_news($conn, $data){
+function adm_add_news($conn, $data, $img_link){
     $title = $data[0]['value'];
     $desc_news = $data[1]['value'];
     $link_to_img = $data[2]['value'];

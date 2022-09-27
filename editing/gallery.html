@@ -36,9 +36,9 @@
 </header>
 <main>
     <!-- Модальное окно изменения-->
-    <div class="modal-2" id="modal-2">
+    <div class="modal" id="modal-2">
         <div class="modal__content">
-            <button class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
+            <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
 
           <h1>Изменить описание</h1>
@@ -52,7 +52,19 @@
         </form>
         </div>
     </div>
-    
+    <!-- Модальное окно удаления-->
+    <div class="modal-2" id="modal-4">
+        <div class="modal__content">
+        <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
+        <!-- Контент модального окна -->
+        <div class="modal_content-2">
+            <h1 class="modal__title">Удаление записи</h1>
+            <p class="modal__description">Вы действительно хотите удалить запись?</p>
+            <button class="btn-delete-yes">Да</button>
+            <button class="btn-delete-no">Нет</button>
+        </div>
+        </div>
+    </div>
     <h1>Описание собаки в галерее</h1>
     <table class="container">
         <thead>
@@ -86,9 +98,10 @@
     </div>
 
     <!-- Модальное окно добавления-->
+    <p>Добавить</p>
     <div class="modal" id="modal-1">
         <div class="modal__content">
-            <button class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
+            <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
           <h1>Добавить</h1>
           <form action = "" method="post">
@@ -113,9 +126,9 @@
         </div>
     </div>
     <!-- Модальное окно изменения-->
-    <div class="modal-3" id="modal-3">
+    <div class="modal" id="modal-3">
         <div class="modal__content">
-            <button class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
+            <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
 
           <h1>Изменить изображение</h1>
@@ -140,11 +153,10 @@
           </form>
         </div>
     </div>
-
     <!-- Модальное окно удаления-->
-    <div class="modal-delete" id="modal-delete">
+    <div class="modal-2" id="modal-5">
         <div class="modal__content">
-        <button class="modal__close-button"><img src="../image/close.png" width="25" alt=""></button>
+        <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
         <!-- Контент модального окна -->
         <div class="modal_content-2">
             <h1 class="modal__title">Удаление записи</h1>
@@ -154,7 +166,6 @@
         </div>
         </div>
     </div>
-    
     <h1>Галерея</h1>
     <table class="container">
         <thead>

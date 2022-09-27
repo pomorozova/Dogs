@@ -9,10 +9,10 @@
     <link rel = "stylesheet" href="../css/adaptation.css"> 
     <link rel = "stylesheet" href="../font/stylesheet.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-    <script src="js/news_scr.js?v=16"></script>     
+    <script src="js/news_scr.js?v=17"></script>     
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
-    <script src="../scripts/scripts.js?v=12"></script>    
+    <script src="../scripts/scripts.js?v=15"></script>    
     <title>Новости</title>
 </head>
 <body>
@@ -39,12 +39,12 @@
     <h1>Добавить новость</h1>
     <div class="btn-news"> 
         <div class="btn-news-1">
-            <button id="callback-button" class="header__button">Добавить</button>
+            <button id="callback_button" class="header__button">Добавить</button>
         </div>
     </div>
 
     <!-- Модальное окно добавления-->
-    <div class="modal" id="modal-1">
+    <div class="modal" id="modal_1">
         <div class="modal__content">
             <button id="btn_close_modalAdd" class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
@@ -83,7 +83,7 @@
         </div>
     </div>
     <!-- Модальное окно изменения-->
-    <div class="modal_2" id="modal-2">
+    <div class="modal" id="modal-2">
         <div class="modal__content">
             <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
@@ -115,6 +115,19 @@
                       <div class="btn-news"> <button  type="submit">Изменить новость</button></div></div>
                   </div>
           </form>
+        </div>
+    </div>
+    <!-- Модальное окно удаления-->
+    <div class="modal-2" id="modal-4">
+        <div class="modal__content">
+        <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
+        <!-- Контент модального окна -->
+        <div class="modal_content-2">
+            <h1 class="modal__title">Удаление записи</h1>
+            <p class="modal__description">Вы действительно хотите удалить запись?</p>
+            <button class="btn-delete-yes">Да</button>
+            <button class="btn-delete-no">Нет</button>
+        </div>
         </div>
     </div>
     <h1>Новости</h1>

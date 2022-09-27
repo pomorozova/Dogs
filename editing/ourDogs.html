@@ -12,7 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="../scripts/scripts.js"></script> 
     <script src="../scripts/menu.js"></script> 
-    <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script> 
     <title>Наши собаки</title>
 </head>
@@ -39,30 +38,38 @@
 <main>
 
 <!-- Модальное окно изменения-->
-<div class="modal" id="modal-2">
+<div class="modal" id="modal-3">
     <div class="modal__content">
         <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
       <!-- Контент модального окна -->
 
       <h1>Изменить</h1>
       <form action = "" method="post">
-            <div class = "form">
-                <p>Заголовок</p>
-                <div class ="input-form">
-                <input type="text" name="heading"></div>
-
-                <p>Основной текст</p>
-                <div class ="input-form">
-                <textarea name="description1" cols="60" rows="5" ></textarea> </div> <br> <br>
-                    <div class="btn-news"> <button type="submit"> Добавить</button></div></div>
-                </div>
+        <div class = "form">
+            <p>Заголовок</p>
+            <div class ="input-form">
+            <input type="text" name="heading"></div>
+            <p>Основной текст</p>
+            <div class ="input-form">
+            <textarea name="description1" cols="60" rows="5" ></textarea> </div> <br> <br>
+                <div class="btn-news"> <button type="submit">Изменить</button></div></div>
+            </div>
     </form>
     </div>
-</div>
-
-
-
-
+    </div>
+    <!-- Модальное окно удаления-->
+    <div class="modal-2" id="modal-4">
+        <div class="modal__content">
+        <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
+        <!-- Контент модального окна -->
+        <div class="modal_content-2">
+            <h1 class="modal__title">Удаление записи</h1>
+            <p class="modal__description">Вы действительно хотите удалить запись?</p>
+            <button class="btn-delete-yes">Да</button>
+            <button class="btn-delete-no">Нет</button>
+        </div>
+        </div>
+    </div>
 <h1>Основная информация</h1>
 <table class="container">
     <thead>
@@ -130,7 +137,7 @@
         </div>
     </div>
     <!-- Модальное окно изменения-->
-    <div class="modal" id="modal-3">
+    <div class="modal" id="modal-2">
         <div class="modal__content">
             <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
@@ -165,8 +172,8 @@
         </div>
     </div>
 
-    <!-- Модальное окно  -->
-    <div class="modal-delete" id="modal-delete">
+    <!-- Модальное окно удаления-->
+    <div class="modal-2" id="modal-5">
         <div class="modal__content">
         <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
         <!-- Контент модального окна -->
@@ -178,7 +185,6 @@
         </div>
         </div>
     </div>
-
     <h1>Наши собаки</h1>
     <table class="container">
         <thead>
@@ -198,7 +204,7 @@
                 <td>Порода</td>
                 <td>Имя собаки</td>
                 <td>../image/Картинка1</td>
-                <td><div class="table-btn"><button  id="callback-button2" class="header__button">Изменить</div></button></td> 
+                <td><div class="table-btn"><button type="submit" id="callback-button2" class="header__button">Изменить</div></button></td> 
                 <td><div class="table-btn"><button  id="callback-button-delete-2" class="header__button">Удалить</button></div></td>
         </tr>   
         </tbody>

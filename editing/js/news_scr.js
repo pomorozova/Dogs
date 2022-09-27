@@ -89,10 +89,21 @@ function gen_news_table(){
 
                 $(contButChange).append(butChange);
                 $(trChange).append(contButChange);
-                let butDel = $(`<td><div class="table-btn"><button type="submit">Удалить</button></div></td>`);
-                
+                let butContTrDel = $(`<td></td>`);
+                let butContDel = $(`<div class="table-btn"></div>`);
+                let butDel = $(`<button id="delNews_${i}" class="header__button">Удалить</button>`);
+
+                $(butDel).on("click", function(e){
+                    e.preventDefault();
+                    $('#modal-4').addClass('modal_active');
+                    $('body').addClass('hidden');
+                });
+
+                $(butContDel).append(butDel);
+                $(butContTrDel).append(butContDel);
+
                 $(note).append(trChange);
-                $(note).append(butDel);
+                $(note).append(butContTrDel);
                 $(table).append(note);
                 i += 1;
             });            
