@@ -94,11 +94,11 @@ function setting_modal_3(){
     $(tagBody).addClass('hidden');
   })
  
-  closeButton.onclick = function (e) {
+  $(closeButton).on("click", function (e) {
     e.preventDefault();
     $(modal1).removeClass('modal_active');
     $(tagBody).removeClass('hidden');
-  }
+  })
   
   $(modal1).on("onmousedown",function (e) {
     let target = e.target;
