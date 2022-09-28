@@ -204,6 +204,31 @@ function adm_add_gallery_img($conn, $id, $img){
     $sth->execute(array('id' =>  $id, 'img'=> $img));
 }
 
+//добавляем новую запись полезностей
+function adm_add_useful($conn, $data, $img_link){
+    $title = $data[0]['value'];
+    $desc_1 = $data[1]['value'];
+    $desc_2 = $data[2]['value'];    
+    //$res_copy = copy($img_link, "bb.jpg"); //доделать
+    $sth = $conn->prepare("INSERT INTO `useful` (`title`,`text_1`,`text_2`,`img`) VALUES(:title,:desc_1,:desc_2,'News.jpg')");
+    $sth->execute(array('title' => $title, 'desc_1'=> $desc_1, 'desc_2'=> $desc_2 ));
+}
+
+//удаляем существующую запись из рубрики полезностей
+function adm_del_useful($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `useful` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
+}
+
+//изменяем существующую запись рубрики полезного по id
+function adm_change_useful($conn, $id, $data){
+    $title = $data[0]['value'];
+    $desc_1 = $data[1]['value'];
+    $desc_2 = $data[2]['value'];
+    $sth = $conn->prepare("UPDATE `exhibitions` SET `title`=:title, `desc_text_1`=:desc_1,`desc_text_2`=:desc_2 where `id`=:id");
+    $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2 ));
+}
+
 //
 function add_test($conn){
     $sth = $conn->prepare("INSERT INTO `dog` values (2,'sdfs','bdbdda','sdfsgw1')");

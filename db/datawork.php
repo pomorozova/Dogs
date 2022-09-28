@@ -32,6 +32,9 @@ if($act["part"] == "main"){
         case "adm_gallery_imgs": adm_get_gallery_imgs($conn, $act["id"]); break;
         case "adm_gallery_del_img":adm_del_gallery_img($conn, $act["id"]); break;
         case "adm_gallery_add_img":adm_add_gallery_img($conn, $act["id"],$act["img"]); break;
+        case "adm_useful_add": adm_add_useful($conn,$act["data"]["main_data"],$act["data"]['img']);break;
+        case "adm_useful_del": adm_del_useful($conn, $act["id"]); break;
+        case "adm_useful_change": adm_change_useful($conn,$act["id"],$act["data"]);break;
     }
 }
 
