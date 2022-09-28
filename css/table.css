@@ -81,6 +81,8 @@ h1 {
   line-height:1em;
   text-align: center;
   color: #2a2727;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .container th h1 {
@@ -354,6 +356,7 @@ text-align: center;
 .modal__description {
   font-size: 1.125rem;
   color: #30343b;
+  padding-bottom: 20px;
 }
 .modal_content-2 button{
   transition: .3s;

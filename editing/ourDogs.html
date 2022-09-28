@@ -17,24 +17,26 @@
 </head>
 
 <body>
-<header class="header1 " >
-    <div class="wrapper">
-        <div class ="navigate_menu"> 
-            <div class="row space-between">
-                <div class = "menu-burger__header">
-                    <span></span>
+    <div class="wrapper-1">
+    <div class="content">
+        <header class="header1 " >
+        <div class="wrapper">
+            <div class ="navigate_menu"> 
+                <div class="row space-between">
+                    <div class = "menu-burger__header">
+                        <span></span>
+                    </div>
+                    <nav class="header__nav">
+                        <ul class="menu header__menu"> 
+                            <img class="header_logo" src="../image/logo1.png" width="50px" height="50px"> 
+                            <li><a class="scroll" href="../list.html">Назад</a></li>
+                            <li><a class="scroll" href="../index.html">Выйти</a></li>
+                            </ul>
+                        </nav>
                 </div>
-                <nav class="header__nav">
-                    <ul class="menu header__menu"> 
-                        <img class="header_logo" src="../image/logo1.png" width="50px" height="50px"> 
-                        <li><a class="scroll" href="../list.html">Назад</a></li>
-                        <li><a class="scroll" href="../index.html">Выйти</a></li>
-                        </ul>
-                    </nav>
             </div>
         </div>
-    </div>
-</header>
+        </header>
 <main>
 
 <!-- Модальное окно изменения-->
@@ -42,21 +44,21 @@
     <div class="modal__content">
         <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
       <!-- Контент модального окна -->
+        <h1>Изменить</h1>
+        <form action = "" method="post">
+            <div class = "form">
+                <p>Заголовок</p>
+                <div class ="input-form">
+                <input type="text" name="heading"></div>
+                <p>Основной текст</p>
+                <div class ="input-form">
+                <textarea name="description1" cols="60" rows="5" ></textarea> </div> <br> <br>
+                    <div class="btn-news"> <button type="submit">Изменить</button></div>
+                </div>
+    </div>
+        </form>
+    </div>
 
-      <h1>Изменить</h1>
-      <form action = "" method="post">
-        <div class = "form">
-            <p>Заголовок</p>
-            <div class ="input-form">
-            <input type="text" name="heading"></div>
-            <p>Основной текст</p>
-            <div class ="input-form">
-            <textarea name="description1" cols="60" rows="5" ></textarea> </div> <br> <br>
-                <div class="btn-news"> <button type="submit">Изменить</button></div></div>
-            </div>
-    </form>
-    </div>
-    </div>
     <!-- Модальное окно удаления-->
     <div class="modal-2" id="modal-4">
         <div class="modal__content">
@@ -210,7 +212,7 @@
         </tbody>
     </table>
 </main>
-</body>
+    </div>
 <footer style=" background-color: #2a2727;">
     <p><a name="contacts"></a></p> 
     <nav class="nav-footer">
@@ -225,4 +227,6 @@
         </ul>
     </nav>
 </footer>
+    </div>
+</body>
 </html>
