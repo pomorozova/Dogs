@@ -1,6 +1,6 @@
 let id_change_breed = 0;
 
-
+//!!!!!!!!!!!!!! дополнить id-породы
 function gen_breeds(){
     let data_db = {
         part: "admin",
@@ -121,29 +121,26 @@ function gen_imgs_dogs(id_breed){
     });
 }
 
-//
+//!!!!!!!!!!!!!!! дополнить id-породы
 function form_add_img(){
-    $('#form_exhib_add').on("submit", function(e){
+    $('#form_gallery_add_img').on("submit", function(e){
         let act_form_add = {
             part: 'admin',
-            adm:"adm_exhib_add",
-            data: {
-                main_data:$(this).serializeArray(),
-                img1: $('#input__file_img1').val(),
-                img2: $('#input__file_img2').val()
-            }
+            adm:"adm_gallery_add_img",
+            id: 1,
+            img: $('#input__file_img_add').val()
         }
         
         e.preventDefault();
-        
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
             data: JSON.stringify(act_form_add),
             success: function(data){
-                gen_exhibitions();
+                gen_imgs_dogs(1);
             }
-        })
+        });
+
     });
 }
 

@@ -198,6 +198,11 @@ function adm_del_gallery_img($conn, $id){
     $sth->execute(array('id' => $id));
 }
 
+//добавляет изображение собаки
+function adm_add_gallery_img($conn, $id, $img){
+    $sth = $conn->prepare("INSERT INTO `dog_imgs` (id_dog, img) VALUES(:id,:img)");
+    $sth->execute(array('id' =>  $id, 'img'=> $img));
+}
 
 //
 function add_test($conn){
