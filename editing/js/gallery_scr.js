@@ -1,11 +1,11 @@
-let id_change_exhibition = 0;
+let id_change_breed = 0;
 
-function gen_exhibitions(){
+function gen_breeds(){
     let data_db = {
-        part: "main",
-        act: 'exhibition'
+        part: "admin",
+        adm: 'adm_gallery'
     }
-    let table = $('#exhibition_table_body');
+    let table = $('#gallery_table_breeds_body');
     $(table).empty();
 
     $.ajax({
@@ -14,30 +14,25 @@ function gen_exhibitions(){
         data: JSON.stringify(data_db),
         success: function(data){
             let i = 1;
-            data.forEach(el => {
-                
+
+            data.forEach(el => {                
                 let element_table = $(`
                     <tr>
                         <td>${i++}</td>
-                        <td id="tbExTitle_${el.id}">${el.title}</td>
-                        <td id="tbExText1_${el.id}">${el.desc_text_1}</td>
-                        <td id="tbExText2_${el.id}">${el.desc_text_2}</td>
-                        <td>../image/Картинка1</td>
-                        <td>../image/Картинка1</td>                         
+                        <td id="tbGRtitle_${el.id}">${el.title_dog}</td>
+                        <td id="tbGRdesc_${el.id}">${el.desc_dog}</td>
                     </tr>
                 `);
 
                 let par_cont_butChange = $(`<td></td>`);
                 let cont_butChange = $(`<div class="table-btn"></div>`);
-                let butChange = $(`<button type="submit" id="callback-button_${el.id}" class="header__button">Изменить</button>`);
-
+                let butChange = $(`<button type="submit" id="callback-button2_${el.id}" class="header__button">Изменить</button>`);
+                
                 $(butChange).on('click',function (e) {
                     $('#modal-2').addClass('modal_active');
                     $('body').addClass('hidden');
-                    id_change_exhibition = $(e.target).attr('id').split('_')[1];
-                    $('#exhibition_chg_title').val($(`#tbExTitle_${id_change_exhibition}`).text());
-                    $('#exhibition_chg_desc1').val($(`#tbExText1_${id_change_exhibition}`).text());
-                    $('#exhibition_chg_desc2').val($(`#tbExText2_${id_change_exhibition}`).text());
+                    id_change_breed = $(e.target).attr('id').split('_')[1];
+                    $('#gallery_breed_change_desc').val($(`#tbGRdesc_${id_change_breed}`).text());
                 });
 
                 $(cont_butChange).append(butChange);
@@ -47,12 +42,12 @@ function gen_exhibitions(){
 
                 let par_cont_butDel = $(`<td></td>`);
                 let cont_butDel = $(`<div class="table-btn"></div>`);
-                let butDel = $(`<button  id="butDelExhibition_${el.id}" class="header__button">Удалить</button>`);
+                let butDel = $(`<button  id="butDelBreedDog_${el.id}" class="header__button">Удалить</button>`);
 
                 $(butDel).on('click', function (e) {
                     $('#modal-4').addClass('modal_active');
                     $('body').addClass('hidden');
-                    id_change_exhibition = $(e.target).attr('id').split('_')[1];
+                    id_change_breed = $(e.target).attr('id').split('_')[1];
                 });
 
                 $(cont_butDel).append(butDel);
@@ -65,7 +60,8 @@ function gen_exhibitions(){
     })
 }
 
-function form_add(){
+//
+function form_add_img(){
     $('#form_exhib_add').on("submit", function(e){
         let act_form_add = {
             part: 'admin',
@@ -90,12 +86,12 @@ function form_add(){
     });
 }
 
-function form_change(){
-    $('#form_exhib_change').on('submit',function(e){
+function form_change_breed(){
+    $('#form_gallery_change_breed').on('submit',function(e){
         let act_form_change = {
             part: 'admin',
-            adm:"adm_exhib_change",
-            id: id_change_exhibition,
+            adm:"adm_gallery_change",
+            id: id_change_breed,
             data: $(this).serializeArray()
         }
         e.preventDefault();
@@ -105,18 +101,18 @@ function form_change(){
             url: "../db/datawork.php",
             data: JSON.stringify(act_form_change),
             success: function(data){
-                gen_exhibitions();
+                gen_breeds();
             }
         })
     })
 }
 
-function delete_note(){
+function delete_note_breed(){
     $('#btn-delete-yes').on('click',function(){
         let act_form_del = {
             part: 'admin',
-            adm:"adm_exhib_del",
-            id: id_change_exhibition
+            adm:"adm_gallery_del",
+            id: id_change_breed
         }
 
         $.ajax({
@@ -124,7 +120,7 @@ function delete_note(){
             url: "../db/datawork.php",
             data: JSON.stringify(act_form_del),
             success: function(data){
-                gen_exhibitions();
+                gen_breeds();
                 $('#modal-4').removeClass('modal_active');
                 $('body').removeClass('hidden');
             }
@@ -139,8 +135,8 @@ function delete_note(){
 }
 
 $(document).ready(function(){  
-    gen_exhibitions();
-    form_change();
-    form_add();
-    delete_note();
+    gen_breeds();
+    form_change_breed();
+    form_add_img();
+    delete_note_breed();
 });

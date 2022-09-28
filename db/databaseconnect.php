@@ -161,6 +161,29 @@ function adm_del_exhib($conn, $id){
     $sth->execute(array('id' => $id));
 }
 
+
+function adm_get_gallery($conn){
+    $sth = $conn->prepare("SELECT * FROM `gallery`");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+//изменяем описание породы в галлерее по id
+function adm_change_gallery($conn, $id, $data){
+    $desc_breed = $data[0]['value'];
+    $sth = $conn->prepare("UPDATE `gallery` SET `desc_dog` = :desc_breed WHERE `id` = :id");
+    $sth->execute(array('desc_breed' => $desc_breed, 'id' => $id));
+}
+
+//удаляем существующую запись из галереи
+function adm_del_gallery($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `gallery` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
+}
+
+
 //
 function add_test($conn){
     $sth = $conn->prepare("INSERT INTO `dog` values (2,'sdfs','bdbdda','sdfsgw1')");
