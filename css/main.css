@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 html {
     scroll-behavior: smooth; /* свойство scroll-behavior не наследуется, применяется к прокручиваемым блокам */ 
 }
@@ -7,6 +11,13 @@ body{
     background-size: 100%;
     background-repeat: no-repeat;
     color: white;
+}
+.wrapper-1{
+    position: relative;
+    min-height: 100%;
+}
+html, body{
+    height: 100%;
 }
 .scroll {
     margin-left: 10px;
@@ -375,12 +386,22 @@ body{
 
 /* FOOTER*/
 footer {
+    position: absolute;
+    left: 0; bottom: 0;
+    height: 100px;
     padding-top: 20px;
     padding-bottom: 20px;
     color:white;
     width: 100%;
     font-family:'TT Norms';
     text-align: center;
+    background-color: #2a2727;
+}
+ footer .contacts li{
+    padding-bottom: 15px;
+}
+.content{
+    padding-bottom: 130px;
 }
 .nav-footer ul{
     list-style-type: none;
@@ -399,6 +420,7 @@ footer {
 .image-gallery {
     text-align: center;
 }
+
 
 /*Выставка*/
 
