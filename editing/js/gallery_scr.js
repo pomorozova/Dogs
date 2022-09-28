@@ -1,20 +1,22 @@
 let id_change_breed = 0;
 
-//!!!!!!!!!!!!!! дополнить id-породы
+
 function gen_breeds(){
     let data_db = {
         part: "admin",
-        adm: 'adm_gallery'
+        adm: 'adm_gallery',
+        id_breed: localStorage.getItem('breed_gallery')
     }
     let table = $('#gallery_table_breeds_body');
     $(table).empty();
-
+    console.log(data_db)
     $.ajax({
         method: "POST",
         url: "../db/datawork.php",
         data: JSON.stringify(data_db),
         success: function(data){
             let i = 1;
+            console.log(data);
 
             data.forEach(el => {                
                 let element_table = $(`
@@ -59,7 +61,7 @@ function gen_breeds(){
             });
         }            
     });
-    gen_imgs_dogs(1);
+    gen_imgs_dogs(localStorage.getItem('breed_gallery'));
 }
 
 function gen_imgs_dogs(id_breed){
@@ -121,13 +123,13 @@ function gen_imgs_dogs(id_breed){
     });
 }
 
-//!!!!!!!!!!!!!!! дополнить id-породы
+//  проблема с id собаки
 function form_add_img(){
     $('#form_gallery_add_img').on("submit", function(e){
         let act_form_add = {
             part: 'admin',
             adm:"adm_gallery_add_img",
-            id: 1,
+            id: localStorage.getItem('breed_gallery'),
             img: $('#input__file_img_add').val()
         }
         

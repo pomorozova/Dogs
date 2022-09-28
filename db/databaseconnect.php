@@ -162,9 +162,9 @@ function adm_del_exhib($conn, $id){
 }
 
 //выводим инфу о породе из галереи
-function adm_get_gallery($conn){
-    $sth = $conn->prepare("SELECT id, (select name_breed FROM dog_breeds where id=`gallery`.`title_dog`) as breed ,desc_dog FROM `gallery`;");
-    $sth->execute();
+function adm_get_gallery($conn,$id_breed){
+    $sth = $conn->prepare("SELECT id, (select name_breed FROM dog_breeds where id=`gallery`.`title_dog`) as breed ,desc_dog FROM `gallery` where title_dog=:id_breed;");
+    $sth->execute(array("id_breed"=>$id_breed));
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($data);
