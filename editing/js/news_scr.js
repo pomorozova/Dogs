@@ -25,8 +25,6 @@ function AddNewNews(){
     });
 }
 
-
-
 function ChangeNews(){
     $('#form_news_change').on("submit", function(e){
         let act_form_change = {
@@ -68,8 +66,8 @@ function gen_news_table(){
                 let note = $(`
                     <tr>
                         <td>${i}</td>
-                        <td id="data_news_title_${i}">${el.title}</td>
-                        <td id="data_news_desc_${i}">${el.desc_news}</td>
+                        <td id="data_news_title_${el.id}">${el.title}</td>
+                        <td id="data_news_desc_${el.id}">${el.desc_news}</td>
                         <td>${el.img}</td>
                     </tr>
                 `);
@@ -77,7 +75,7 @@ function gen_news_table(){
                 let trChange = $(`<td></td>`);
                 let contButChange = $(`<div class="table-btn"></div>`);
 
-                let butChange = $(`<button id="news_${i}" class="header__button but_change_note">Изменить</button>`);
+                let butChange = $(`<button id="news_${el.id}" class="header__button but_change_note">Изменить</button>`);
                 $(butChange).on("click", function(e){
                     change_id_news_now = $(e.target).attr('id').split('_')[1];
                     e.preventDefault();
@@ -91,12 +89,13 @@ function gen_news_table(){
                 $(trChange).append(contButChange);
                 let butContTrDel = $(`<td></td>`);
                 let butContDel = $(`<div class="table-btn"></div>`);
-                let butDel = $(`<button id="delNews_${i}" class="header__button">Удалить</button>`);
+                let butDel = $(`<button id="delNews_${el.id}" class="header__button">Удалить</button>`);
 
                 $(butDel).on("click", function(e){
                     e.preventDefault();
                     $('#modal-4').addClass('modal_active');
                     $('body').addClass('hidden');
+                    change_id_news_now = $(e.target).attr('id').split('_')[1];
                 });
 
                 $(butContDel).append(butDel);
@@ -111,8 +110,36 @@ function gen_news_table(){
     })
 }
 
+function delete_note(){
+    $('#btn-delete-yes').on('click',function(){
+        let act_form_del = {
+            part: 'admin',
+            adm:"adm_news_del",
+            id: change_id_news_now
+        }
+
+        $.ajax({
+            method: "POST",
+            url: "../db/datawork.php",
+            data: JSON.stringify(act_form_del),
+            success: function(data){
+                gen_news_table();
+                $('#modal-4').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            }
+        });
+
+    });
+
+    $('#btn-delete-no').on('click',function(){
+        $('#modal-4').removeClass('modal_active');
+        $('body').removeClass('hidden');
+    });
+}
+
 $(document).ready(function(){
     gen_news_table();
     ChangeNews();
     AddNewNews();
+    delete_note();
 })

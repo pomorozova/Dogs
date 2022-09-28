@@ -11,7 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="../scripts/scripts.js"></script> 
     <script src="../scripts/menu.js"></script> 
-    <script src="../scripts/navigate-menu light.js"></script> 
+    <script src="../scripts/navigate-menu light.js"></script>
+    <script src="js/exhibition_scr.js?v=3"></script>
     <title>Выставки</title>
 </head>
 
@@ -28,8 +29,8 @@
                         <img class="header_logo" src="../image/logo1.png" width="50px" height="50px"> 
                         <li><a class="scroll" href="../list.html">Назад</a></li>
                         <li><a class="scroll" href="../index.html">Выйти</a></li>
-                        </ul>
-                    </nav>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
@@ -38,36 +39,36 @@
     <h1>Добавить</h1>
     <div class="btn-news"> 
         <div class="btn-news-1">
-            <button type="submit" id="callback-button" class="header__button">Добавить</button>
+            <button id="callback_button" class="header__button">Добавить</button>
         </div>
     </div>
 
     <!-- Модальное окно добавления-->
-    <div class="modal" id="modal-1">
+    <div class="modal" id="modal_1">
         <div class="modal__content">
             <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
 
           <h1>Добавить</h1>
-          <form action = "" method="post">
+          <form id="form_exhib_add" action = "" method="post">
               <div class = "form">
                   <p>Заголовок</p>
                   <div class ="input-form">
-                  <input type="text" name="heading"></div>
+                  <input id="exhibition_add_title" type="text" name="heading"></div>
       
                   <p>1 Абзац</p>
                   <div class ="input-form">
-                  <textarea name="description1" cols="60" rows="5"></textarea> </div>
+                  <textarea id="exhibition_add_desc1" name="description1" cols="60" rows="5"></textarea> </div>
 
                   <p>2 Абзац</p>
                   <div class ="input-form">
-                  <textarea name="description2" cols="60" rows="5"></textarea> </div>
+                  <textarea id="exhibition_add_desc2" name="description2" cols="60" rows="5"></textarea> </div>
       
                   <p>Изображение 1</p>
                   <div class ="input-form">
                      
                           <div class="input__wrapper">
-                              <input name="img" type="file" id="input__file" class="input input__file" multiple>
+                              <input name="img" type="file" id="input__file_img1" class="input input__file" multiple>
                               <label for="input__file" class="input__file-button">
                                   <span class="input__file-icon-wrapper">
                                       <svg class="upload-file__icon"  viewBox="0 0 512 512">
@@ -83,7 +84,7 @@
                   <div class ="input-form">
                      
                           <div class="input__wrapper">
-                              <input name="img" type="file" id="input__file" class="input input__file" multiple>
+                              <input name="img" type="file" id="input__file_img2" class="input input__file" multiple>
                               <label for="input__file" class="input__file-button">
                                   <span class="input__file-icon-wrapper">
                                       <svg class="upload-file__icon"  viewBox="0 0 512 512">
@@ -93,7 +94,7 @@
                                   <span class="input__file-button-text">Выберите файл</span>
                               </label>
                           </div> <br> <br>
-                      <div class="btn-news"> <button type="submit"> Добавить</button></div></div>
+                      <div class="btn-news"> <button type="submit">Добавить</button></div></div>
                   </div>
           </form>
         </div>
@@ -105,19 +106,19 @@
           <!-- Контент модального окна -->
 
           <h1>Изменить</h1>
-          <form action = "" method="post">
+          <form id="form_exhib_change" action = "" method="post">
             <div class = "form">
                 <p>Заголовок</p>
                 <div class ="input-form">
-                <input type="text" name="heading"></div>
+                <input id="exhibition_chg_title" type="text" name="heading"></div>
     
                 <p>1 Абзац</p>
                 <div class ="input-form">
-                <textarea name="description1" cols="60" rows="5" ></textarea> </div>
+                <textarea id="exhibition_chg_desc1" name="description1" cols="60" rows="5" ></textarea> </div>
 
                 <p>2 Абзац</p>
                 <div class ="input-form">
-                <textarea name="description2" cols="60" rows="5" ></textarea> </div>
+                <textarea id="exhibition_chg_desc2" name="description2" cols="60" rows="5" ></textarea> </div>
     
                 <p>Изображение 1</p>
                 <div class ="input-form">
@@ -162,8 +163,8 @@
         <div class="modal_content-2">
             <h1 class="modal__title">Удаление записи</h1>
             <p class="modal__description">Вы действительно хотите удалить запись?</p>
-            <button class="btn-delete-yes">Да</button>
-            <button class="btn-delete-no">Нет</button>
+            <button id="btn-delete-yes">Да</button>
+            <button id="btn-delete-no">Нет</button>
         </div>
         </div>
     </div>
@@ -182,18 +183,8 @@
                 <th><h1>Удаление</h1></th>
             </tr>   
         </thead>
-        <tbody>
-            <!-- Цикл вывода инфорамации из БД -->
-            <tr>
-                <td>1</td>
-                <td>Lorem ipsum dolor sit amet</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                <td>../image/Картинка1</td>
-                <td>../image/Картинка1</td>
-                <td><div class="table-btn"><button type="submit" id="callback-button2" class="header__button">Изменить</button></div></td> 
-                <td><div class="table-btn"><button  id="callback-button-delete" class="header__button">Удалить</button></div></td>
-        </tr>   
+        <tbody id="exhibition_table_body">
+            <!-- Цикл вывода информации из БД -->  
         </tbody>
     </table>
 </main>

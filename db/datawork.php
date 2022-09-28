@@ -22,6 +22,10 @@ if($act["part"] == "main"){
     switch($act["adm"]){
         case "adm_news_change": adm_change_news($conn,$act["id"],$act["data"]);break;
         case "adm_news_add": adm_add_news($conn,$act["data"]["main_data"],$act["data"]['img']);break;
+        case "adm_news_del": adm_del_news($conn, $act["id"]); break;
+        case "adm_exhib_change": adm_change_exhib($conn,$act["id"],$act["data"]);break;
+        case "adm_exhib_add": adm_add_exhib($conn, $act["data"]["main_data"],$act["data"]['img1'],$act["data"]['img2']);break;
+        case "adm_exhib_del": adm_del_exhib($conn, $act["id"]); break;
     }
 }
 
