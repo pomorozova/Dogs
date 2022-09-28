@@ -33,6 +33,7 @@ function generate_ourDog(){
                 let block_breed = $(`<div class="block-news"></div>`);
 
                 let idenf_data_img = {
+                    part: "main",
                     act: 'our_dog_imgs',
                     id: el.id_breed
                 }

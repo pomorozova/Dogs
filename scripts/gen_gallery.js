@@ -22,6 +22,7 @@ function generate_gallery(){
                 `);                
 
                 let idenf_data_dog = {
+                    part: "main",
                     act: 'gallery_imgs',
                     id: el.id
                 }

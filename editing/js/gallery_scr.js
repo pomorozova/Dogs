@@ -9,15 +9,14 @@ function gen_breeds(){
     }
     let table = $('#gallery_table_breeds_body');
     $(table).empty();
-    console.log(data_db)
+    
     $.ajax({
         method: "POST",
         url: "../db/datawork.php",
         data: JSON.stringify(data_db),
         success: function(data){
             let i = 1;
-            console.log(data);
-
+            
             data.forEach(el => {                
                 let element_table = $(`
                     <tr>
