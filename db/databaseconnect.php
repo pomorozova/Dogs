@@ -111,6 +111,99 @@ function get_gallery_imgs($conn, $id){
     echo json_encode($data);
 }
 
+// -------------------------------------------------------------------- админ часть
+
+//изменяем существующую запись рубрики новостей по id
+function adm_change_news($conn, $id, $data){
+    $title = $data[0]['value'];
+    $desc_news = $data[1]['value'];
+    $sth = $conn->prepare("UPDATE `news` SET `title` = :title, `desc_news` = :desc_news WHERE `id` = :id");
+    $sth->execute(array('title' => $title, 'id' => $id, 'desc_news'=>$desc_news ));
+}
+
+//добавляем новую запись рубрики новостей
+function adm_add_news($conn, $data, $img_link){
+    $title = $data[0]['value'];
+    $desc_news = $data[1]['value'];    
+    //$res_copy = copy($img_link, "bb.jpg"); //доделать
+    $sth = $conn->prepare("INSERT INTO `news` (`title`, `date`, `desc_news`,`img`) VALUES(:title,'2022-09-22',:desc_news,'dog3.jpg')");
+    $sth->execute(array('title' => $title, 'desc_news'=>$desc_news ));
+}
+
+//удаляем существующую запись из рубрики новости
+function adm_del_news($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `news` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
+}
+
+//изменяем существующую запись рубрики выставок по id
+function adm_change_exhib($conn, $id, $data){
+    $title = $data[0]['value'];
+    $desc_1 = $data[1]['value'];
+    $desc_2 = $data[2]['value'];
+    $sth = $conn->prepare("UPDATE `exhibitions` SET `title`=:title, `desc_text_1`=:desc_1,`desc_text_2`=:desc_2 where `id`=:id");
+    $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2 ));
+}
+
+//добавляем новую запись рубрики выставок
+function adm_add_exhib($conn, $data, $img_link1, $img_link2){
+    $title = $data[0]['value'];
+    $desc_1 = $data[1]['value'];
+    $desc_2 = $data[2]['value'];   
+    //$res_copy = copy($img_link1, "bb.jpg"); //доделать
+    $sth = $conn->prepare("INSERT INTO `exhibitions`(`title`,`img`,`desc_text_1`,`desc_text_2`) VALUES(:title,'dog1.jpg',:desc_1,:desc_2)");
+    $sth->execute(array('title' => $title, 'desc_1'=>$desc_1, 'desc_2'=>$desc_2 ));
+}
+
+//удаляем существующую запись из рубрики выставок
+function adm_del_exhib($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `exhibitions` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
+}
+
+//выводим инфу о породе из галереи
+function adm_get_gallery($conn,$id_breed){
+    $sth = $conn->prepare("SELECT id, (select name_breed FROM dog_breeds where id=`gallery`.`title_dog`) as breed ,desc_dog FROM `gallery` where title_dog=:id_breed;");
+    $sth->execute(array("id_breed"=>$id_breed));
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+//выводим все изображения собаки определённой породы через id
+function adm_get_gallery_imgs($conn, $id){
+    $sth = $conn->prepare("SELECT id,img FROM `dog_imgs` WHERE id_dog=:id;");
+    $sth->execute(array('id'=>$id));
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+//изменяем описание породы в галлерее по id
+function adm_change_gallery($conn, $id, $data){
+    $desc_breed = $data[0]['value'];
+    $sth = $conn->prepare("UPDATE `gallery` SET `desc_dog` = :desc_breed WHERE `id` = :id");
+    $sth->execute(array('desc_breed' => $desc_breed, 'id' => $id));
+}
+
+//удаляем существующую запись из галереи
+function adm_del_gallery($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `gallery` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
+}
+
+//удаляем изображение собаки по id
+function adm_del_gallery_img($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `dog_imgs` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
+}
+
+//добавляет изображение собаки
+function adm_add_gallery_img($conn, $id, $img){
+    $sth = $conn->prepare("INSERT INTO `dog_imgs` (id_dog, img) VALUES(:id,:img)");
+    $sth->execute(array('id' =>  $id, 'img'=> $img));
+}
+
 //
 function add_test($conn){
     $sth = $conn->prepare("INSERT INTO `dog` values (2,'sdfs','bdbdda','sdfsgw1')");

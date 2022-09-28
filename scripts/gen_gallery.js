@@ -2,6 +2,7 @@ function generate_gallery(){
     let cont_dogs = $("main");
 
     let idenf_data = {
+        part: 'main',
         act: 'gallery'
     }
     
@@ -18,8 +19,7 @@ function generate_gallery(){
                         <h3>${el.name_dog}</h3>
                         <p><span></span>${el.desc_dog}</p>                    
                     </div>
-                `);
-                
+                `);                
 
                 let idenf_data_dog = {
                     act: 'gallery_imgs',

@@ -11,6 +11,8 @@ body{
     background-size: 100%;
     background-repeat: no-repeat;
     color: white;
+    background-image: url('../image/Фон.jpg');
+    
 }
 .header{
     background-repeat: no-repeat;

@@ -16,6 +16,7 @@ body {
  padding: 0;
  font-family:'TT Norms';
 }
+
 .form button{
 color: #bbbbbb;
 text-transform: uppercase;
@@ -26,6 +27,7 @@ border-radius: 30px;
 width: 200px;
   border: 1px solid #bbbbbb;
 }
+
 .table-btn button{
 color: #bbbbbb;
 text-transform: capitalize;
@@ -35,9 +37,11 @@ width: 80px;
 border: none;
 font-size: 15px;
 }
+
 .table-btn button:hover{
 color: #c7a046;
 }
+
 .btn-news-1 button{
 color: #202226;
 text-transform: uppercase;
@@ -48,6 +52,7 @@ border-radius: 30px;
 width: 200px;
   border: 1px solid #202226;
 }
+
 .btn-news-1 button:hover{
 color: #bbbbbb;
 text-transform: uppercase;
@@ -62,12 +67,14 @@ width: 200px;
 .form button:hover{
 background: #202226;
 }
+
 .btn-news{
   padding-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 h1 {
   font-size: 60px;
   font-weight: 500;
@@ -77,6 +84,7 @@ h1 {
   padding-top: 40px;
   padding-bottom: 20px;
 }
+
 .container th h1 {
   font-weight: bold;
   font-size: 1em;
@@ -115,10 +123,12 @@ h1 {
 .container th {
   background-color: #2a2727;
 }
+
 a{
   color:#c7a046;
   text-decoration: none;
 }
+
 .container td a:hover {
   color: white;
   font-weight: bold;
@@ -319,7 +329,7 @@ text-align: center;
     box-shadow: 0 5px 15px black;
 }
  
-.modal__close-button {
+.modal__close_button {
   height: 30px;
   width: 30px;
   display: flex;
@@ -354,12 +364,12 @@ text-align: center;
   width: 100px;
   border: 1px solid #202226;
 }
-.btn-delete-yes{
+#btn-delete-yes{
   background-color: #30343b;
   color:white;
   margin-right: 20px;
 }
-.btn-delete-no{
+#btn-delete-no{
   color: #202226;
   background: none;
   

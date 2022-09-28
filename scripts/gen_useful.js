@@ -2,6 +2,7 @@ function generate_useful(){
     let cont_dogs = $(".container-exhibition")[0];
 
     let idenf_data = {
+        part: 'main',
         act: 'useful'
     }
     

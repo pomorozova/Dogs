@@ -3,7 +3,8 @@ function generate_ourDog(){
     let breed = $("#active_breed").data("actbreed");
     let id_breed = breed.split('_')[1];
     
-    let idenf_data = {        
+    let idenf_data = {       
+        part: 'main', 
         act: 'our_dog',
         id: id_breed
     }

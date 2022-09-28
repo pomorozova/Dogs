@@ -2,6 +2,7 @@ function generate_puppies(){
     let cont_puppies = $("#puppies_container");
 
     let idenf_data = {
+        part: 'main',
         act: 'puppies'
     }
     
