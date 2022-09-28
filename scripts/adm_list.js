@@ -17,6 +17,7 @@ function gen_list_pages(){
                 element_link_page.on("click",function(e){                    
                     localStorage.setItem('breed_gallery', $(e.target).attr('id').split('_')[1])
                 });
+                
                 $(list_pages).append(element_link_page);
             })
         }
