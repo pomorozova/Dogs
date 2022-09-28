@@ -12,6 +12,14 @@ body{
     background-repeat: no-repeat;
     color: white;
 }
+.header{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-image: url(../image/Фон-dog.jpg);
+
+
+}
 .wrapper-1{
     position: relative;
     min-height: 100%;
@@ -52,7 +60,7 @@ html, body{
 }
 .header{
     font-family:'TT Norms';
-    padding-bottom:200px; 
+    padding-bottom:300px; 
 }
 .header1{
     font-family:'TT Norms';
@@ -104,6 +112,9 @@ html, body{
 .text-heading{
     color:#bbbbbb;
     font-weight:500;
+}
+.main-title{
+    padding-bottom: 50px;
 }
 .main-title button {
 	margin-top: 20px;

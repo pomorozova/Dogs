@@ -134,6 +134,10 @@ header {
 
 @media(max-width: 767px){
 
+    .header{
+        background-image: url(../image/Фон-dog-adapt.jpg);
+        transition: 0.1s;
+    }
     /* MAIN */
 
     .main-title{
