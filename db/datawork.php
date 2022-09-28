@@ -29,6 +29,8 @@ if($act["part"] == "main"){
         case "adm_gallery": adm_get_gallery($conn);break;
         case "adm_gallery_change":adm_change_gallery($conn, $act["id"], $act["data"]); break;
         case "adm_gallery_del": adm_del_gallery($conn, $act["id"]); break;
+        case "adm_gallery_imgs": adm_get_gallery_imgs($conn, $act["id"]); break;
+        case "adm_gallery_del_img":adm_del_gallery_img($conn, $act["id"]); break;
     }
 }
 

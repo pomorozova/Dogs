@@ -161,10 +161,19 @@ function adm_del_exhib($conn, $id){
     $sth->execute(array('id' => $id));
 }
 
-
+//выводим инфу о породе из галереи
 function adm_get_gallery($conn){
-    $sth = $conn->prepare("SELECT * FROM `gallery`");
+    $sth = $conn->prepare("SELECT id, (select name_breed FROM dog_breeds where id=`gallery`.`title_dog`) as breed ,desc_dog FROM `gallery`;");
     $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+//выводим все изображения собаки определённой породы через id
+function adm_get_gallery_imgs($conn, $id){
+    $sth = $conn->prepare("SELECT id,img FROM `dog_imgs` WHERE id_dog=:id;");
+    $sth->execute(array('id'=>$id));
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($data);
@@ -180,6 +189,12 @@ function adm_change_gallery($conn, $id, $data){
 //удаляем существующую запись из галереи
 function adm_del_gallery($conn, $id){
     $sth = $conn->prepare("DELETE FROM `gallery` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
+}
+
+//удаляем изображение собаки по id
+function adm_del_gallery_img($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `dog_imgs` WHERE `id`=:id");
     $sth->execute(array('id' => $id));
 }
 

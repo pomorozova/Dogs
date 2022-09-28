@@ -132,13 +132,13 @@ $(document).ready(function(){
   })
   
   
-  $(closeButton).on('click',function (e) {
+$(closeButton).on('click',function (e) {
     e.preventDefault();
     $(modal1).removeClass('modal_active');
     $(tagBody).removeClass('hidden');
-  })
+})
  
-  modal1.onmousedown = function (e) {
+modal1.onmousedown = function (e) {
     let target = e.target;
     let modalContent = modal1.getElementsByClassName('modal__content')[0];
     if (e.target.closest('.' + modalContent.className) === null) {
@@ -155,13 +155,13 @@ $(document).ready(function(){
   let callBackButton = $('#callback-button-delete-2');
  
   // Модальное окно, которое необходимо открыть
-  let modal1 = $('modal-5');
+  let modal1 = $('#modal_5');
  
   // Кнопка "закрыть" внутри модального окна
-  let closeButton = $('modal-5 .modal__close_button')[0];
+  let closeButton = $('#modal_5 .modal__close_button')[0];
  
   // Тег body для запрета прокрутки
-  let tagBody = document.getElementsByTagName('body');
+  let tagBody = $('body');
  
   $(callBackButton).on('click',function (e) {
     e.preventDefault();
@@ -185,9 +185,3 @@ $(document).ready(function(){
   };
  
 });
-
-$(document).ready(function(){ 
-
-});
-
-

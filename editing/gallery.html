@@ -12,7 +12,7 @@
     <script src="../scripts/scripts.js"></script> 
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
-    <script src="js/gallery_scr.js"></script>
+    <script src="js/gallery_scr.js?v=2"></script>
     <title>Галерея</title>
 </head>
 
@@ -94,17 +94,17 @@
     <h1>Добавить изображение</h1>
     <div class="btn-news"> 
         <div class="btn-news-1">
-            <button type="submit" id="callback-button" class="header__button">Добавить</button>
+            <button type="submit" id="callback_button" class="header__button">Добавить</button>
         </div>
     </div>
 
     <!-- Модальное окно добавления-->
-    <div class="modal" id="modal-1">
+    <div class="modal" id="modal_1">
         <div class="modal__content">
             <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
           <!-- Контент модального окна -->
           <h1>Добавить</h1>
-          <form action = "" method="post">
+          <form id="form_gallery_add_img" action = "" method="post">
             <div class = "form">
 
                 <p>Изображение </p>
@@ -154,15 +154,15 @@
         </div>
     </div>
     <!-- Модальное окно удаления-->
-    <div class="modal-2" id="modal-5">
+    <div class="modal-2" id="modal_5">
         <div class="modal__content">
         <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
         <!-- Контент модального окна -->
         <div class="modal_content-2">
             <h1 class="modal__title">Удаление записи</h1>
             <p class="modal__description">Вы действительно хотите удалить запись?</p>
-            <button id="btn-delete-yes">Да</button>
-            <button id="btn-delete-no">Нет</button>
+            <button id="btn-img-delete-yes">Да</button>
+            <button id="btn-img-delete-no">Нет</button>
         </div>
         </div>
     </div>
@@ -176,19 +176,10 @@
                 <th><h1>Удаление</h1></th>
             </tr>   
         </thead>
-        <tbody>
-            <!-- Цикл вывода инфорамации из БД -->
-            <tr>
-                <td>1</td>
-                <td>../image/Картинка1</td>
-                <td><div class="table-btn"><button type="submit" id="callback-button3" class="header__button">Изменить</div></button></td> 
-                <td><div class="table-btn"><button  id="callback-button-delete-2" class="header__button">Удалить</button></div></td>
-            </tr>   
+        <tbody id="gallery_table_imgs_dogs">
+            <!-- Цикл вывода информации из БД -->              
         </tbody>
     </table>
-
-
-
 </main>
 </body>
 <footer style=" background-color: #2a2727;">
