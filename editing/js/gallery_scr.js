@@ -1,34 +1,45 @@
 let id_change_breed = 0;
+let breed_num = 0;
 
+function gen_infoDogs(){
+    breed_num = localStorage.getItem('breed_gallery');
 
-function gen_breeds(){
     let data_db = {
         part: "admin",
         adm: 'adm_gallery',
-        id_breed: localStorage.getItem('breed_gallery')
+        id_breed: breed_num
     }
-    let table = $('#gallery_table_breeds_body');
+    let table = $('#gallery_table_dogDesc_body');
     $(table).empty();
     
+
     $.ajax({
         method: "POST",
         url: "../db/datawork.php",
         data: JSON.stringify(data_db),
         success: function(data){
             let i = 1;
-            
+            let sel_all_dogs = $('#sel_dogs');
+            let sel_dog_add = $('#sel_add_dogs');
+            $(sel_all_dogs).empty();
+            $(sel_dog_add).empty();
+            console.log(data);
+
             data.forEach(el => {                
                 let element_table = $(`
                     <tr>
                         <td>${i++}</td>
-                        <td id="tbGRtitle_${el.id}">${el.breed}</td>
+                        <td id="tbGRtitle_${el.id}">${el.name_dog}</td>
                         <td id="tbGRdesc_${el.id}">${el.desc_dog}</td>
                     </tr>
                 `);
 
+                $(sel_dog_add).append(`<option value="dogName_${el.id}">${el.name_dog}</option>`)
+                $(sel_all_dogs).append(`<option value="dogName_${el.id}">${el.name_dog}</option>`);
+
                 let par_cont_butChange = $(`<td></td>`);
                 let cont_butChange = $(`<div class="table-btn"></div>`);
-                let butChange = $(`<button type="submit" id="callback-button2_${el.id}" class="header__button">Изменить</button>`);
+                let butChange = $(`<button id="callback-button2_${el.id}" class="header__button">Изменить</button>`);
                 
                 $(butChange).on('click', function (e) {
                     $('#modal-2').addClass('modal_active');
@@ -60,7 +71,7 @@ function gen_breeds(){
             });
         }            
     });
-    gen_imgs_dogs(localStorage.getItem('breed_gallery'));
+    gen_imgs_dogs(breed_num);
 }
 
 function gen_imgs_dogs(id_breed){
@@ -84,6 +95,7 @@ function gen_imgs_dogs(id_breed){
                 let element_table = $(`
                     <tr>
                         <td>${i++}</td>
+                        <td>${el.name_dog}</td>
                         <td>${el.img}</td>
                     </tr> 
                 `);
@@ -95,6 +107,7 @@ function gen_imgs_dogs(id_breed){
                 $(butChange).on('click', function (e) {
                     $('#modal-3').addClass('modal_active');
                     $('body').addClass('hidden');
+                    id_change_breed = $(e.target).attr('id').split('_')[1];
                 });
 
                 $(cont_butChange).append(butChange);
@@ -122,30 +135,34 @@ function gen_imgs_dogs(id_breed){
     });
 }
 
-//  проблема с id собаки
+
 function form_add_img(){
     $('#form_gallery_add_img').on("submit", function(e){
+
         let act_form_add = {
             part: 'admin',
             adm:"adm_gallery_add_img",
-            id: localStorage.getItem('breed_gallery'),
+            id: $('#sel_add_dogs').val().split('_')[1],
             img: $('#input__file_img_add').val()
         }
-        
+        console.log(act_form_add);
+
         e.preventDefault();
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
             data: JSON.stringify(act_form_add),
             success: function(data){
-                gen_imgs_dogs(1);
+                gen_imgs_dogs(localStorage.getItem('breed_gallery'));
+                $('#modal_1').removeClass('modal_active');
+                $('body').removeClass('hidden');
             }
         });
 
     });
 }
 
-function form_change_breed(){
+function form_change_infoDog(){
     $('#form_gallery_change_breed').on('submit',function(e){
         let act_form_change = {
             part: 'admin',
@@ -160,7 +177,32 @@ function form_change_breed(){
             url: "../db/datawork.php",
             data: JSON.stringify(act_form_change),
             success: function(data){
-                gen_breeds();
+                gen_infoDogs();
+                $('#modal-2').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            }
+        })
+    })
+}
+
+function form_change_imgDog(){
+    $('#form_imgDog_change').on('submit',function(e){
+        let act_form_change = {
+            part: 'admin',
+            adm:"adm_gallery_img_change",
+            id: id_change_breed,
+            img: $('#input__file_chg_imgDog').val()
+        }
+
+        e.preventDefault();
+        $.ajax({
+            method: "POST",
+            url: "../db/datawork.php",
+            data: JSON.stringify(act_form_change),
+            success: function(data){
+                gen_imgs_dogs(breed_num);
+                $('#modal-3').removeClass('modal_active');
+                $('body').removeClass('hidden');
             }
         })
     })
@@ -179,7 +221,7 @@ function delete_note_breed(){
             url: "../db/datawork.php",
             data: JSON.stringify(act_form_del),
             success: function(data){
-                gen_breeds();
+                gen_infoDogs();
                 $('#modal-4').removeClass('modal_active');
                 $('body').removeClass('hidden');
             }
@@ -206,7 +248,7 @@ function delete_img_dog(){
             url: "../db/datawork.php",
             data: JSON.stringify(act_form_del),
             success: function(data){
-                gen_breeds();
+                gen_infoDogs();
                 $('#modal_5').removeClass('modal_active');
                 $('body').removeClass('hidden');
             }
@@ -221,9 +263,10 @@ function delete_img_dog(){
 }
 
 $(document).ready(function(){  
-    gen_breeds();
-    form_change_breed();
+    gen_infoDogs();
+    form_change_infoDog();
     form_add_img();
+    form_change_imgDog();
     delete_note_breed();
     delete_img_dog();
 });

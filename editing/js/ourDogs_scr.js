@@ -7,6 +7,10 @@ function gen_ourBreed_desc(){
     }
     let table = $('#table_ourdog_desc_body');
     $(table).empty();
+    let sel_breeds_dog_add = $('#dog_breeds_add');
+    let sel_breeds_dog_change = $('#dog_breeds_change');
+    $(sel_breeds_dog_add).empty();
+    $(sel_breeds_dog_change).empty();
 
     $.ajax({
         method: "POST",
@@ -14,14 +18,18 @@ function gen_ourBreed_desc(){
         data: JSON.stringify(data_db),
         success: function(data){
             let i = 1;
+            
             data.forEach(el => {                
                 let element_table = $(`
                     <tr>
                         <td>${i++}</td>
-                        <td id="tbDescTitle_${el.id_breed}">${el.title}</td>
-                        <td id="tbDescText_${el.id_breed}">${el.text_desc}</td>
+                        <td id="tbDescTitle_${el.id}">${el.title}</td>
+                        <td id="tbDescText_${el.id}">${el.text_desc}</td>
                     </tr>
                 `);
+
+                $(sel_breeds_dog_add).append(`<option value="breedDog_${el.id_breed}">${el.breed}</option>`);
+                $(sel_breeds_dog_change).append(`<option value="breedDog_${el.id_breed}">${el.breed}</option>`);
 
                 let par_cont_butChange = $(`<td></td>`);
                 let cont_butChange = $(`<div class="table-btn"></div>`);
@@ -41,7 +49,7 @@ function gen_ourBreed_desc(){
 
                 let par_cont_butDel = $(`<td></td>`);
                 let cont_butDel = $(`<div class="table-btn"></div>`);
-                let butDel = $(`<button  id="btnDelDesc_${el.id}" class="header__button">Удалить</button>`);
+                let butDel = $(`<button id="btnDelDesc_${el.id}" class="header__button">Удалить</button>`);
 
                 $(butDel).on('click', function (e) {
                     $('#modal-4').addClass('modal_active');
@@ -93,7 +101,7 @@ function gen_ourDogs(){
                     $('body').addClass('hidden');
                     id_change_note = $(e.target).attr('id').split('_')[1];
                     $('#inpNameDog_chg').val($(`#tbDogsName_${id_change_note}`).text());
-                    $('#inpBreedDog_chg').val($(`#tbDogsBreed_${id_change_note}`).text());
+                    $(`#dog_breeds_change option[value='breedDog_${el.dog_breed}']`).prop('selected', true);
                 });
 
                 $(cont_butChange).append(butChange);
@@ -105,7 +113,7 @@ function gen_ourDogs(){
                 let butDel = $(`<button id="btnDelBreed_${el.id}" class="header__button">Удалить</button>`);
 
                 $(butDel).on('click', function (e) {
-                    $('#modal-5').addClass('modal_active');
+                    $('#modal_5').addClass('modal_active');
                     $('body').addClass('hidden');
                     id_change_note = $(e.target).attr('id').split('_')[1];
                 });
@@ -120,7 +128,7 @@ function gen_ourDogs(){
     })
 }
 
-//
+
 function form_add_new_dog(){
     $('#form_dog_add').on("submit", function(e){
         let act_form_add = {
@@ -128,7 +136,8 @@ function form_add_new_dog(){
             adm:"adm_dog_add",
             data: {
                 main_data:$(this).serializeArray(),
-                img: $('#input__file_dog_img').val()
+                img: $('#input__file_dog_img').val(),
+                breed: $('#dog_breeds_add').val().split('_')[1]
             }
         }
         
@@ -171,7 +180,7 @@ function form_change_info_breed(){
     })
 }
 
-//?
+
 function form_change_dog(){
     $('#form_dogs_change').on('submit',function(e){
         let act_form_change = {
@@ -179,10 +188,10 @@ function form_change_dog(){
             adm:"adm_ourDogs_change_dogs",
             id: id_change_note,
             data: $(this).serializeArray(),
+            breed: $('#dog_breeds_change').val().split('_')[1],
             img: 'dog3.jpg'
         }
         e.preventDefault();
-        console.log(act_form_change.data);
         
         $.ajax({
             method: "POST",
@@ -197,12 +206,12 @@ function form_change_dog(){
     })
 }
 
-//
-function delete_note(){
-    $('#btn-delete-yes').on('click',function(){
+
+function delete_dog(){
+    $('#btn_del_dog_yes').on('click',function(){
         let act_form_del = {
             part: 'admin',
-            adm:"adm_useful_del",
+            adm:"adm_dog_del",
             id: id_change_note
         }
 
@@ -211,7 +220,35 @@ function delete_note(){
             url: "../db/datawork.php",
             data: JSON.stringify(act_form_del),
             success: function(data){
-                gen_useful();
+                gen_ourDogs();
+                $('#modal_5').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            }
+        });
+
+    });
+
+    $('#btn_del_dog_no').on('click',function(){
+        $('#modal_5').removeClass('modal_active');
+        $('body').removeClass('hidden');
+    });
+}
+
+
+function delete_info_breed(){
+    $('#btn_del_breedInfo_yes').on('click',function(){
+        let act_form_del = {
+            part: 'admin',
+            adm:"adm_breedInfo_del",
+            id: id_change_note
+        }
+
+        $.ajax({
+            method: "POST",
+            url: "../db/datawork.php",
+            data: JSON.stringify(act_form_del),
+            success: function(data){
+                gen_ourBreed_desc();
                 $('#modal-4').removeClass('modal_active');
                 $('body').removeClass('hidden');
             }
@@ -219,7 +256,7 @@ function delete_note(){
 
     });
 
-    $('#btn-delete-no').on('click',function(){
+    $('#btn_del_breedInfo_no').on('click',function(){
         $('#modal-4').removeClass('modal_active');
         $('body').removeClass('hidden');
     });
@@ -231,4 +268,6 @@ $(document).ready(function(){
     form_change_info_breed();
     form_change_dog();
     form_add_new_dog();
+    delete_dog();
+    delete_info_breed();
 });

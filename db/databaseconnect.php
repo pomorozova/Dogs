@@ -161,29 +161,35 @@ function adm_del_exhib($conn, $id){
     $sth->execute(array('id' => $id));
 }
 
-//выводим инфу о породе из галереи
+//выводим описание собаки
 function adm_get_gallery($conn,$id_breed){
-    $sth = $conn->prepare("SELECT id, (select name_breed FROM dog_breeds where id=`gallery`.`title_dog`) as breed ,desc_dog FROM `gallery` where title_dog=:id_breed;");
+    $sth = $conn->prepare("SELECT id, name_dog, desc_dog FROM `dog` WHERE `dog_breed` = :id_breed");
     $sth->execute(array("id_breed"=>$id_breed));
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($data);
 }
 
-//выводим все изображения собаки определённой породы через id
+//выводим все изображения собак определённой породы через id
 function adm_get_gallery_imgs($conn, $id){
-    $sth = $conn->prepare("SELECT id,img FROM `dog_imgs` WHERE id_dog=:id;");
+    $sth = $conn->prepare("SELECT `dog_imgs`.`id`,name_dog,img FROM `dog` INNER JOIN dog_imgs on `dog`.`id`=`dog_imgs`.`id_dog` WHERE `dog_breed`=:id;");
     $sth->execute(array('id'=>$id));
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode($data);
 }
 
-//изменяем описание породы в галлерее по id
-function adm_change_gallery($conn, $id, $data){
-    $desc_breed = $data[0]['value'];
-    $sth = $conn->prepare("UPDATE `gallery` SET `desc_dog` = :desc_breed WHERE `id` = :id");
-    $sth->execute(array('desc_breed' => $desc_breed, 'id' => $id));
+//изменяем картинку по id
+function adm_change_gallery_imgDog($conn, $id, $img){
+    $sth = $conn->prepare("UPDATE `dog_imgs` SET img=:img WHERE id=:id");
+    $sth->execute(array('img' => $img, 'id' => $id));
+}
+
+//изменяем описание собаки по id
+function adm_change_gallery_dogDesc($conn, $id, $data){
+    $desc_dog = $data[0]['value'];
+    $sth = $conn->prepare("UPDATE `dog` SET desc_dog = :desc_dog WHERE id= :id");
+    $sth->execute(array('desc_dog' => $desc_dog, 'id' => $id));
 }
 
 //удаляем существующую запись из галереи
@@ -231,7 +237,7 @@ function adm_change_useful($conn, $id, $data){
 
 //достаём инфу о всех породах
 function adm_get_all_breed($conn){
-    $sth = $conn->prepare("SELECT id_breed, title, text_desc,(select name_breed from `dog_breeds` where `dog_breeds`.`id`=id_breed) as breed FROM `our_breeds`;");
+    $sth = $conn->prepare("SELECT *,(select name_breed from `dog_breeds` where `dog_breeds`.`id`=id_breed) as breed FROM `our_breeds`;");
     $sth->execute();
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');
@@ -240,7 +246,7 @@ function adm_get_all_breed($conn){
 
 //достаём всех имеющихся собак
 function adm_get_all_dogs($conn){
-    $sth = $conn->prepare("SELECT id,name_dog,(SELECT name_breed FROM `dog_breeds` WHERE id=`dog`.`dog_breed`) as breed,desc_dog FROM `dog`;");
+    $sth = $conn->prepare("SELECT *,(SELECT name_breed FROM `dog_breeds` WHERE id=`dog`.`dog_breed`) as breed FROM `dog`;");
     $sth->execute();
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');
@@ -256,19 +262,30 @@ function adm_ourDogs_change_breed($conn, $id, $data){
 }
 
 //изменяем запись о конкретной собаке
-function adm_ourDogs_change_dogs($conn, $id, $data, $img){
+function adm_ourDogs_change_dogs($conn, $id, $data, $img, $breed){
     $name_dog = $data[0]['value'];
-    $breed = $data[1]['value'];
     $sth = $conn->prepare("UPDATE `dog` SET name_dog=:name_dog,dog_breed=:breed WHERE `id`=:id");
     $sth->execute(array('name_dog' => $name_dog, 'id' => $id, 'breed'=>$breed));
 }
 
 //добавляем новую собаку
-function adm_ourDogs_add_new_dog($conn, $data, $img){
+function adm_ourDogs_add_new_dog($conn, $data, $img, $breed){
     $name_dog = $data[0]['value'];
-    $breed = $data[1]['value'];
     $sth = $conn->prepare("INSERT INTO `dog` (`name_dog`,`dog_breed`) VALUES(:name_dog,:breed)");
     $sth->execute(array('name_dog' => $name_dog, 'breed'=>$breed));
+}
+
+
+//удаляем собаку по id
+function adm_del_dog($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `dog` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
+}
+
+//удаляем инфу о породе по id
+function adm_del_infoBreed($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `our_breeds` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
 }
 
 //

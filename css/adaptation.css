@@ -55,6 +55,19 @@
     margin: 40px 0px 40px 33px;
     font-size: 14px;
     }
+.header__menu li {
+    margin: 40px 0px 40px 33px;
+    font-size: 14px;
+    }
+    .scrolls {
+        margin-left: 0px;
+    }
+    .scroll{
+        margin-left: 20px;
+    }
+    .dropdown {
+        margin-left: 15px;
+    }
 .menu-burger__header {
     position: relative;
     width: 40px;
@@ -114,8 +127,6 @@ header {
 .news_icon{
     width: 300px;
 }
-
-
 /* MAIN */
 
 .main-title{
@@ -134,7 +145,7 @@ header {
 
 @media(max-width: 767px){
 
-    .header{
+    .body-background .header{
         background-image: url(../image/Фон-dog-adapt.jpg);
         transition: 0.1s;
     }

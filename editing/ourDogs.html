@@ -12,7 +12,7 @@
     <script src="../scripts/scripts.js"></script> 
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
-    <script src="js/ourDogs_scr.js?v=3"></script>
+    <script src="js/ourDogs_scr.js?v=5"></script>
     <title>Наши собаки</title>
 </head>
 <body>
@@ -66,8 +66,8 @@
         <div class="modal_content-2">
             <h1 class="modal__title">Удаление записи</h1>
             <p class="modal__description">Вы действительно хотите удалить запись?</p>
-            <button class="btn-delete-yes">Да</button>
-            <button class="btn-delete-no">Нет</button>
+            <button id="btn_del_breedInfo_yes" class="btn-delete-yes">Да</button>
+            <button id="btn_del_breedInfo_no" class="btn-delete-no">Нет</button>
         </div>
         </div>
     </div>
@@ -113,10 +113,12 @@
                   <div class ="input-form">
                   <input id="dog_breed_add" type="text" name="name"></div>
 
-                  <p>Порода</p>
-                  <div class ="input-form">
-                  <input id="dog_breed_add" type="text" name="breed"></div>
-      
+                <p>Порода</p>
+                <div class ="input-form">
+                    <select id="dog_breeds_add" class="select-css"> 
+                        <option disabled>Выберете собаку</option>
+                    </select>
+                </div>
                   <p>Изображение</p>
                   <div class ="input-form">
                           <div class="input__wrapper">
@@ -144,13 +146,15 @@
           <h1>Изменить</h1>
           <form id="form_dogs_change" action = "" method="post">
                 <div class = "form">
+                    <p>Порода</p>
+                    <div class ="input-form">
+                        <select id="dog_breeds_change" class="select-css"> 
+                            <option disabled>Выберете собаку</option>
+                        </select>
+                    </div>
                     <p>Имя собаки</p>
                     <div class ="input-form">
                     <input id="inpNameDog_chg" type="text" name="name"></div>
-
-                    <p>Порода</p>
-                    <div class ="input-form">
-                    <input id="inpBreedDog_chg" type="text" name="breed"></div>
         
                     <p>Изображение</p>
                     <div class ="input-form">
@@ -172,15 +176,15 @@
     </div>
 
     <!-- Модальное окно удаления-->
-    <div class="modal-2" id="modal-5">
+    <div class="modal-2" id="modal_5">
         <div class="modal__content">
         <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
         <!-- Контент модального окна -->
         <div class="modal_content-2">
             <h1 class="modal__title">Удаление записи</h1>
             <p class="modal__description">Вы действительно хотите удалить запись?</p>
-            <button class="btn-delete-yes">Да</button>
-            <button class="btn-delete-no">Нет</button>
+            <button id="btn_del_dog_yes" class="btn-delete-yes">Да</button>
+            <button id="btn_del_dog_no" class="btn-delete-no">Нет</button>
         </div>
         </div>
     </div>
