@@ -224,6 +224,9 @@ header {
     .indent{
         margin-left: 0;
     }
+    .block-history-left img{
+        width: 270px;
+    }
 
 
 
