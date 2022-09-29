@@ -229,6 +229,48 @@ function adm_change_useful($conn, $id, $data){
     $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2 ));
 }
 
+//достаём инфу о всех породах
+function adm_get_all_breed($conn){
+    $sth = $conn->prepare("SELECT id_breed, title, text_desc,(select name_breed from `dog_breeds` where `dog_breeds`.`id`=id_breed) as breed FROM `our_breeds`;");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+//достаём всех имеющихся собак
+function adm_get_all_dogs($conn){
+    $sth = $conn->prepare("SELECT id,name_dog,(SELECT name_breed FROM `dog_breeds` WHERE id=`dog`.`dog_breed`) as breed,desc_dog FROM `dog`;");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+//изменяем запись-инфу о породе
+function adm_ourDogs_change_breed($conn, $id, $data){
+    $title = $data[0]['value'];
+    $osn_text = $data[1]['value'];
+    $sth = $conn->prepare("UPDATE `our_breeds` SET text_desc=:osn_text, title=:title WHERE `id`=:id");
+    $sth->execute(array('title' => $title, 'id' => $id, 'osn_text'=>$osn_text));
+}
+
+//изменяем запись о конкретной собаке
+function adm_ourDogs_change_dogs($conn, $id, $data, $img){
+    $name_dog = $data[0]['value'];
+    $breed = $data[1]['value'];
+    $sth = $conn->prepare("UPDATE `dog` SET name_dog=:name_dog,dog_breed=:breed WHERE `id`=:id");
+    $sth->execute(array('name_dog' => $name_dog, 'id' => $id, 'breed'=>$breed));
+}
+
+//добавляем новую собаку
+function adm_ourDogs_add_new_dog($conn, $data, $img){
+    $name_dog = $data[0]['value'];
+    $breed = $data[1]['value'];
+    $sth = $conn->prepare("INSERT INTO `dog` (`name_dog`,`dog_breed`) VALUES(:name_dog,:breed)");
+    $sth->execute(array('name_dog' => $name_dog, 'breed'=>$breed));
+}
+
 //
 function add_test($conn){
     $sth = $conn->prepare("INSERT INTO `dog` values (2,'sdfs','bdbdda','sdfsgw1')");
