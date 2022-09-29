@@ -127,8 +127,6 @@ header {
 .news_icon{
     width: 300px;
 }
-
-
 /* MAIN */
 
 .main-title{
@@ -147,7 +145,7 @@ header {
 
 @media(max-width: 767px){
 
-    .header{
+    .body-background .header{
         background-image: url(../image/Фон-dog-adapt.jpg);
         transition: 0.1s;
     }
