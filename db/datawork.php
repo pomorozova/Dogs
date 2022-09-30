@@ -43,6 +43,10 @@ if($act["part"] == "main"){
         case "adm_ourDogs_change_dogs": adm_ourDogs_change_dogs($conn,$act["id"],$act["data"],$act['img'],$act['breed']);break;
         case "adm_dog_del": adm_del_dog($conn, $act["id"]); break;
         case "adm_breedInfo_del": adm_del_infoBreed($conn, $act["id"]); break;
+        case "adm_puppies_getAll": adm_get_puppies($conn);break;
+        case "adm_puppies_change": adm_chg_puppies($conn, $act["id"],$act["data"]);break;
+        case "adm_puppies_del": adm_del_puppies($conn, $act["id"]);break;
+        case "adm_puppies_add": adm_add_puppies($conn, $act["data"]);break;
     }
 }
 

@@ -288,6 +288,40 @@ function adm_del_infoBreed($conn, $id){
     $sth->execute(array('id' => $id));
 }
 
+//выводим инфу обо всех щенках
+function adm_get_puppies($conn){
+    $sth = $conn->prepare("SELECT * FROM `puppies`;");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+//изменяем инфу о щенках по id
+function adm_chg_puppies($conn,$id, $data){
+    $desc_mom = $data[0]['value'];
+    $desc_fat = $data[1]['value'];
+    $desc_pup = $data[2]['value'];
+    $sth = $conn->prepare("UPDATE `puppies` SET desc_mom=:desc_mom, desc_father=:desc_fat,desc_puppie=:desc_pup WHERE id=:id");
+    $sth->execute(array("id"=>$id, "desc_mom"=>$desc_mom,"desc_fat"=>$desc_fat,"desc_pup"=>$desc_pup));
+}
+
+//удаляем инфу о щенках по id
+function adm_del_puppies($conn, $id){
+    $sth = $conn->prepare("DELETE FROM `puppies` WHERE `id`=:id");
+    $sth->execute(array('id' => $id));
+}
+
+//добавляем новую инфу о щенках
+function adm_add_puppies($conn, $data){
+    $desc_mom = $data[0]['value'];
+    $desc_fat = $data[1]['value'];
+    $desc_pup = $data[2]['value'];
+    
+    $sth = $conn->prepare("INSERT INTO `puppies` (desc_mom,desc_father,desc_puppie) VALUES(:desc_mom,:desc_fat,:desc_pup)");
+    $sth->execute(array('desc_mom' => $desc_mom, 'desc_fat'=>$desc_fat, 'desc_pup'=>$desc_pup));
+}
+
 //
 function add_test($conn){
     $sth = $conn->prepare("INSERT INTO `dog` values (2,'sdfs','bdbdda','sdfsgw1')");

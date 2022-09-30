@@ -23,7 +23,6 @@ function gen_infoDogs(){
             let sel_dog_add = $('#sel_add_dogs');
             $(sel_all_dogs).empty();
             $(sel_dog_add).empty();
-            console.log(data);
 
             data.forEach(el => {                
                 let element_table = $(`
