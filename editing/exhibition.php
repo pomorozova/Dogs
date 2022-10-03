@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if(!$_SESSION['user']){
+        header('Location: ../index.html');
+    }
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -12,8 +18,9 @@
     <script src="../scripts/scripts.js"></script> 
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
-    <script src="js/useful_scr.js?v=4"></script>
-    <title>Полезное</title>
+    <script src="js/exhibition_scr.js?v=9"></script>
+    <script src="../scripts/adm_exit.js?v=1"></script>
+    <title>Выставки</title>
 </head>
 
 <body>
@@ -29,10 +36,10 @@
                 <nav class="header__nav">
                     <ul class="menu header__menu"> 
                         <img class="header_logo" src="../image/logo1.png" width="50px" height="50px"> 
-                        <li><a class="scroll" href="../list.html">Назад</a></li>
-                        <li><a class="scroll" href="../index.html">Выйти</a></li>
-                        </ul>
-                    </nav>
+                        <li><a class="scroll" href="../list.php">Назад</a></li>
+                        <li><a class="scroll" href="#" id="exitAdmin">Выйти</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
@@ -52,25 +59,26 @@
           <!-- Контент модального окна -->
 
           <h1>Добавить</h1>
-          <form id="form_useful_add" action = "" method="post" enctype="multipart/form-data">
+          <form id="form_exhib_add" enctype="multipart/form-data">
               <div class = "form">
                   <p>Заголовок</p>
                   <div class ="input-form">
-                  <input type="text" name="heading"></div>
+                  <input id="exhibition_add_title" type="text" name="heading"></div>
       
                   <p>1 Абзац</p>
                   <div class ="input-form">
-                  <textarea name="description1" cols="60" rows="5" ></textarea> </div>
+                  <textarea id="exhibition_add_desc1" name="description1" cols="60" rows="5"></textarea> </div>
 
                   <p>2 Абзац</p>
                   <div class ="input-form">
-                  <textarea name="description2" cols="60" rows="5" ></textarea> </div>
+                  <textarea id="exhibition_add_desc2" name="description2" cols="60" rows="5"></textarea> </div>
       
                   <p>Изображение 1</p>
-                  <div class ="input-form">                     
+                  <div class ="input-form">
+                     
                           <div class="input__wrapper">
-                              <input name="img" type="file" id="input__file_imgUsf" class="input input__file" multiple>
-                              <label for="input__file_imgUsf" class="input__file-button">
+                              <input name="imgAdd" type="file" id="input__file_img1" class="input input__file" multiple>
+                              <label for="input__file_img1" class="input__file-button">
                                   <span class="input__file-icon-wrapper">
                                       <svg class="upload-file__icon"  viewBox="0 0 512 512">
                                           <path d="M286 384h-80c-14.2 1-23-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c11.6 11.6 3.7 33.1-13.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-23-23V366c0-13.3 10.7-24 24-24h136v8c0 31 24.3 56 56 56h80c30.9 0 55-26.1 57-55v-8h135c13.3 0 24 10.6 24 24zm-124 88c0-11-9-20-19-20s-19 9-20 20 9 19 20 20 21-9 20-20zm64 0c0-12-9-20-20-20s-20 9-19 20 9 20 20 20 21-9 20-20z"></path>
@@ -79,11 +87,12 @@
                                   <span class="input__file-button-text">Выберите файл</span>
                               </label>
                           </div>
-                  </div>                  
-                  <div class="btn-news"> <button type="submit">Добавить новость</button></div></div>
+                  </div>
+                  <div class="btn-news"> <button type="submit">Добавить</button></div></div>
           </form>
         </div>
     </div>
+    
     <!-- Модальное окно изменения-->
     <div class="modal" id="modal-2">
         <div class="modal__content">
@@ -91,27 +100,30 @@
           <!-- Контент модального окна -->
 
           <h1>Изменить</h1>
-          <form id="form_useful_change" action = "" method="post" enctype="multipart/form-data">
+          <form id="form_exhib_change" enctype="multipart/form-data">
             <div class = "form">
                 <p>Заголовок</p>
                 <div class ="input-form">
-                <input id="inp_chg_title" type="text" name="heading"></div>
+                <input id="exhibition_chg_title" type="text" name="heading">
+                </div>
     
                 <p>1 Абзац</p>
                 <div class ="input-form">
-                <textarea id="inp_chg_text1" name="description1" cols="60" rows="5" ></textarea> </div>
+                <textarea id="exhibition_chg_desc1" name="description1" cols="60" rows="5" ></textarea>
+                </div>
 
                 <p>2 Абзац</p>
                 <div class ="input-form">
-                <textarea id="inp_chg_text2" name="description2" cols="60" rows="5" ></textarea> </div>
-    
+                <textarea id="exhibition_chg_desc2" name="description2" cols="60" rows="5" ></textarea>
+                </div>
+                    
                 <p>Изображение</p>
                 <div class ="input-form">
                     <div class="input__wrapper">
-                        <input name="imgChg" type="file" id="input__file_imgChg" class="input input__file" multiple>
-                        <label for="input__file_imgChg" class="input__file-button">
+                        <input name="imgEx" type="file" id="input__file_imgEx" class="input input__file" multiple>
+                        <label for="input__file_imgEx" class="input__file-button">
                             <span class="input__file-icon-wrapper">
-                                <svg class="upload-file__icon" viewBox="0 0 512 512">
+                                <svg class="upload-file__icon"  viewBox="0 0 512 512">
                                     <path d="M286 384h-80c-14.2 1-23-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c11.6 11.6 3.7 33.1-13.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-23-23V366c0-13.3 10.7-24 24-24h136v8c0 31 24.3 56 56 56h80c30.9 0 55-26.1 57-55v-8h135c13.3 0 24 10.6 24 24zm-124 88c0-11-9-20-19-20s-19 9-20 20 9 19 20 20 21-9 20-20zm64 0c0-12-9-20-20-20s-20 9-19 20 9 20 20 20 21-9 20-20z"></path>
                                 </svg>
                             </span>
@@ -119,26 +131,26 @@
                         </label>
                     </div>
                 </div>
-                <div class="btn-news"> <button type="submit">Добавить</button></div></div>
-        </form>
+                </div>
+            </form>
         </div>
     </div>
-
+   
     <!-- Модальное окно удаления-->
     <div class="modal-2" id="modal-4">
         <div class="modal__content">
-        <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
-        <!-- Контент модального окна -->
-        <div class="modal_content-2">
-            <h1 class="modal__title">Удаление записи</h1>
-            <p class="modal__description">Вы действительно хотите удалить запись?</p>
-            <button id="btn-delete-yes">Да</button>
-            <button id="btn-delete-no">Нет</button>
-        </div>
+            <button class="modal__close_button"><img src="../image/close.png" width="25" alt=""></button>
+            <!-- Контент модального окна -->
+            <div class="modal_content-2">
+                <h1 class="modal__title">Удаление записи</h1>
+                <p class="modal__description">Вы действительно хотите удалить запись?</p>
+                <button id="btn-delete-yes">Да</button>
+                <button id="btn-delete-no">Нет</button>
+            </div>
         </div>
     </div>
-
-    <h1>Полезное</h1>
+ 
+    <h1>Выставки</h1>
     <table class="container">
         <thead>
             <tr>
@@ -146,41 +158,31 @@
                 <th><h1>Заголовок</h1></th>
                 <th><h1>1 Абзац</h1></th>
                 <th><h1>2 Абзац</h1></th>
-                <th><h1>Фото 1</h1></th>
+                <th><h1>Фото 1</h1></th>                
                 <th><h1>Изменение</h1></th>
                 <th><h1>Удаление</h1></th>
             </tr>   
         </thead>
-        <tbody id="table_useful_body">
-            <!-- Цикл вывода инфорамации из БД -->
-            <tr>
-                <td>1</td>
-                <td>Lorem ipsum dolor sit amet</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-                <td>../image/Картинка1</td>
-                <td>../image/Картинка1</td>
-                <td><div class="table-btn"><button type="submit" id="callback-button2" class="header__button">Изменить</div></button></td> 
-               <td><div class="table-btn"><button  id="callback-button-delete" class="header__button">Удалить</button></div></td>
-            </tr>   
+        <tbody id="exhibition_table_body">
+            <!-- Цикл вывода информации из БД -->  
         </tbody>
     </table>
 </main>
     </div>
-<footer style=" background-color: #2a2727;">
-    <p><a name="contacts"></a></p> 
-    <nav class="nav-footer">
-        <ul class="contacts">
-            <li>+7 (981) 342-15-16</li>
-            <li>dog@gmail.ru</li>
-        </ul>
-        <ul class = "img-contact">
-            <li><img src="../image/viber.png" width="55%" height="55%"></li>
-            <li><img src="../image/whatsapp.png" width="55%" height="55%"></li>
-            <li><img src="../image/pochty.png" width="55%" height="55%"></li>
-        </ul>
-    </nav>
-</footer>
-</div>
+    <footer style=" background-color: #2a2727;">
+        <p><a name="contacts"></a></p> 
+        <nav class="nav-footer">
+            <ul class="contacts">
+                <li>+7 (981) 342-15-16</li>
+                <li>dog@gmail.ru</li>
+            </ul>
+            <ul class = "img-contact">
+                <li><img src="../image/viber.png" width="55%" height="55%"></li>
+                <li><img src="../image/whatsapp.png" width="55%" height="55%"></li>
+                <li><img src="../image/pochty.png" width="55%" height="55%"></li>
+            </ul>
+        </nav>
+    </footer>
+    </div>
 </body>
 </html>

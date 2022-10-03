@@ -1,8 +1,6 @@
 <?php 
 require_once 'databaseconnect.php';
 
-//$json = file_get_contents('php://input');
-//$act = json_decode($json, true);
 $part = $_POST["part"];
 $act = $_POST["act"];
 
@@ -20,7 +18,7 @@ if($part == "main"){
         case "gallery_imgs": get_gallery_imgs($conn,$_POST["id"]);break;
         case "puppies_imgs": get_puppies_imgs($conn,$_POST["id"]);break;
     }
-} else {
+} else if($part == "admin") {
     switch($act){
         case "adm_news_change": adm_change_news($conn);break;
         case "adm_news_add": adm_add_news($conn);break;
@@ -50,5 +48,9 @@ if($part == "main"){
         case "adm_puppies_del": adm_del_puppies($conn, $_POST["id"]);break; 
         case "adm_puppies_add": adm_add_puppies($conn);break; 
     }
+} else {
+    switch($act){
+        case "authorization": check_authoriz($conn); break;
+        case "registration": registration($conn); break;
+    }
 }
-

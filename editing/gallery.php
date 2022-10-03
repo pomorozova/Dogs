@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if(!$_SESSION['user']){
+        header('Location: ../index.html');
+    }
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -13,6 +19,7 @@
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
     <script src="js/gallery_scr.js?v=8"></script>
+    <script src="../scripts/adm_exit.js?v=1"></script>
     <title>Галерея</title>
 </head>
 
@@ -29,8 +36,8 @@
                 <nav class="header__nav">
                     <ul class="menu header__menu"> 
                         <img class="header_logo" src="../image/logo1.png" width="50px" height="50px"> 
-                        <li><a class="scroll" href="../list.html">Назад</a></li>
-                        <li><a class="scroll" href="../index.html">Выйти</a></li>
+                        <li><a class="scroll" href="../list.php">Назад</a></li>
+                        <li><a class="scroll" href="#"  id="exitAdmin">Выйти</a></li>
                         </ul>
                     </nav>
             </div>

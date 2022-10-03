@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if(!$_SESSION['user']){
+        header('Location: ../index.html');
+    }
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -13,6 +19,7 @@
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
     <script src="js/puppies_scr.js?v=3"></script>
+    <script src="../scripts/adm_exit.js?v=1"></script>
     <title>Щенки</title>
 </head>
 <body>

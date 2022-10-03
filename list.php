@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if(!$_SESSION['user']){
+        header('Location: index.php');
+    }
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -10,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="scripts/navigate-menu light.js"></script>
     <script src="scripts/adm_list.js?v=2"></script>
+    <script src="scripts/adm_exit.js?v=1"></script>
     <title>Список для редактирования</title>
 </head> 
 <body>
@@ -23,7 +30,7 @@
                     <nav class="header__nav">
                         <ul class="menu header__menu"> 
                             <img class="header_logo" src="image/logo1.png" width="50px" height="50px"> 
-                            <li><a class="scroll" href="index.html">Выйти</a></li>
+                            <li><a class="scroll" href="#" id="exitAdmin">Выйти</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -36,11 +43,11 @@
                 <h1>Страницы для редактирования:</h1>
                 <nav class="list__nav">
                     <ul class="list__menu"> 
-                        <li><a class="change" href="editing/news.html">- Новости;</a></li>
-                        <li><a class="change" href="editing/ourDogs.html">- Наши собаки;</a></li>
-                        <li><a class="change" href="editing/useful.html">- Полезное;</a></li>
-                        <li><a class="change" href="editing/exhibition.html">- Выставки;</a></li>
-                        <li><a class="change" href="editing/puppies.html">- Щенки;</a></li>
+                        <li><a class="change" href="editing/news.php">- Новости;</a></li>
+                        <li><a class="change" href="editing/ourDogs.php">- Наши собаки;</a></li>
+                        <li><a class="change" href="editing/useful.php">- Полезное;</a></li>
+                        <li><a class="change" href="editing/exhibition.php">- Выставки;</a></li>
+                        <li><a class="change" href="editing/puppies.php">- Щенки;</a></li>
                         <li><div class="dropdown">
                             <button class="dropbtn1">- Галерея;</button>
                             <div id="list_breeds_pages" class="dropdown-content">

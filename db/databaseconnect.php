@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once 'pdoconfig.php';
 global $conn;
 
@@ -364,6 +366,31 @@ function adm_add_puppies($conn){
     
     $sth = $conn->prepare("INSERT INTO `puppies` (desc_mom,desc_father,desc_puppie) VALUES(:desc_mom,:desc_fat,:desc_pup)");
     $sth->execute(array('desc_mom' => $desc_mom, 'desc_fat'=>$desc_fat, 'desc_pup'=>$desc_pup));
+    end_work();
+}
+
+
+// -------------------------------------------------------------------------- Авторизация
+
+function check_authoriz($conn){
+    $sth = $conn->prepare("SELECT * FROM `accounts` WHERE login=:login_user and password=:password_user");
+    $sth->execute(array("login_user"=>$_POST["login"],"password_user"=>md5($_POST["pass"])));
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    if(count($data) > 0){
+        $_SESSION["user"] = [
+            "login"=> $data["login"]
+        ];
+        header('Location: ../list.php');
+    } else {
+        $_SESSION["msg_auth"] = "Неверный логин или пароль";
+        header('Location: ../authorization.php');
+    }
+    
+}
+
+function registration($conn){
+    $sth = $conn->prepare("INSERT INTO `accounts` (`login`, `password`) VALUES (:login_user, :password_user)");
+    $sth->execute(array("login_user"=>$_POST["login"],"password_user"=>md5($_POST["pass"])));
     end_work();
 }
 
