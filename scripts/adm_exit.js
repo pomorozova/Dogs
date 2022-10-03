@@ -1,17 +1,16 @@
 function exitAdmin(){
     $('#exitAdmin').on('click',function(e){
-        e.preventDefault();
         let formData = new FormData();
         
         $.ajax({
             method: "POST",
-            url: "db/logout.php",
+            url: "../db/logout.php",
             data: formData,
             contentType: false,
             processData: false,
-            dataType : 'json',
-            success: function(){
-
+            dataType : 'text',
+            success: function(d){
+                document.location.href = '../index.html';
             }
         });
     })

@@ -17,6 +17,7 @@ if($part == "main"){
         case "our_dog_imgs": get_our_dog_breed($conn, $_POST["id"]);break;
         case "gallery_imgs": get_gallery_imgs($conn,$_POST["id"]);break;
         case "puppies_imgs": get_puppies_imgs($conn,$_POST["id"]);break;
+        case "block_puppies": block_puppies();break;
     }
 } else if($part == "admin") {
     switch($act){

@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(isset($_SESSION['user'])){
-        header('Location: list.php');
+        header('Location: editing/list.php');
     }
 ?>
 <!doctype html>
@@ -13,7 +13,7 @@
 	<link rel = "stylesheet" href="css/styleEnter.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Форма авторизации</title>
-    <script src="scripts/auth.js?v=4"></script>
+    <script src="scripts/auth.js?v=6"></script>
 </head> 
 <body>
     <div class="container mt-4">
@@ -30,13 +30,9 @@
                 <div class ="input-form">
                 <button class="btn btn-success"
                 type="submit">Войти</button></div>
+                <p id="msg_auth"></p>
             </div>
-            <?php 
-                if(isset($_SESSION['msg_auth'])){
-                    echo '<p>'. $_SESSION['msg_auth'] .'</p>';
-                }
-                unset($_SESSION['msg_auth']);
-            ?>
+            
         </form>
     </div>
 </body>

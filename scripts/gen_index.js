@@ -25,7 +25,7 @@ function generate_dogs(){
                         <div class="product-list">
                             <h3>${el.name_breed}</h3> 
                             <p class="description">${el.desc_breed}</p>
-                            <a class="option" href="ourDogs.html">ПОДРОБНЕЕ</a> 
+                            <a class="option" href="${el.page_breed}">ПОДРОБНЕЕ</a> 
                         </div>
                     </div>
                 `);

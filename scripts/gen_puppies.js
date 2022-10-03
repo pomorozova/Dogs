@@ -64,6 +64,29 @@ function generate_puppies(){
     
 }
 
+function book_puppies(){
+    $('#form_puppies').on("submit", function(){
+        let formData = new FormData(this);
+        
+        formData.append('part','main');
+        formData.append('act','block_puppies');
+
+        $.ajax({
+            url:'db/datawork',
+            method:'',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType:'text',
+            success: function(d){
+
+            }
+        })
+
+    })
+}
+
 $(document).ready(function(){
     generate_puppies();
+    book_puppies();
 })

@@ -74,6 +74,12 @@ function get_puppies_imgs($conn,$id){
     echo json_encode($data);
 }
 
+function block_puppies()
+{
+    echo "";
+}
+
+
 function get_exhibitions($conn){
     $sth = $conn->prepare("SELECT * FROM `exhibitions`");
     $sth->execute();
@@ -377,13 +383,14 @@ function check_authoriz($conn){
     $sth->execute(array("login_user"=>$_POST["login"],"password_user"=>md5($_POST["pass"])));
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     if(count($data) > 0){
+        
         $_SESSION["user"] = [
-            "login"=> $data["login"]
+            "login"=> $data[0]
         ];
-        header('Location: ../list.php');
+        echo json_encode(array("status"=>true,"message"=>'Авторизация прошла успешно'));
     } else {
         $_SESSION["msg_auth"] = "Неверный логин или пароль";
-        header('Location: ../authorization.php');
+        echo json_encode(array("status"=>false,"message"=>'Неправильный логин или пароль'));
     }
     
 }

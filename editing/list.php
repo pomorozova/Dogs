@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!$_SESSION['user']){
-        header('Location: index.php');
+        header('Location: ../index.html');
     }
 ?>
 <!doctype html>
@@ -10,13 +10,13 @@
 	<meta charset="UTF-8">
     <meta name='viewport' content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel = "stylesheet" href="css/editList.css">
-    <link rel = "stylesheet" href="css/main.css">
-    <link rel = "stylesheet" href="font/stylesheet.css">
+	<link rel = "stylesheet" href="../css/editList.css">
+    <link rel = "stylesheet" href="../css/main.css">
+    <link rel = "stylesheet" href="../font/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-    <script src="scripts/navigate-menu light.js"></script>
-    <script src="scripts/adm_list.js?v=2"></script>
-    <script src="scripts/adm_exit.js?v=1"></script>
+    <script src="../scripts/navigate-menu light.js"></script>
+    <script src="../scripts/adm_list.js?v=5"></script>
+    <script src="../scripts/adm_exit.js?v=1"></script>
     <title>Список для редактирования</title>
 </head> 
 <body>
@@ -29,7 +29,7 @@
                     </div>
                     <nav class="header__nav">
                         <ul class="menu header__menu"> 
-                            <img class="header_logo" src="image/logo1.png" width="50px" height="50px"> 
+                            <img class="header_logo" src="../image/logo1.png" width="50px" height="50px"> 
                             <li><a class="scroll" href="#" id="exitAdmin">Выйти</a></li>
                         </ul>
                     </nav>
@@ -43,11 +43,11 @@
                 <h1>Страницы для редактирования:</h1>
                 <nav class="list__nav">
                     <ul class="list__menu"> 
-                        <li><a class="change" href="editing/news.php">- Новости;</a></li>
-                        <li><a class="change" href="editing/ourDogs.php">- Наши собаки;</a></li>
-                        <li><a class="change" href="editing/useful.php">- Полезное;</a></li>
-                        <li><a class="change" href="editing/exhibition.php">- Выставки;</a></li>
-                        <li><a class="change" href="editing/puppies.php">- Щенки;</a></li>
+                        <li><a class="change" href="news.php">- Новости;</a></li>
+                        <li><a class="change" href="ourDogs.php">- Наши собаки;</a></li>
+                        <li><a class="change" href="useful.php">- Полезное;</a></li>
+                        <li><a class="change" href="exhibition.php">- Выставки;</a></li>
+                        <li><a class="change" href="puppies.php">- Щенки;</a></li>
                         <li><div class="dropdown">
                             <button class="dropbtn1">- Галерея;</button>
                             <div id="list_breeds_pages" class="dropdown-content">

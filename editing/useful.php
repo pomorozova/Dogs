@@ -36,7 +36,7 @@
                 <nav class="header__nav">
                     <ul class="menu header__menu"> 
                         <img class="header_logo" src="../image/logo1.png" width="50px" height="50px"> 
-                        <li><a class="scroll" href="../list.html">Назад</a></li>
+                        <li><a class="scroll" href="list.php">Назад</a></li>
                         <li><a class="scroll" href="#"  id="exitAdmin">Выйти</a></li>
                         </ul>
                     </nav>

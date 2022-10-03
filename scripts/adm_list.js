@@ -6,7 +6,7 @@ function gen_list_pages(){
 
     $.ajax({
         method: "POST",
-        url: "db/datawork.php",
+        url: "../db/datawork.php",
         data: dataForm,
         dataType: 'json',
         contentType: false,
@@ -15,7 +15,7 @@ function gen_list_pages(){
             let list_pages = $(`#list_breeds_pages`);
 
             data.forEach(el => {
-                let element_link_page = $(`<a id="elListPage_${el.id}" href="editing/gallery.html">${el.name_breed}</a>`);
+                let element_link_page = $(`<a id="elListPage_${el.id}" href="gallery.php">${el.name_breed}</a>`);
                 
                 element_link_page.on("click",function(e){                    
                     localStorage.setItem('breed_gallery', $(e.target).attr('id').split('_')[1])
