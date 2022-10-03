@@ -1,21 +1,23 @@
 let id_change_note = 0;
 
 function gen_ourBreed_desc(){
-    let data_db = {
-        part: "admin",
-        adm: 'adm_dogs_breed'
-    }
     let table = $('#table_ourdog_desc_body');
     $(table).empty();
     let sel_breeds_dog_add = $('#dog_breeds_add');
     let sel_breeds_dog_change = $('#dog_breeds_change');
     $(sel_breeds_dog_add).empty();
     $(sel_breeds_dog_change).empty();
+    let formData = new FormData();
+    formData.append("part","admin");
+    formData.append("act","adm_dogs_breed");
 
     $.ajax({
         method: "POST",
         url: "../db/datawork.php",
-        data: JSON.stringify(data_db),
+        data: formData,
+        contentType: false,
+        processData: false,
+		dataType : 'json',
         success: function(data){
             let i = 1;
             
@@ -33,8 +35,8 @@ function gen_ourBreed_desc(){
 
                 let par_cont_butChange = $(`<td></td>`);
                 let cont_butChange = $(`<div class="table-btn"></div>`);
-                let butChange = $(`<button id="btnChangeDesc_${el.id_breed}" class="header__button">Изменить</button>`);
-
+                let butChange = $(`<button id="btnChangeDesc_${el.id}" class="header__button">Изменить</button>`);
+                
                 $(butChange).on('click',function (e) {                    
                     $('#modal-3').addClass('modal_active');
                     $('body').addClass('hidden');
@@ -69,17 +71,19 @@ function gen_ourBreed_desc(){
 
 
 function gen_ourDogs(){
-    let data_db = {
-        part: "admin",
-        adm: 'adm_dogs'
-    }
     let table = $('#table_ourdog_breed_body');
     $(table).empty();
+    let formData = new FormData();
+    formData.append("part","admin");
+    formData.append("act","adm_dogs");
 
     $.ajax({
         method: "POST",
         url: "../db/datawork.php",
-        data: JSON.stringify(data_db),
+        data: formData,
+        contentType: false,
+        processData: false,
+		dataType : 'json',
         success: function(data){
             let i = 1;
             data.forEach(el => {                
@@ -88,7 +92,7 @@ function gen_ourDogs(){
                         <td>${i++}</td>
                         <td id="tbDogsBreed_${el.id}">${el.breed}</td>
                         <td id="tbDogsName_${el.id}">${el.name_dog}</td>
-                        <td>../image/Картинка1</td>
+                        <td id="imgOurDogs_${el.id}">картинка</td>
                     </tr>
                 `);
 
@@ -131,23 +135,25 @@ function gen_ourDogs(){
 
 function form_add_new_dog(){
     $('#form_dog_add').on("submit", function(e){
-        let act_form_add = {
-            part: 'admin',
-            adm:"adm_dog_add",
-            data: {
-                main_data:$(this).serializeArray(),
-                img: $('#input__file_dog_img').val(),
-                breed: $('#dog_breeds_add').val().split('_')[1]
-            }
-        }
-        
         e.preventDefault();
+        let formData = new FormData(this);
+        formData.append("part","admin");
+        formData.append("act","adm_dog_add");
+        formData.append("breed",$('#dog_breeds_add').val().split('_')[1]);
         
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_add),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_ourDogs();
+                $('#modal_1').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_ourDogs();
                 $('#modal_1').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -159,19 +165,25 @@ function form_add_new_dog(){
 
 function form_change_info_breed(){
     $('#form_breed_change').on('submit',function(e){
-        let act_form_change = {
-            part: 'admin',
-            adm:"adm_ourDogs_change_breed",
-            id: id_change_note,
-            data: $(this).serializeArray()
-        }
         e.preventDefault();
-        
+        let formData = new FormData(this);
+        formData.append("part","admin");
+        formData.append("act","adm_ourDogs_change_breed");
+        formData.append("id", id_change_note);
+
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_change),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_ourBreed_desc();
+                $('#modal-3').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_ourBreed_desc();
                 $('#modal-3').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -183,21 +195,26 @@ function form_change_info_breed(){
 
 function form_change_dog(){
     $('#form_dogs_change').on('submit',function(e){
-        let act_form_change = {
-            part: 'admin',
-            adm:"adm_ourDogs_change_dogs",
-            id: id_change_note,
-            data: $(this).serializeArray(),
-            breed: $('#dog_breeds_change').val().split('_')[1],
-            img: 'dog3.jpg'
-        }
         e.preventDefault();
+        let formData = new FormData(this);
+        formData.append("part","admin");
+        formData.append("act","adm_ourDogs_change_dogs");
+        formData.append("id",id_change_note);
+        formData.append("breed",$('#dog_breeds_change').val().split('_')[1]);
         
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_change),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_ourDogs();
+                $('#modal-2').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_ourDogs();
                 $('#modal-2').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -209,17 +226,24 @@ function form_change_dog(){
 
 function delete_dog(){
     $('#btn_del_dog_yes').on('click',function(){
-        let act_form_del = {
-            part: 'admin',
-            adm:"adm_dog_del",
-            id: id_change_note
-        }
+        let formData = new FormData();
+        formData.append("part","admin");
+        formData.append("act","adm_dog_del");
+        formData.append("id",id_change_note);
 
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_del),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_ourDogs();
+                $('#modal_5').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_ourDogs();
                 $('#modal_5').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -237,17 +261,24 @@ function delete_dog(){
 
 function delete_info_breed(){
     $('#btn_del_breedInfo_yes').on('click',function(){
-        let act_form_del = {
-            part: 'admin',
-            adm:"adm_breedInfo_del",
-            id: id_change_note
-        }
+        let formData = new FormData();
+        formData.append("part","admin");
+        formData.append("act","adm_breedInfo_del");
+        formData.append("id",id_change_note);
 
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_del),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_ourBreed_desc();
+                $('#modal-4').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_ourBreed_desc();
                 $('#modal-4').removeClass('modal_active');
                 $('body').removeClass('hidden');

@@ -2,20 +2,19 @@ let id_sel_pup = 0;
 
 
 function gen_puppies(){
-    breed_num = localStorage.getItem('breed_gallery');
-
-    let data_db = {
-        part: "admin",
-        adm: 'adm_puppies_getAll'
-    }
     let table = $('#table_puppies_body');
     $(table).empty();
-    
+    let formData = new FormData();
+    formData.append("part","admin");
+    formData.append("act","adm_puppies_getAll");
 
     $.ajax({
         method: "POST",
         url: "../db/datawork.php",
-        data: JSON.stringify(data_db),
+        data: formData,
+        contentType: false,
+        processData: false,
+		dataType : 'json',
         success: function(data){
             let i = 1;
 
@@ -71,19 +70,25 @@ function gen_puppies(){
 
 function form_change_puppies(){
     $('#form_pupInfo_change').on('submit',function(e){
-        let act_form_change = {
-            part: 'admin',
-            adm:"adm_puppies_change",
-            id: id_sel_pup,
-            data: $(this).serializeArray()
-        }
         e.preventDefault();
+        let formData = new FormData(this);
+        formData.append("part","admin");
+        formData.append("act","adm_puppies_change");
+        formData.append("id", id_sel_pup);
         
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_change),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_puppies();
+                $('#modal-2').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_puppies();
                 $('#modal-2').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -93,21 +98,26 @@ function form_change_puppies(){
 }
 
 
-//?
 function form_add_pup(){
     $('#form_pup_add').on("submit", function(e){
-        let act_form_add = {
-            part: 'admin',
-            adm:"adm_puppies_add",
-            data: $('#form_pup_add').serializeArray()
-        }
-        console.log(act_form_add)
         e.preventDefault();
+        let formData = new FormData(this);
+        formData.append("part","admin");
+        formData.append("act","adm_puppies_add");
+
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_add),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_puppies();
+                $('#modal_1').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_puppies();
                 $('#modal_1').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -119,17 +129,24 @@ function form_add_pup(){
 
 function delete_pup(){
     $('#btn_del_pup_yes').on('click',function(){
-        let act_form_del = {
-            part: 'admin',
-            adm:"adm_puppies_del",
-            id: id_sel_pup
-        }
+        let formData = new FormData();
+        formData.append("part","admin");
+        formData.append("act","adm_puppies_del");
+        formData.append("id",id_sel_pup);
 
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_del),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_puppies();
+                $('#modal-4').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_puppies();
                 $('#modal-4').removeClass('modal_active');
                 $('body').removeClass('hidden');

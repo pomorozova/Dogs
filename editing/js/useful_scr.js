@@ -1,17 +1,20 @@
 let id_change_note = 0;
 
 function gen_useful(){
-    let data_db = {
-        part: "main",
-        act: 'useful'
-    }
     let table = $('#table_useful_body');
     $(table).empty();
+
+    let formData = new FormData();
+    formData.append("part","main");
+    formData.append("act","useful");
 
     $.ajax({
         method: "POST",
         url: "../db/datawork.php",
-        data: JSON.stringify(data_db),
+        data: formData,
+        contentType: false,
+        processData: false,
+		dataType : 'json',
         success: function(data){
             let i = 1;
             data.forEach(el => {                
@@ -66,22 +69,24 @@ function gen_useful(){
 
 function form_add(){
     $('#form_useful_add').on("submit", function(e){
-        let act_form_add = {
-            part: 'admin',
-            adm:"adm_useful_add",
-            data: {
-                main_data:$(this).serializeArray(),
-                img: $('#input__file_img').val()
-            }
-        }
-        
         e.preventDefault();
+        let formData = new FormData(this);
+        formData.append("part","admin");
+        formData.append("act","adm_useful_add");
         
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_add),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_useful();
+                $('#modal_1').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_useful();
                 $('#modal_1').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -93,19 +98,19 @@ function form_add(){
 
 function form_change(){
     $('#form_useful_change').on('submit',function(e){
-        let act_form_change = {
-            part: 'admin',
-            adm:"adm_useful_change",
-            id: id_change_note,
-            img: $('#input__file_img').val(),
-            data: $(this).serializeArray()
-        }
         e.preventDefault();
-        
+        let formData = new FormData(this);
+        formData.append("part","admin");
+        formData.append("act","adm_useful_change");
+        formData.append("id",id_change_note);
+        console.log("chg");
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_change),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
                 gen_useful();
                 $('#modal-2').removeClass('modal_active');
@@ -118,17 +123,24 @@ function form_change(){
 
 function delete_note(){
     $('#btn-delete-yes').on('click',function(){
-        let act_form_del = {
-            part: 'admin',
-            adm:"adm_useful_del",
-            id: id_change_note
-        }
+        let formData = new FormData();
+        formData.append("part","admin");
+        formData.append("act","adm_useful_del");
+        formData.append("id",id_change_note);
 
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_del),
+            data: formData,
+            contentType: false,
+            processData: false,
+		    dataType : 'json',
             success: function(data){
+                gen_useful();
+                $('#modal-4').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(data){
                 gen_useful();
                 $('#modal-4').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -146,5 +158,6 @@ function delete_note(){
 $(document).ready(function(){  
     gen_useful();
     form_add();
+    form_change();
     delete_note();
 });

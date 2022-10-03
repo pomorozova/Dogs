@@ -2,24 +2,29 @@ let change_id_news_now = 0;
 
 function AddNewNews(){
     $('#form_news_add').on("submit", function(e){
-        let act_form_change = {
-            part: 'admin',
-            adm:"adm_news_add",
-            data: {
-                main_data:$(this).serializeArray(),
-                img: $('#input__file_add').val()
-            }
-        }
-        console.log(act_form_change);
-        
         e.preventDefault();
+        let formData = new FormData(this);
         
+        formData.append("part","admin");
+        formData.append("act","adm_news_add");
+
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_change),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+			dataType : 'json',
             success: function(data){
                 gen_news_table();
+                $('#modal_1').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(e){
+                gen_news_table();
+                $('#modal_1').removeClass('modal_active');
+                $('body').removeClass('hidden');
             }
         })
     });
@@ -27,20 +32,30 @@ function AddNewNews(){
 
 function ChangeNews(){
     $('#form_news_change').on("submit", function(e){
-        let act_form_change = {
-            part: 'admin',
-            adm:"adm_news_change",
-            id: change_id_news_now,
-            data: $(this).serializeArray()
-        }
+        let formData = new FormData(this);
+
+        formData.append("part", "admin");
+        formData.append("act", "adm_news_change");
+        formData.append("id", change_id_news_now);
 
         e.preventDefault();
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_change),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+			dataType : 'json',
             success: function(data){
                 gen_news_table();
+                $('#modal-2').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(){
+                gen_news_table();
+                $('#modal-2').removeClass('modal_active');
+                $('body').removeClass('hidden');
             }
         })
     });
@@ -50,17 +65,19 @@ function gen_news_table(){
     let table = $('#news_table_body');
     $(table).empty();
 
-    let idenf_data = {
-        part: "main",
-        act: 'news'
-    }
-    
+    let formData = new FormData();
+    formData.append("part","main");
+    formData.append("act","news");
+
     $.ajax({
         method: "POST",
         url: "../db/datawork.php",
-        data: JSON.stringify(idenf_data),
+        data: formData,
+        contentType: false,
+        processData: false,
+		dataType : 'json',
         success: function(data)
-        {        
+        {       
             let i = 1;   
             data.forEach(el => {
                 let note = $(`
@@ -112,17 +129,25 @@ function gen_news_table(){
 
 function delete_note(){
     $('#btn-delete-yes').on('click',function(){
-        let act_form_del = {
-            part: 'admin',
-            adm:"adm_news_del",
-            id: change_id_news_now
-        }
+        let formData = new FormData();
 
+        formData.append("part", "admin");
+        formData.append("act", "adm_news_del");
+        formData.append("id", change_id_news_now);
+        
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_del),
+            data: formData,
+            contentType: false,
+            processData: false,
+			dataType : 'json',
             success: function(data){
+                gen_news_table();
+                $('#modal-4').removeClass('modal_active');
+                $('body').removeClass('hidden');
+            },
+            error: function(e){
                 gen_news_table();
                 $('#modal-4').removeClass('modal_active');
                 $('body').removeClass('hidden');

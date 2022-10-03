@@ -1,29 +1,31 @@
 let id_change_exhibition = 0;
 
 function gen_exhibitions(){
-    let data_db = {
-        part: "main",
-        act: 'exhibition'
-    }
     let table = $('#exhibition_table_body');
     $(table).empty();
+    let formData = new FormData();
+
+    formData.append("part", "main");
+    formData.append("act", "exhibition");
 
     $.ajax({
         method: "POST",
         url: "../db/datawork.php",
-        data: JSON.stringify(data_db),
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+		dataType : 'json',
         success: function(data){
             let i = 1;
-            data.forEach(el => {
-                
+            data.forEach(el => {                
                 let element_table = $(`
                     <tr>
                         <td>${i++}</td>
                         <td id="tbExTitle_${el.id}">${el.title}</td>
                         <td id="tbExText1_${el.id}">${el.desc_text_1}</td>
                         <td id="tbExText2_${el.id}">${el.desc_text_2}</td>
-                        <td>../image/Картинка1</td>
-                        <td>../image/Картинка1</td>                         
+                        <td id="exhibImg_${el.id}">${el.img}</td>                      
                     </tr>
                 `);
 
@@ -38,6 +40,7 @@ function gen_exhibitions(){
                     $('#exhibition_chg_title').val($(`#tbExTitle_${id_change_exhibition}`).text());
                     $('#exhibition_chg_desc1').val($(`#tbExText1_${id_change_exhibition}`).text());
                     $('#exhibition_chg_desc2').val($(`#tbExText2_${id_change_exhibition}`).text());
+                    $('#input__file_imgEx').val($(`#exhibImg_${id_change_exhibition}`).text());
                 });
 
                 $(cont_butChange).append(butChange);
@@ -61,30 +64,31 @@ function gen_exhibitions(){
 
                 table.append(element_table);
             });
-        }            
+            
+        }      
     })
 }
 
 function form_add(){
     $('#form_exhib_add').on("submit", function(e){
-        let act_form_add = {
-            part: 'admin',
-            adm:"adm_exhib_add",
-            data: {
-                main_data:$(this).serializeArray(),
-                img1: $('#input__file_img1').val(),
-                img2: $('#input__file_img2').val()
-            }
-        }
-        
         e.preventDefault();
+        let formData = new FormData(this);
+
+        formData.append("part", "admin");
+        formData.append("act", "adm_exhib_add");
         
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_add),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+			dataType : 'json',
             success: function(data){
                 gen_exhibitions();
+                $('#modal_1').removeClass('modal_active');
+                $('body').removeClass('hidden');
             }
         })
     });
@@ -92,18 +96,21 @@ function form_add(){
 
 function form_change(){
     $('#form_exhib_change').on('submit',function(e){
-        let act_form_change = {
-            part: 'admin',
-            adm:"adm_exhib_change",
-            id: id_change_exhibition,
-            data: $(this).serializeArray()
-        }
         e.preventDefault();
-        
+        let formData = new FormData(this);
+
+        formData.append("part", "admin");
+        formData.append("act", "adm_exhib_change");
+        formData.append("id", id_change_exhibition);
+
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_change),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+			dataType : 'json',
             success: function(data){
                 gen_exhibitions();
             }
@@ -113,16 +120,20 @@ function form_change(){
 
 function delete_note(){
     $('#btn-delete-yes').on('click',function(){
-        let act_form_del = {
-            part: 'admin',
-            adm:"adm_exhib_del",
-            id: id_change_exhibition
-        }
+        let formData = new FormData();
+
+        formData.append("part", "admin");
+        formData.append("act", "adm_exhib_del");
+        formData.append("id", id_change_exhibition);
 
         $.ajax({
             method: "POST",
             url: "../db/datawork.php",
-            data: JSON.stringify(act_form_del),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+			dataType : 'json',
             success: function(data){
                 gen_exhibitions();
                 $('#modal-4').removeClass('modal_active');
