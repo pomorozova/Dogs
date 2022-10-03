@@ -1,15 +1,16 @@
 function generate_dogs(){
     let cont_dogs = $(".container-our_dogs")[0];
+    let dataForm = new FormData();
+    dataForm.append("part","main");
+    dataForm.append("act","breeds");
 
-    let idenf_data = {
-        part: 'main',
-        act: 'breeds'
-    }
-    
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: JSON.stringify(idenf_data),
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
         success: function(data)
         {                         
             data.forEach(el => {

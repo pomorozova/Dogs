@@ -1,14 +1,16 @@
 function generate_news(){
     let cont_news = $(".container-news-1")[0];
-    let idenf_data = {
-        part: 'main',
-        act: 'news'
-    }
-    
+    let dataForm = new FormData();
+    dataForm.append("part","main");
+    dataForm.append("act","news");
+
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: JSON.stringify(idenf_data),
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
         success: function(data)
         {           
             data.forEach(el => {                

@@ -1,15 +1,16 @@
 function generate_useful(){
     let cont_dogs = $(".container-exhibition")[0];
+    let dataForm = new FormData();
+    dataForm.append("part","main");
+    dataForm.append("act","useful");
 
-    let idenf_data = {
-        part: 'main',
-        act: 'useful'
-    }
-    
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: JSON.stringify(idenf_data),
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
         success: function(data)
         {                         
             data.forEach(el => {

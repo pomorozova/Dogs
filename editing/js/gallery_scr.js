@@ -155,11 +155,6 @@ function form_add_img(){
                 gen_imgs_dogs(localStorage.getItem('breed_gallery'));
                 $('#modal_1').removeClass('modal_active');
                 $('body').removeClass('hidden');
-            },
-            error: function(data){
-                gen_imgs_dogs(localStorage.getItem('breed_gallery'));
-                $('#modal_1').removeClass('modal_active');
-                $('body').removeClass('hidden');
             }
         });
 
@@ -182,11 +177,6 @@ function form_change_infoDog(){
             processData: false,
 		    dataType : 'json',
             success: function(data){
-                gen_infoDogs();
-                $('#modal-2').removeClass('modal_active');
-                $('body').removeClass('hidden');
-            },
-            error: function(data){
                 gen_infoDogs();
                 $('#modal-2').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -214,11 +204,6 @@ function form_change_imgDog(){
                 gen_imgs_dogs(breed_num);
                 $('#modal-3').removeClass('modal_active');
                 $('body').removeClass('hidden');
-            },
-            error: function(data){
-                gen_imgs_dogs(breed_num);
-                $('#modal-3').removeClass('modal_active');
-                $('body').removeClass('hidden');
             }
         })
     })
@@ -239,11 +224,6 @@ function delete_note_breed(){
             processData: false,
 		    dataType : 'json',
             success: function(data){
-                gen_infoDogs();
-                $('#modal-4').removeClass('modal_active');
-                $('body').removeClass('hidden');
-            },
-            error: function(data){
                 gen_infoDogs();
                 $('#modal-4').removeClass('modal_active');
                 $('body').removeClass('hidden');

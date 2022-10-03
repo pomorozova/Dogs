@@ -2,17 +2,18 @@ function generate_ourDog(){
     let cont_breed = $("#container_dog_breed");
     let breed = $("#active_breed").data("actbreed");
     let id_breed = breed.split('_')[1];
-    
-    let idenf_data = {       
-        part: 'main', 
-        act: 'our_dog',
-        id: id_breed
-    }
+    let dataForm = new FormData();
+    dataForm.append("part","main");
+    dataForm.append("act","our_dog");
+    dataForm.append("id",id_breed);
     
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: JSON.stringify(idenf_data),
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
         success: function(data)
         {       
             data.forEach(el => {                
@@ -31,17 +32,18 @@ function generate_ourDog(){
                 
 
                 let block_breed = $(`<div class="block-news"></div>`);
-
-                let idenf_data_img = {
-                    part: "main",
-                    act: 'our_dog_imgs',
-                    id: el.id_breed
-                }
+                let dataFormImg = new FormData();
+                dataFormImg.append("part","main");
+                dataFormImg.append("act","our_dog_imgs");
+                dataFormImg.append("id",el.id_breed);
 
                 $.ajax({
                     method: "POST",
                     url: "db/datawork.php",
-                    data: JSON.stringify(idenf_data_img),
+                    data: dataFormImg,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
                     success: function(data)
                     {          
                         data.forEach(el => { 

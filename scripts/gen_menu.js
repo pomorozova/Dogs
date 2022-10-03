@@ -1,15 +1,16 @@
 function create_menu_our_dogs(){
     let menu_breeds = $('.dropdown-content')[0];
+    let dataForm = new FormData();
+    dataForm.append("part","main");
+    dataForm.append("act","menu_breeds");
 
-    let idenf_data = {
-        part: 'main',
-        act: 'menu_breeds'
-    }
-    
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: JSON.stringify(idenf_data),
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
         success: function(data)
         {   
             data.forEach(el => {

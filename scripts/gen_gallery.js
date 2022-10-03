@@ -1,15 +1,17 @@
 function generate_gallery(){
     let cont_dogs = $("main");
+    let dataForm = new FormData();
 
-    let idenf_data = {
-        part: 'main',
-        act: 'gallery'
-    }
+    dataForm.append("part","main");
+    dataForm.append("act","gallery");
     
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: JSON.stringify(idenf_data),
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
         success: function(data)
         {
             data.forEach(el => {
@@ -19,18 +21,20 @@ function generate_gallery(){
                         <h3>${el.name_dog}</h3>
                         <p><span></span>${el.desc_dog}</p>                    
                     </div>
-                `);                
+                `);    
+                let dataFormImg = new FormData();
 
-                let idenf_data_dog = {
-                    part: "main",
-                    act: 'gallery_imgs',
-                    id: el.id
-                }
+                dataFormImg.append("part","main");
+                dataFormImg.append("act","gallery_imgs");
+                dataFormImg.append("id",el.id);
 
                 $.ajax({
                     method: "POST",
                     url: "db/datawork.php",
-                    data: JSON.stringify(idenf_data_dog),
+                    data: dataFormImg,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
                     success: function(data)
                     {
                         data.forEach(el => {                            

@@ -228,7 +228,7 @@ function adm_del_gallery_img($conn, $id){
 //добавляет изображение собаки
 function adm_add_gallery_img($conn){
     $id = $_POST['id'];
-    $img = $_FILES['img']['name'];
+    $img = $_FILES['imgDog']['name'];
     $sth = $conn->prepare("INSERT INTO `dog_imgs` (id_dog, img) VALUES(:id,:img)");
     $sth->execute(array('id' =>  $id, 'img'=> $img));
     end_work();
@@ -277,7 +277,7 @@ function adm_get_all_breed($conn){
 
 //достаём всех имеющихся собак
 function adm_get_all_dogs($conn){
-    $sth = $conn->prepare("SELECT *,(SELECT name_breed FROM `dog_breeds` WHERE id=`dog`.`dog_breed`) as breed FROM `dog`;");
+    $sth = $conn->prepare("SELECT *,(SELECT name_breed FROM `dog_breeds` WHERE id=`dog`.`dog_breed`) as breed,(SELECT img FROM `dog_imgs` WHERE `dog`.`id`=`dog_imgs`.`id_dog` limit 1)as img FROM `dog`;");
     $sth->execute();
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');

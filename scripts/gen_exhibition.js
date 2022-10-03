@@ -1,15 +1,17 @@
 function generate_exhibition(){
     let cont_dogs = $(".container-exhibition")[0];
+    let dataForm = new FormData();
 
-    let idenf_data = {
-        part: 'main',
-        act: 'exhibition'
-    }
-    
+    dataForm.append("part","main");
+    dataForm.append("act","exhibition");
+
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: JSON.stringify(idenf_data),
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
         success: function(data)
         {
             data.forEach(el => {

@@ -1,30 +1,34 @@
 function generate_puppies(){
     let cont_puppies = $("#puppies_container");
+    let dataForm = new FormData();
+    dataForm.append("part","main");
+    dataForm.append("act","puppies");
 
-    let idenf_data = {
-        part: 'main',
-        act: 'puppies'
-    }
-    
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: JSON.stringify(idenf_data),
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
         success: function(data)
         {            
             data.forEach(el => {
                 let cont_imgs_puppies = $(`<div class="block-puppies-img"></div>`);
                 let cont_imgs = $(`<div class="block-puppies-left"></div>`);
-
-                let idenf_data_imgs = {
-                    act: 'puppies_imgs',
-                    id:el.id
-                }
+                
+                let dataFormImg = new FormData();
+                dataFormImg.append("part","main");
+                dataFormImg.append("act","puppies_imgs");
+                dataFormImg.append("id",el.id);
 
                 $.ajax({
                     method: "POST",
                     url: "db/datawork.php",
-                    data: JSON.stringify(idenf_data_imgs),
+                    data: dataFormImg,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
                     success: function(data)
                     {
                         data.forEach(el => {

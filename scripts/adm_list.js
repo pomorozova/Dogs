@@ -1,13 +1,16 @@
 function gen_list_pages(){
-    let data_breed = {
-        part:"main",
-        act:"breeds"
-    }
+    let dataForm = new FormData();
+
+    dataForm.append("part","main");
+    dataForm.append("act","breeds");
 
     $.ajax({
         method: "POST",
         url: "db/datawork.php",
-        data: JSON.stringify(data_breed),
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
         success: function(data){
             let list_pages = $(`#list_breeds_pages`);
 

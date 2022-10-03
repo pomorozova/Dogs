@@ -92,7 +92,7 @@ function gen_ourDogs(){
                         <td>${i++}</td>
                         <td id="tbDogsBreed_${el.id}">${el.breed}</td>
                         <td id="tbDogsName_${el.id}">${el.name_dog}</td>
-                        <td id="imgOurDogs_${el.id}">картинка</td>
+                        <td id="imgOurDogs_${el.id}">${el.img}</td>
                     </tr>
                 `);
 
