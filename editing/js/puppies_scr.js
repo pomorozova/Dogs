@@ -25,44 +25,63 @@ function gen_puppies(){
                         <td id="tbPupMom_${el.id}">${el.desc_mom}</td>
                         <td id="tbPupFat_${el.id}">${el.desc_father}</td>
                         <td id="tbPupPup_${el.id}">${el.desc_puppie}</td>
-                        <td>../image/Картинка1</td>
-                        <td>../image/Картинка1</td>
                     </tr> 
                 `);
 
-                let par_cont_butChange = $(`<td></td>`);
-                let cont_butChange = $(`<div class="table-btn"></div>`);
-                let butChange = $(`<button id="butChgPup_${el.id}" class="header__button">Изменить</button>`);
+                let formDataImgs = new FormData();
+                formDataImgs.append("part","admin");
+                formDataImgs.append("act","adm_puppies_getAllImgs");
+                formDataImgs.append("id",el.id);
+
+                $.ajax({
+                    method: "POST",
+                    url: "../db/datawork.php",
+                    data: formDataImgs,
+                    contentType: false,
+                    processData: false,
+                    dataType : 'json',
+                    success: function(data){
+                        data.forEach(el_pup => {
+                            element_table.append(`<td class="pupClass_${el.id}" id="pupImg_${el_pup.id}">${el_pup.img}</td>`)
+                        })
+                    }
+                }).done(function(){
+                    let par_cont_butChange = $(`<td></td>`);
+                    let cont_butChange = $(`<div class="table-btn"></div>`);
+                    let butChange = $(`<button id="butChgPup_${el.id}" class="header__button">Изменить</button>`);
+                    
+                    $(butChange).on('click', function (e) {
+                        $('#modal-2').addClass('modal_active');
+                        $('body').addClass('hidden');
+                        id_sel_pup = $(e.target).attr('id').split('_')[1];
+                        $('#pup_desc_mom').val($(`#tbPupMom_${id_sel_pup}`).text());
+                        $('#pup_desc_fat').val($(`#tbPupFat_${id_sel_pup}`).text());
+                        $('#pup_desc_pup').val($(`#tbPupPup_${id_sel_pup}`).text());
+                    });
+    
+                    $(cont_butChange).append(butChange);
+                    $(par_cont_butChange).append(cont_butChange);
+                    $(element_table).append(par_cont_butChange);
+    
+    
+                    let par_cont_butDel = $(`<td></td>`);
+                    let cont_butDel = $(`<div class="table-btn"></div>`);
+                    let butDel = $(`<button id="butDelPup_${el.id}" class="header__button">Удалить</button>`);
+    
+                    $(butDel).on('click', function (e) {
+                        $('#modal-4').addClass('modal_active');
+                        $('body').addClass('hidden');
+                        id_sel_pup = $(e.target).attr('id').split('_')[1];
+                    });
+    
+                    $(cont_butDel).append(butDel);
+                    $(par_cont_butDel).append(cont_butDel);
+                    $(element_table).append(par_cont_butDel);
+    
+                    table.append(element_table);
+                })
+
                 
-                $(butChange).on('click', function (e) {
-                    $('#modal-2').addClass('modal_active');
-                    $('body').addClass('hidden');
-                    id_sel_pup = $(e.target).attr('id').split('_')[1];
-                    $('#pup_desc_mom').val($(`#tbPupMom_${id_sel_pup}`).text());
-                    $('#pup_desc_fat').val($(`#tbPupFat_${id_sel_pup}`).text());
-                    $('#pup_desc_pup').val($(`#tbPupPup_${id_sel_pup}`).text());
-                });
-
-                $(cont_butChange).append(butChange);
-                $(par_cont_butChange).append(cont_butChange);
-                $(element_table).append(par_cont_butChange);
-
-
-                let par_cont_butDel = $(`<td></td>`);
-                let cont_butDel = $(`<div class="table-btn"></div>`);
-                let butDel = $(`<button id="butDelPup_${el.id}" class="header__button">Удалить</button>`);
-
-                $(butDel).on('click', function (e) {
-                    $('#modal-4').addClass('modal_active');
-                    $('body').addClass('hidden');
-                    id_sel_pup = $(e.target).attr('id').split('_')[1];
-                });
-
-                $(cont_butDel).append(butDel);
-                $(par_cont_butDel).append(cont_butDel);
-                $(element_table).append(par_cont_butDel);
-
-                table.append(element_table);
             });
         }            
     });
@@ -75,6 +94,11 @@ function form_change_puppies(){
         formData.append("part","admin");
         formData.append("act","adm_puppies_change");
         formData.append("id", id_sel_pup);
+        $imgs_pup = $(`.pupClass_${id_sel_pup}`);
+
+        for(let i = 0;i < $imgs_pup.length;i++){
+            formData.append(`id_img${i+1}`, $($imgs_pup[i]).attr('id').split('_')[1]);
+        }
         
         $.ajax({
             method: "POST",
@@ -84,11 +108,6 @@ function form_change_puppies(){
             processData: false,
 		    dataType : 'json',
             success: function(data){
-                gen_puppies();
-                $('#modal-2').removeClass('modal_active');
-                $('body').removeClass('hidden');
-            },
-            error: function(data){
                 gen_puppies();
                 $('#modal-2').removeClass('modal_active');
                 $('body').removeClass('hidden');
@@ -113,11 +132,6 @@ function form_add_pup(){
             processData: false,
 		    dataType : 'json',
             success: function(data){
-                gen_puppies();
-                $('#modal_1').removeClass('modal_active');
-                $('body').removeClass('hidden');
-            },
-            error: function(data){
                 gen_puppies();
                 $('#modal_1').removeClass('modal_active');
                 $('body').removeClass('hidden');

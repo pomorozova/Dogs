@@ -18,7 +18,7 @@
     <script src="../scripts/scripts.js"></script> 
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
-    <script src="js/puppies_scr.js?v=3"></script>
+    <script src="js/puppies_scr.js?v=4"></script>
     <script src="../scripts/adm_exit.js?v=1"></script>
     <title>Щенки</title>
 </head>
@@ -73,10 +73,9 @@
                   <input id="tb_add_desc_pup" type="text" name="description-puppies"></div>
 
                   <p>Изображение 1</p>
-                  <div class ="input-form">
-                     
+                  <div class ="input-form">                     
                           <div class="input__wrapper">
-                              <input name="img1" type="file" id="input__file_imgAdd1" class="input input__file" multiple>
+                              <input name="imgPupAdd1" type="file" id="input__file_imgAdd1" class="input input__file" multiple>
                               <label for="input__file_imgAdd1" class="input__file-button">
                                   <span class="input__file-icon-wrapper">
                                       <svg class="upload-file__icon"  viewBox="0 0 512 512">
@@ -90,7 +89,7 @@
                   <p>Изображение 2</p>
                   <div class ="input-form">                     
                           <div class="input__wrapper">
-                              <input name="img2" type="file" id="input__file_imgAdd2" class="input input__file" multiple>
+                              <input name="imgPupAdd2" type="file" id="input__file_imgAdd2" class="input input__file" multiple>
                               <label for="input__file_imgAdd2" class="input__file-button">
                                   <span class="input__file-icon-wrapper">
                                       <svg class="upload-file__icon"  viewBox="0 0 512 512">
@@ -100,7 +99,7 @@
                                   <span class="input__file-button-text">Выберите файл</span>
                               </label>
                           </div> <br> <br>
-                      <div class="btn-news"> <button type="submit"> Изменить </button></div></div>
+                      <div class="btn-news"> <button type="submit"> Добавить </button></div></div>
                   </div>
           </form>
         </div>
@@ -129,10 +128,10 @@
                   <p>Изображение 1</p>
                   <div class ="input-form">                     
                           <div class="input__wrapper">
-                              <input name="img" type="file" id="input__file_pup_img1" class="input input__file" multiple>
-                              <label for="input__file_pup_img1" class="input__file-button">
+                              <input name="imgPupChg1" type="file" id="input__file_pupChg_img1" class="input input__file" multiple>
+                              <label for="input__file_pupChg_img1" class="input__file-button">
                                   <span class="input__file-icon-wrapper">
-                                      <svg class="upload-file__icon"  viewBox="0 0 512 512">
+                                      <svg class="upload-file__icon" viewBox="0 0 512 512">
                                           <path d="M286 384h-80c-14.2 1-23-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c11.6 11.6 3.7 33.1-13.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-23-23V366c0-13.3 10.7-24 24-24h136v8c0 31 24.3 56 56 56h80c30.9 0 55-26.1 57-55v-8h135c13.3 0 24 10.6 24 24zm-124 88c0-11-9-20-19-20s-19 9-20 20 9 19 20 20 21-9 20-20zm64 0c0-12-9-20-20-20s-20 9-19 20 9 20 20 20 21-9 20-20z"></path>
                                       </svg>
                                   </span>
@@ -141,11 +140,10 @@
                           </div>
                   </div>
                   <p>Изображение 2</p>
-                  <div class ="input-form">
-                     
+                  <div class ="input-form">                     
                           <div class="input__wrapper">
-                              <input name="img" type="file" id="input__file_pup_img2" class="input input__file" multiple>
-                              <label for="input__file_pup_img2" class="input__file-button">
+                              <input name="imgPupChg2" type="file" id="input__file_pupChg_img2" class="input input__file" multiple>
+                              <label for="input__file_pupChg_img2" class="input__file-button">
                                   <span class="input__file-icon-wrapper">
                                       <svg class="upload-file__icon"  viewBox="0 0 512 512">
                                           <path d="M286 384h-80c-14.2 1-23-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c11.6 11.6 3.7 33.1-13.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-23-23V366c0-13.3 10.7-24 24-24h136v8c0 31 24.3 56 56 56h80c30.9 0 55-26.1 57-55v-8h135c13.3 0 24 10.6 24 24zm-124 88c0-11-9-20-19-20s-19 9-20 20 9 19 20 20 21-9 20-20zm64 0c0-12-9-20-20-20s-20 9-19 20 9 20 20 20 21-9 20-20z"></path>

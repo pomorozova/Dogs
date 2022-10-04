@@ -346,14 +346,36 @@ function adm_get_puppies($conn){
     echo json_encode($data);
 }
 
+//выводим изображения для конкретной группы щенков
+function adm_get_puppies_imgs($conn){    
+    $sth = $conn->prepare("SELECT id, img FROM `imgs_puppies` WHERE id_pup=:id_pup;");
+    $sth->execute(array('id_pup'=> $_POST['id']));
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
 //изменяем инфу о щенках по id
 function adm_chg_puppies($conn){
+    moving_img('imgPupChg1');
+    moving_img('imgPupChg2');
+    $img1 = $_FILES['imgPupChg1']['name'];
+    $img2 = $_FILES['imgPupChg2']['name'];
+    $id_img1 = $_POST['id_img1'];
+    $id_img2 = $_POST['id_img2'];
     $id = $_POST['id'];
     $desc_mom = $_POST['mother'];
     $desc_fat = $_POST['father'];
     $desc_pup = $_POST['description-puppies'];
     $sth = $conn->prepare("UPDATE `puppies` SET desc_mom=:desc_mom, desc_father=:desc_fat,desc_puppie=:desc_pup WHERE id=:id");
     $sth->execute(array("id"=>$id, "desc_mom"=>$desc_mom,"desc_fat"=>$desc_fat,"desc_pup"=>$desc_pup));
+
+    $sth = $conn->prepare("UPDATE `imgs_puppies` SET `img` = :img WHERE `imgs_puppies`.`id` = :idImg");
+    $sth->execute(array("idImg"=>$id_img1,"img"=>$img1));
+
+    $sth = $conn->prepare("UPDATE `imgs_puppies` SET `img` = :img WHERE `imgs_puppies`.`id` = :idImg");
+    $sth->execute(array("idImg"=>$id_img2,"img"=>$img2));
+
     end_work();
 }
 
@@ -366,12 +388,22 @@ function adm_del_puppies($conn, $id){
 
 //добавляем новую инфу о щенках
 function adm_add_puppies($conn){
+    moving_img('imgPupAdd1');
+    moving_img('imgPupAdd2');
+    $img1 = $_FILES['imgPupAdd1']['name'];
+    $img2 = $_FILES['imgPupAdd2']['name'];
     $desc_mom = $_POST['mother'];
     $desc_fat = $_POST['father'];
     $desc_pup = $_POST['description-puppies'];
     
     $sth = $conn->prepare("INSERT INTO `puppies` (desc_mom,desc_father,desc_puppie) VALUES(:desc_mom,:desc_fat,:desc_pup)");
     $sth->execute(array('desc_mom' => $desc_mom, 'desc_fat'=>$desc_fat, 'desc_pup'=>$desc_pup));
+
+    $sth = $conn->prepare("INSERT INTO `imgs_puppies` (`img`, `id_pup`) VALUES (:img,(SELECT id FROM `puppies` ORDER BY id desc LIMIT 1))");
+    $sth->execute(array('img'=>$img1));
+
+    $sth = $conn->prepare("INSERT INTO `imgs_puppies` (`img`, `id_pup`) VALUES (:img,(SELECT id FROM `puppies` ORDER BY id desc LIMIT 1))");
+    $sth->execute(array('img'=>$img2));
     end_work();
 }
 

@@ -44,7 +44,8 @@ if($part == "main"){
         case "adm_ourDogs_change_dogs": adm_ourDogs_change_dogs($conn);break;
         case "adm_dog_del": adm_del_dog($conn, $_POST["id"]); break; 
         case "adm_breedInfo_del": adm_del_infoBreed($conn, $_POST["id"]); break;
-        case "adm_puppies_getAll": adm_get_puppies($conn);break; 
+        case "adm_puppies_getAll": adm_get_puppies($conn);break;
+        case "adm_puppies_getAllImgs": adm_get_puppies_imgs($conn);break; 
         case "adm_puppies_change": adm_chg_puppies($conn);break;
         case "adm_puppies_del": adm_del_puppies($conn, $_POST["id"]);break; 
         case "adm_puppies_add": adm_add_puppies($conn);break; 
