@@ -35,6 +35,57 @@ function generate_dogs(){
     })
 }
 
+function generate_news(){
+    let cont_news = $(".container-news-1")[0];
+    let dataForm = new FormData();
+    dataForm.append("part","main");
+    dataForm.append("act","index_news");
+
+    $.ajax({
+        method: "POST",
+        url: "db/datawork.php",
+        data: dataForm,
+        dataType: 'json',
+        contentType: false,
+        processData: false,
+        success: function(data)
+        {           
+            data.forEach(el => {                
+                $(cont_news).append(`
+                    <div class="block-news">
+                        <div class="block-news-left">
+                            <img class="news_icon" src="image/${el.img}" width="400px">
+                        </div>
+                        <div class="adapt_news_icon">
+                            <div class="block-news-right">
+                                <h2>${el.date} ${el.title}</h2>
+                                <p class="content-news">${el.desc_news}</p>
+                                <div class="line"></div>
+                            </div>
+                        </div>        
+                    </div>
+                `);
+            });
+            
+        }            
+    })
+    
+}
+
+function all_set_btn(){
+    $('#btnTitleExhib').on('click',function(){
+        document.location.href = 'exhibition.html';
+    })
+
+    $('#btnShowAllNews').on('click',function(){
+        document.location.href = 'news.html';
+    })
+}
+
+
+
 $(document).ready(function(){
+    generate_news();
     generate_dogs();
+    all_set_btn();
 })

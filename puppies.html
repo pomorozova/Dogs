@@ -9,11 +9,13 @@
     <link rel = "stylesheet" href="css/adaptation.css"> 
     <link rel = "stylesheet" href="font/stylesheet.css" type = "text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="scripts/dbaction.js?v=2"></script>
+    <script src="scripts/jquery.maskedinput.min.js?v=1"></script>
     <script src="scripts/menu.js"></script> 
     <script src="scripts/navigate-menu light.js"></script>
-    <script src="scripts/gen_puppies.js?v=3"></script>
+    <script src="scripts/gen_puppies.js?v=6"></script>
     <script src="scripts/gen_menu.js?v=1"></script>
+    <script src="scripts/contact_control.js?v=1"></script>
+   
     <title>Щенки</title>
 </head>
 <body class = "body-background-img" style = "background-image: url(image/Background1.jpg);">
@@ -89,10 +91,10 @@
                                     <div class="block-booking-1">
                                         <div class ="input-form">
                                             <div class="block-booking-text"><p>Ваше ФИО:</p></div>
-                                            <input type="text" class="form-control" name="name"id="name"></div> 
+                                            <input type="text" class="form-control" name="full_name"id="name"></div> 
                                         <div class ="input-form">
                                             <div class="block-booking-text"><p>Email:</p></div>
-                                            <input type="text" class="form-control" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"></div>  
+                                            <input type="email" class="form-control" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"></div>  
                                             <div class ="input-form">
                                                 <div class="block-booking-text"><p>Город:</p></div>
                                                 <input type="text" class="form-control" name="town" id="town"></div>  
@@ -100,7 +102,7 @@
                                     <div class="block-booking-1">
                                         <div class ="input-form">
                                             <div class="block-booking-text"><p>Телефон:</p></div>
-                                            <input type="text" class="form-control" name="phone" id="phone"></div> 
+                                            <input type="phone" class="form-control" name="phone" id="book_phone"></div> 
                                             <div class ="input-form">
                                                 <div class="block-booking-text"><p>Пол щенка:</p></div>
                                                 <input type="text" class="form-control" name="gender" id="gender"></div> 
@@ -112,14 +114,14 @@
                                     <div class="block-booking-1">
                                         <div class ="input-form">
                                             <div class="block-booking-text"><p>Для чего вам собака (для души, для выставок и т.д.):</p></div>
-                                            <input type="text" class="form-control" name="need" id="need"></div>  
+                                            <input type="text" class="form-control" name="need_dog" id="need"></div>  
                                         <div class ="input-form">
                                             <div class="block-booking-text"><p>Состав семьи (есть ли в семье дети или животные):</p></div>
-                                            <input type="text" class="form-control" name="content" id="content"></div> 
+                                            <input type="text" class="form-control" name="family_composition" id="family"></div> 
                                             
                                         <div class ="input-form">
                                             <div class="block-booking-text"><p>Комментарий (что хотите добавить о себе):</p></div>
-                                            <input type="text" class="form-control" name="name"id="name"></div> 
+                                            <input type="text" class="form-control" name="comment"id="name"></div> 
                                     </div>    
                                 </div>
                                 <div class ="input-form1">
@@ -138,8 +140,6 @@
     <p><a name="contacts"></a></p> 
     <nav class="nav-footer">
         <ul class="contact">
-            <li>+7 (981) 342-15-16</li>
-            <li>dog@gmail.ru</li>
         </ul>
         <ul class = "img-contact">
             <li><img src="image/viber.png" width="55%" height="55%"></li>

@@ -10,9 +10,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
     <script src="scripts/menu.js"></script>
     <script src="scripts/navigate-menu.js"></script>
-    <script src="scripts/gen_scr.js?v=5"></script>
-    <script src="scripts/gen_index.js?v=5"></script>
-    <script src="scripts/gen_menu.js?v=2"></script> 
+    <script src="scripts/gen_index.js?v=7"></script>
+    <script src="scripts/gen_menu.js?v=2"></script>
+    <script src="scripts/contact_control.js?v=1"></script>
     <title>Lantorii</title>
 </head>
 <body class = "body-background"  >
@@ -49,7 +49,7 @@
         <div class="main-title">
             <h1 class="main-title-heading">Питомник Lantorii</h1>
             <h3 class="text-heading">Американская акита, русский той терьер, померанский шпиц</h3>
-            <button type="submit" name="upload">Подробнее</button>
+            <button id="btnTitleExhib">Подробнее</button>
         </div>
     </header>
 <main>
@@ -59,7 +59,7 @@
             <h1 class="news">Новости</h1>  
         </div>
         <div class="next">
-            <button type="submit" name="upload">Показать все</button>
+            <button id="btnShowAllNews">Показать все</button>
         </div>
     </div>
     <div class="container-our_dogs">
@@ -96,9 +96,7 @@
 <footer>
     <p><a name="contacts"></a></p> 
     <nav class="nav-footer">
-        <ul class="contacts">
-            <li>+7 (981) 342-15-16</li>
-            <li>dog@gmail.ru</li>
+        <ul class="contact">
         </ul>
         <ul class = "img-contact">
             <li><img src="image/viber.png" width="55%" height="55%"></li>

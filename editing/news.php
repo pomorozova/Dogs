@@ -20,6 +20,7 @@
     <script src="../scripts/navigate-menu light.js"></script>
     <script src="../scripts/scripts.js?v=15"></script>
     <script src="../scripts/adm_exit.js?v=1"></script>
+    <script src="../scripts/contact_control.js?v=1"></script>
     <title>Новости</title>
 </head>
 <body>
@@ -160,9 +161,7 @@
 <footer style=" background-color: #2a2727;">
     <p><a name="contacts"></a></p> 
     <nav class="nav-footer">
-        <ul class="contacts">
-            <li>+7 (981) 342-15-16</li>
-            <li>dog@gmail.ru</li>
+        <ul class="contact">
         </ul>
         <ul class = "img-contact">
             <li><img src="../image/viber.png" width="55%" height="55%"></li>

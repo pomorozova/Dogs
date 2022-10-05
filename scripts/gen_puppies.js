@@ -65,21 +65,27 @@ function generate_puppies(){
 }
 
 function book_puppies(){
-    $('#form_puppies').on("submit", function(){
+    $("#book_phone").mask("+7(999) 999-99-99");
+
+    $('#form_puppies').on("submit", function(e){
+        e.preventDefault();
         let formData = new FormData(this);
         
         formData.append('part','main');
         formData.append('act','block_puppies');
-
+        
         $.ajax({
-            url:'db/datawork',
-            method:'',
+            url:'db/datawork.php',
+            method:'POST',
             data: formData,
             processData: false,
             contentType: false,
-            dataType:'text',
+            dataType:'json',
             success: function(d){
-
+                console.log(d);
+            },
+            error: function(e){
+                console.log(e);
             }
         })
 

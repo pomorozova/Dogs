@@ -24,4 +24,5 @@ function create_menu_our_dogs(){
 
 $(document).ready(function(){
     create_menu_our_dogs();
+    
 })

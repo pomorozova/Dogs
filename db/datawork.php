@@ -7,6 +7,7 @@ $act = $_POST["act"];
 if($part == "main"){
     switch($act){
         case "news": get_news($conn);break;
+        case "index_news": get_index_news($conn);break;
         case "breeds": get_breeds($conn);break;
         case "menu_breeds": get_breeds_menu($conn);break;
         case "puppies": get_puppies($conn);break;

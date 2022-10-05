@@ -35,7 +35,15 @@ function select_test($conn){
 
 
 function get_news($conn){
-    $sth = $conn->prepare("SELECT * FROM `news`");
+    $sth = $conn->prepare("SELECT * FROM `news` ORDER BY `date` DESC");
+    $sth->execute();
+    $data = $sth->fetchAll(PDO::FETCH_ASSOC);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+}
+
+function get_index_news($conn){
+    $sth = $conn->prepare("SELECT * FROM `news` ORDER BY `date` DESC LIMIT 2");
     $sth->execute();
     $data = $sth->fetchAll(PDO::FETCH_ASSOC);
     header('Content-Type: application/json; charset=utf-8');
@@ -76,7 +84,19 @@ function get_puppies_imgs($conn,$id){
 
 function block_puppies()
 {
-    echo "";
+    $full_name = htmlspecialchars($_POST['full_name']);
+    $email = htmlspecialchars($_POST['email']);
+    $town = htmlspecialchars($_POST['town']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $gender = htmlspecialchars($_POST['gender']);
+    $pcolor = htmlspecialchars($_POST['pcolor']);
+    $need_dog = htmlspecialchars($_POST['need_dog']);
+    $family_composition = htmlspecialchars($_POST['family_composition']);
+    $comment = htmlspecialchars($_POST['comment']);
+
+    $descr = "ФИО: {$full_name}\bEmail: {$email}\bГород: {$town}\bТелефон: {$phone}\bПол щенка: {$gender}\bОкрас: {$pcolor}\bДля чего собака: {$need_dog}\bСостав семьи: {$family_composition}\bКомментарий: {$comment}";
+    mail('andrey.perminov@geekprogram.org',"Бронирование щенков", $descr);
+    echo json_encode(array('success'=>true));
 }
 
 
