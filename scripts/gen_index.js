@@ -74,7 +74,7 @@ function generate_news(){
 
 function all_set_btn(){
     $('#btnTitleExhib').on('click',function(){
-        document.location.href = 'exhibition.html';
+        document.location.href = 'useful.html';
     })
 
     $('#btnShowAllNews').on('click',function(){
