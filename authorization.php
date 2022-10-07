@@ -11,9 +11,10 @@
     <meta name='viewport' content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel = "stylesheet" href="css/styleEnter.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Форма авторизации</title>
-    <script src="scripts/auth.js?v=6"></script>
+    <script src="scripts/auth.js?v=8"></script>
 </head> 
 <body>
     <div class="container mt-4">

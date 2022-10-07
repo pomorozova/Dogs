@@ -1,7 +1,6 @@
 function generate_ourDog(){
     let cont_breed = $("#container_dog_breed");
-    let breed = $("#active_breed").data("actbreed");
-    let id_breed = breed.split('_')[1];
+    let id_breed = $("#active_breed").data("actbreed");
     let dataForm = new FormData();
     dataForm.append("part","main");
     dataForm.append("act","our_dog");

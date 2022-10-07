@@ -94,8 +94,8 @@ function block_puppies()
     $family_composition = htmlspecialchars($_POST['family_composition']);
     $comment = htmlspecialchars($_POST['comment']);
 
-    $descr = "ФИО: {$full_name}\bEmail: {$email}\bГород: {$town}\bТелефон: {$phone}\bПол щенка: {$gender}\bОкрас: {$pcolor}\bДля чего собака: {$need_dog}\bСостав семьи: {$family_composition}\bКомментарий: {$comment}";
-    mail('andrey.perminov@geekprogram.org',"Бронирование щенков", $descr);
+    $descr = "ФИО: {$full_name}\nEmail: {$email}\nГород: {$town}\nТелефон: {$phone}\nПол щенка: {$gender}\nОкрас: {$pcolor}\nДля чего собака: {$need_dog}\nСостав семьи: {$family_composition}\nКомментарий: {$comment}";
+    mail('Kirillova.1979.1998@mail.ru',"Бронирование щенков", $descr);
     echo json_encode(array('success'=>true));
 }
 

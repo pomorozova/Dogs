@@ -14,7 +14,6 @@ function authorization(){
             processData: false,
 		    dataType : 'json',
             success: function(data){
-                console.log(data);
                 if(data.status){
                     document.location.href = 'editing/list.php';
                 } else {
