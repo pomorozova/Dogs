@@ -151,10 +151,17 @@ function get_gallery_imgs($conn, $id){
 // -------------------------------------------------------------------- админ часть
 
 //изменяем существующую запись рубрики новостей по id
-function adm_change_news($conn){
-    moving_img("img_news_change");
-    $sth = $conn->prepare("UPDATE `news` SET `title` = :title, `desc_news` = :desc_news, `img`=:img WHERE `id` = :id");
-    $sth->execute(array('title' => $_POST["heading"], 'id' => $_POST["id"], 'desc_news'=>$_POST["description"], 'img' => $_FILES["img_news_change"]["name"] ));
+function adm_change_news($conn){    
+    $sth = $conn->prepare("UPDATE `news` SET `title` = :title, `desc_news` = :desc_news WHERE `id` = :id");
+    $sth->execute(array('title' => $_POST["heading"], 'id' => $_POST["id"], 'desc_news'=> $_POST["description"]));
+
+    if($_FILES["img_news_change"] != null){
+        moving_img("img_news_change");
+        $img = $_FILES["img_news_change"]["name"];
+        $sthImg = $conn->prepare("UPDATE `news` SET `img`=:img WHERE `id` = :id");
+        $sthImg->execute(array('id' => $_POST["id"],'img' => $img ));
+    }
+
     end_work();
 }
 
@@ -175,14 +182,20 @@ function adm_del_news($conn, $id){
 }
 
 //изменяем существующую запись рубрики выставок по id
-function adm_change_exhib($conn, $id){
-    moving_img('imgEx');
+function adm_change_exhib($conn, $id){    
     $title = $_POST['heading'];
     $desc_1 = $_POST['description1'];
     $desc_2 = $_POST['description2'];
-    $img = $_FILES['imgEx']['name'];
-    $sth = $conn->prepare("UPDATE `exhibitions` SET `title`=:title, `desc_text_1`=:desc_1,`desc_text_2`=:desc_2, `img`=:img where `id`=:id");
-    $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2 , 'img'=>$img));
+    
+    $sth = $conn->prepare("UPDATE `exhibitions` SET `title`=:title, `desc_text_1`=:desc_1,`desc_text_2`=:desc_2 where `id`=:id");
+    $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2));
+
+    if($_FILES["imgEx"] != null){
+        moving_img("imgEx");
+        $img = $_FILES["imgEx"]["name"];
+        $sthImg = $conn->prepare("UPDATE `exhibitions` SET `img`=:img WHERE `id` = :id");
+        $sthImg->execute(array('id' => $id, 'img'=>$img));
+    }
     end_work();
 }
 
@@ -287,14 +300,20 @@ function adm_del_useful($conn, $id){
 
 //изменяем существующую запись рубрики полезного по id
 function adm_change_useful($conn){
-    moving_img("imgChg");
     $title = $_POST['heading'];
     $desc_1 = $_POST['description1'];
     $desc_2 = $_POST['description2'];
     $id = $_POST["id"];
-    $img = $_FILES["imgChg"]["name"];
-    $sth = $conn->prepare("UPDATE `useful` SET `title` = :title, `text_1` = :desc_1, `text_2` = :desc_2, `img` = :img WHERE `useful`.`id` = :id");
-    $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2 , 'img'=> $img));
+    
+    $sth = $conn->prepare("UPDATE `useful` SET `title` = :title, `text_1` = :desc_1, `text_2` = :desc_2 WHERE `useful`.`id` = :id");
+    $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2));
+
+    if($_FILES["imgChg"] != null){
+        moving_img("imgChg");
+        $img = $_FILES["imgChg"]["name"];
+        $sthImg = $conn->prepare("UPDATE `useful` SET `img` = :img WHERE `useful`.`id` = :id");
+        $sthImg->execute(array('id' => $id, 'img'=> $img));
+    }
     end_work();
 }
 
@@ -386,12 +405,6 @@ function adm_get_puppies_imgs($conn){
 
 //изменяем инфу о щенках по id
 function adm_chg_puppies($conn){
-    moving_img('imgPupChg1');
-    moving_img('imgPupChg2');
-    $img1 = $_FILES['imgPupChg1']['name'];
-    $img2 = $_FILES['imgPupChg2']['name'];
-    $id_img1 = $_POST['id_img1'];
-    $id_img2 = $_POST['id_img2'];
     $id = $_POST['id'];
     $desc_mom = $_POST['mother'];
     $desc_fat = $_POST['father'];
@@ -399,11 +412,21 @@ function adm_chg_puppies($conn){
     $sth = $conn->prepare("UPDATE `puppies` SET desc_mom=:desc_mom, desc_father=:desc_fat,desc_puppie=:desc_pup WHERE id=:id");
     $sth->execute(array("id"=>$id, "desc_mom"=>$desc_mom,"desc_fat"=>$desc_fat,"desc_pup"=>$desc_pup));
 
-    $sth = $conn->prepare("UPDATE `imgs_puppies` SET `img` = :img WHERE `imgs_puppies`.`id` = :idImg");
-    $sth->execute(array("idImg"=>$id_img1,"img"=>$img1));
-
-    $sth = $conn->prepare("UPDATE `imgs_puppies` SET `img` = :img WHERE `imgs_puppies`.`id` = :idImg");
-    $sth->execute(array("idImg"=>$id_img2,"img"=>$img2));
+    if($_FILES['imgPupChg1'] != null){
+        $img1 = $_FILES['imgPupChg1']['name'];
+        $id_img1 = $_POST['id_img1'];
+        moving_img('imgPupChg1');
+        $sth = $conn->prepare("UPDATE `imgs_puppies` SET `img` = :img WHERE `imgs_puppies`.`id` = :idImg");
+        $sth->execute(array("idImg"=>$id_img1,"img"=>$img1));
+    }
+    
+    if($_FILES['imgPupChg2'] != null){
+        $img2 = $_FILES['imgPupChg2']['name'];
+        $id_img2 = $_POST['id_img2'];
+        moving_img('imgPupChg2');
+        $sth = $conn->prepare("UPDATE `imgs_puppies` SET `img` = :img WHERE `imgs_puppies`.`id` = :idImg");
+        $sth->execute(array("idImg"=>$id_img2,"img"=>$img2));
+    }
 
     end_work();
 }

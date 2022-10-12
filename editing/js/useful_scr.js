@@ -32,8 +32,7 @@ function gen_useful(){
                 let cont_butChange = $(`<div class="table-btn"></div>`);
                 let butChange = $(`<button id="callback-button_${el.id}" class="header__button">Изменить</button>`);
 
-                $(butChange).on('click',function (e) {
-                    
+                $(butChange).on('click',function (e) {                    
                     $('#modal-2').addClass('modal_active');
                     $('body').addClass('hidden');
                     id_change_note = $(e.target).attr('id').split('_')[1];
@@ -48,7 +47,7 @@ function gen_useful(){
 
                 let par_cont_butDel = $(`<td></td>`);
                 let cont_butDel = $(`<div class="table-btn"></div>`);
-                let butDel = $(`<button  id="butDelUseful_${el.id}" class="header__button">Удалить</button>`);
+                let butDel = $(`<button id="butDelUseful_${el.id}" class="header__button">Удалить</button>`);
 
                 $(butDel).on('click', function (e) {
                     $('#modal-4').addClass('modal_active');

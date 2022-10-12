@@ -132,6 +132,7 @@
                             <span class="input__file-button-text">Выберите файл</span>
                         </label>
                     </div>
+                    <div class="btn-news"> <button  type="submit">Изменить</button></div>
                 </div>
                 </div>
             </form>

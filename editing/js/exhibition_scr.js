@@ -25,7 +25,7 @@ function gen_exhibitions(){
                         <td id="tbExTitle_${el.id}">${el.title}</td>
                         <td id="tbExText1_${el.id}">${el.desc_text_1}</td>
                         <td id="tbExText2_${el.id}">${el.desc_text_2}</td>
-                        <td id="exhibImg_${el.id}">${el.img}</td>                      
+                        <td>${el.img}</td>                      
                     </tr>
                 `);
 
@@ -37,10 +37,10 @@ function gen_exhibitions(){
                     $('#modal-2').addClass('modal_active');
                     $('body').addClass('hidden');
                     id_change_exhibition = $(e.target).attr('id').split('_')[1];
+                    
                     $('#exhibition_chg_title').val($(`#tbExTitle_${id_change_exhibition}`).text());
                     $('#exhibition_chg_desc1').val($(`#tbExText1_${id_change_exhibition}`).text());
                     $('#exhibition_chg_desc2').val($(`#tbExText2_${id_change_exhibition}`).text());
-                    $('#input__file_imgEx').val($(`#exhibImg_${id_change_exhibition}`).text());
                 });
 
                 $(cont_butChange).append(butChange);
@@ -113,6 +113,8 @@ function form_change(){
 			dataType : 'json',
             success: function(data){
                 gen_exhibitions();
+                $('#modal-2').removeClass('modal_active');
+                $('body').removeClass('hidden');
             }
         })
     })
