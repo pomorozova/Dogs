@@ -13,6 +13,7 @@
 	<link rel = "stylesheet" href="../css/editList.css">
     <link rel = "stylesheet" href="../css/main.css">
     <link rel = "stylesheet" href="../font/stylesheet.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
     <script src="../scripts/adm_list.js?v=5"></script>

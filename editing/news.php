@@ -13,7 +13,8 @@
     <link rel = "stylesheet" href="../css/main.css">
     <link rel = "stylesheet" href="../css/table.css?v=2"> 
     <link rel = "stylesheet" href="../css/adaptation.css"> 
-    <link rel = "stylesheet" href="../font/stylesheet.css"> 
+    <link rel = "stylesheet" href="../font/stylesheet.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="js/news_scr.js?v=26"></script>     
     <script src="../scripts/menu.js"></script> 

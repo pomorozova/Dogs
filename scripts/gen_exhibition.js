@@ -23,7 +23,6 @@ function generate_exhibition(){
                             <p>${el.desc_text_2}</p>
                             <div class= "image-dog">
                                 <img class="exhibition_icon" src="image/${el.img}" width="500px">
-                                <img class="exhibition_icon" src="image/${el.img}" width="500px">
                             </div>                            
                         </div>                        
                     </div>

@@ -13,12 +13,13 @@
     <link rel = "stylesheet" href="../css/main.css"> 
     <link rel = "stylesheet" href="../css/table.css"> 
     <link rel = "stylesheet" href="../css/adaptation.css"> 
-    <link rel = "stylesheet" href="../font/stylesheet.css"> 
+    <link rel = "stylesheet" href="../font/stylesheet.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="../scripts/scripts.js"></script> 
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
-    <script src="js/puppies_scr.js?v=4"></script>
+    <script src="js/puppies_scr.js?v=6"></script>
     <script src="../scripts/adm_exit.js?v=1"></script>
     <script src="../scripts/contact_control.js?v=1"></script>
     <title>Щенки</title>
@@ -153,7 +154,7 @@
                                   <span class="input__file-button-text">Выберите файл</span>
                               </label>
                           </div> <br> <br>
-                      <div class="btn-news"> <button type="submit"> Изменить</button></div></div>
+                      <div class="btn-news"><button type="submit">Изменить</button></div></div>
                   </div>
           </form>
         </div>

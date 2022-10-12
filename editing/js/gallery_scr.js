@@ -256,11 +256,6 @@ function delete_img_dog(){
                 gen_infoDogs();
                 $('#modal_5').removeClass('modal_active');
                 $('body').removeClass('hidden');
-            },
-            error: function(data){
-                gen_infoDogs();
-                $('#modal_5').removeClass('modal_active');
-                $('body').removeClass('hidden');
             }
         });
 
@@ -272,6 +267,18 @@ function delete_img_dog(){
     });
 }
 
+function imageDog_added(){  
+    $('#input__file_img_add').on('change',function(){
+        alert('изображение добавлено');
+    });
+}
+
+function imageDog_change(){  
+    $('#input__file_chg_imgDog').on('change',function(){
+        alert('изображение изменено');
+    });
+}
+
 $(document).ready(function(){  
     gen_infoDogs();
     form_change_infoDog();
@@ -279,4 +286,6 @@ $(document).ready(function(){
     form_change_imgDog();
     delete_note_breed();
     delete_img_dog();
+    imageDog_added();
+    imageDog_change();
 });

@@ -162,9 +162,23 @@ function delete_note(){
     });
 }
 
+function imageNews_added(){
+    $('#input__file_add').on('change',function(){
+        alert('изображение добавлено');
+    })
+}
+
+function imageNews_change(){  
+    $('#input__file_change').on('change',function(){
+        alert('изображение изменено');
+    });
+}
+
 $(document).ready(function(){
     gen_news_table();
     ChangeNews();
     AddNewNews();
     delete_note();
+    imageNews_added();
+    imageNews_change();
 })

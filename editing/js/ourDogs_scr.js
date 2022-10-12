@@ -152,11 +152,6 @@ function form_add_new_dog(){
                 gen_ourDogs();
                 $('#modal_1').removeClass('modal_active');
                 $('body').removeClass('hidden');
-            },
-            error: function(data){
-                gen_ourDogs();
-                $('#modal_1').removeClass('modal_active');
-                $('body').removeClass('hidden');
             }
         })
     });
@@ -293,6 +288,14 @@ function delete_info_breed(){
     });
 }
 
+function image_added(){
+    $('#input__file_dog_img').on('change',function(){
+        alert('изображение добавлено');
+    })
+}
+
+
+
 $(document).ready(function(){  
     gen_ourBreed_desc();
     gen_ourDogs();
@@ -301,4 +304,5 @@ $(document).ready(function(){
     form_add_new_dog();
     delete_dog();
     delete_info_breed();
+    image_added();
 });

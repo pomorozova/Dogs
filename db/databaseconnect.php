@@ -176,16 +176,19 @@ function adm_del_news($conn, $id){
 
 //изменяем существующую запись рубрики выставок по id
 function adm_change_exhib($conn, $id){
+    moving_img('imgEx');
     $title = $_POST['heading'];
     $desc_1 = $_POST['description1'];
     $desc_2 = $_POST['description2'];
-    $sth = $conn->prepare("UPDATE `exhibitions` SET `title`=:title, `desc_text_1`=:desc_1,`desc_text_2`=:desc_2 where `id`=:id");
-    $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2 ));
+    $img = $_FILES['imgEx']['name'];
+    $sth = $conn->prepare("UPDATE `exhibitions` SET `title`=:title, `desc_text_1`=:desc_1,`desc_text_2`=:desc_2, `img`=:img where `id`=:id");
+    $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2 , 'img'=>$img));
     end_work();
 }
 
 //добавляем новую запись рубрики выставок
 function adm_add_exhib($conn){
+    moving_img('imgAdd');
     $title = $_POST['heading'];
     $desc_1 = $_POST['description1'];
     $desc_2 = $_POST['description2']; 
@@ -255,6 +258,7 @@ function adm_del_gallery_img($conn, $id){
 
 //добавляет изображение собаки
 function adm_add_gallery_img($conn){
+    moving_img('imgDog');
     $id = $_POST['id'];
     $img = $_FILES['imgDog']['name'];
     $sth = $conn->prepare("INSERT INTO `dog_imgs` (id_dog, img) VALUES(:id,:img)");
@@ -334,11 +338,16 @@ function adm_ourDogs_change_dogs($conn){
 
 //добавляем новую собаку
 function adm_ourDogs_add_new_dog($conn){
-
     $name_dog = $_POST['name_dog'];
     $breed = $_POST['breed'];
+    $img = $_FILES['imgDogAdd']['name'];
+    moving_img('imgDogAdd');    
     $sth = $conn->prepare("INSERT INTO `dog` (`name_dog`,`dog_breed`) VALUES(:name_dog,:breed)");
     $sth->execute(array('name_dog' => $name_dog, 'breed'=>$breed));
+
+    $sthImg = $conn->prepare("INSERT INTO `dog_imgs` (`id_dog`, `img`) VALUES ((SELECT id FROM `dog` ORDER BY id desc LIMIT 1), :img)");
+    $sthImg->execute(array('img'=>$img));
+
     end_work();
 }
 

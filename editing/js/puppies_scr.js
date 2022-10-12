@@ -175,9 +175,31 @@ function delete_pup(){
     });
 }
 
+function imagePuppies_added(){  
+    $('#input__file_imgAdd1').on('change',function(){
+        alert('изображение добавлено');
+    });
+
+    $('#input__file_imgAdd2').on('change',function(){
+        alert('изображение добавлено');
+    }); 
+}
+
+function imagePuppies_change(){  
+    $('#input__file_pupChg_img1').on('change',function(){
+        alert('изображение изменено');
+    });
+
+    $('#input__file_pupChg_img2').on('change',function(){
+        alert('изображение изменено');
+    });
+}
+
 $(document).ready(function(){  
     gen_puppies();
     form_add_pup();
     delete_pup();
     form_change_puppies();
+    imagePuppies_added();
+    imagePuppies_change();
 });

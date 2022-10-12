@@ -139,11 +139,6 @@ function delete_note(){
                 gen_useful();
                 $('#modal-4').removeClass('modal_active');
                 $('body').removeClass('hidden');
-            },
-            error: function(data){
-                gen_useful();
-                $('#modal-4').removeClass('modal_active');
-                $('body').removeClass('hidden');
             }
         });
 
@@ -155,9 +150,23 @@ function delete_note(){
     });
 }
 
+function imageUseful_added(){
+    $('#input__file_imgUsf').on('change',function(){
+        alert('изображение добавлено');
+    })
+}
+
+function imageUseful_change(){  
+    $('#input__file_imgChg').on('change',function(){
+        alert('изображение изменено');
+    });
+}
+
 $(document).ready(function(){  
     gen_useful();
     form_add();
     form_change();
     delete_note();
+    imageUseful_added();
+    imageUseful_change();
 });

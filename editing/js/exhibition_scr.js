@@ -149,9 +149,23 @@ function delete_note(){
     });
 }
 
+function imageExhib_added(){
+    $('#input__file_img1').on('change',function(){
+        alert('изображение добавлено');
+    })
+}
+
+function imageExhib_change(){  
+    $('#input__file_imgEx').on('change',function(){
+        alert('изображение изменено');
+    });
+}
+
 $(document).ready(function(){  
     gen_exhibitions();
     form_change();
     form_add();
     delete_note();
+    imageExhib_added();
+    imageExhib_change();
 });
