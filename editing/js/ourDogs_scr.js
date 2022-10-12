@@ -152,6 +152,10 @@ function form_add_new_dog(){
                 gen_ourDogs();
                 $('#modal_1').removeClass('modal_active');
                 $('body').removeClass('hidden');
+                console.log(data);
+            },
+            error: function(err){
+                console.log(err);
             }
         })
     });
@@ -205,11 +209,6 @@ function form_change_dog(){
             processData: false,
 		    dataType : 'json',
             success: function(data){
-                gen_ourDogs();
-                $('#modal-2').removeClass('modal_active');
-                $('body').removeClass('hidden');
-            },
-            error: function(data){
                 gen_ourDogs();
                 $('#modal-2').removeClass('modal_active');
                 $('body').removeClass('hidden');

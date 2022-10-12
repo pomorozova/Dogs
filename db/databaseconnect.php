@@ -155,7 +155,7 @@ function adm_change_news($conn){
     $sth = $conn->prepare("UPDATE `news` SET `title` = :title, `desc_news` = :desc_news WHERE `id` = :id");
     $sth->execute(array('title' => $_POST["heading"], 'id' => $_POST["id"], 'desc_news'=> $_POST["description"]));
 
-    if($_FILES["img_news_change"] != null){
+    if($_FILES["img_news_change"]['name'] != ''){
         moving_img("img_news_change");
         $img = $_FILES["img_news_change"]["name"];
         $sthImg = $conn->prepare("UPDATE `news` SET `img`=:img WHERE `id` = :id");
@@ -190,7 +190,7 @@ function adm_change_exhib($conn, $id){
     $sth = $conn->prepare("UPDATE `exhibitions` SET `title`=:title, `desc_text_1`=:desc_1,`desc_text_2`=:desc_2 where `id`=:id");
     $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2));
 
-    if($_FILES["imgEx"] != null){
+    if($_FILES["imgEx"]['name'] != ''){
         moving_img("imgEx");
         $img = $_FILES["imgEx"]["name"];
         $sthImg = $conn->prepare("UPDATE `exhibitions` SET `img`=:img WHERE `id` = :id");
@@ -308,7 +308,7 @@ function adm_change_useful($conn){
     $sth = $conn->prepare("UPDATE `useful` SET `title` = :title, `text_1` = :desc_1, `text_2` = :desc_2 WHERE `useful`.`id` = :id");
     $sth->execute(array('title' => $title, 'id' => $id, 'desc_1'=>$desc_1 , 'desc_2'=>$desc_2));
 
-    if($_FILES["imgChg"] != null){
+    if($_FILES["imgChg"]['name'] != ''){
         moving_img("imgChg");
         $img = $_FILES["imgChg"]["name"];
         $sthImg = $conn->prepare("UPDATE `useful` SET `img` = :img WHERE `useful`.`id` = :id");
@@ -360,10 +360,11 @@ function adm_ourDogs_add_new_dog($conn){
     $name_dog = $_POST['name_dog'];
     $breed = $_POST['breed'];
     $img = $_FILES['imgDogAdd']['name'];
-    moving_img('imgDogAdd');    
+        
     $sth = $conn->prepare("INSERT INTO `dog` (`name_dog`,`dog_breed`) VALUES(:name_dog,:breed)");
     $sth->execute(array('name_dog' => $name_dog, 'breed'=>$breed));
 
+    moving_img('imgDogAdd');
     $sthImg = $conn->prepare("INSERT INTO `dog_imgs` (`id_dog`, `img`) VALUES ((SELECT id FROM `dog` ORDER BY id desc LIMIT 1), :img)");
     $sthImg->execute(array('img'=>$img));
 
@@ -412,7 +413,7 @@ function adm_chg_puppies($conn){
     $sth = $conn->prepare("UPDATE `puppies` SET desc_mom=:desc_mom, desc_father=:desc_fat,desc_puppie=:desc_pup WHERE id=:id");
     $sth->execute(array("id"=>$id, "desc_mom"=>$desc_mom,"desc_fat"=>$desc_fat,"desc_pup"=>$desc_pup));
 
-    if($_FILES['imgPupChg1'] != null){
+    if($_FILES['imgPupChg1']['name'] != ''){
         $img1 = $_FILES['imgPupChg1']['name'];
         $id_img1 = $_POST['id_img1'];
         moving_img('imgPupChg1');
@@ -420,14 +421,14 @@ function adm_chg_puppies($conn){
         $sth->execute(array("idImg"=>$id_img1,"img"=>$img1));
     }
     
-    if($_FILES['imgPupChg2'] != null){
+    if($_FILES['imgPupChg2']['name'] != ''){
         $img2 = $_FILES['imgPupChg2']['name'];
         $id_img2 = $_POST['id_img2'];
         moving_img('imgPupChg2');
         $sth = $conn->prepare("UPDATE `imgs_puppies` SET `img` = :img WHERE `imgs_puppies`.`id` = :idImg");
         $sth->execute(array("idImg"=>$id_img2,"img"=>$img2));
     }
-
+    
     end_work();
 }
 

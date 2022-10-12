@@ -19,7 +19,7 @@
     <script src="../scripts/scripts.js"></script> 
     <script src="../scripts/menu.js"></script> 
     <script src="../scripts/navigate-menu light.js"></script>
-    <script src="js/ourDogs_scr.js?v=10"></script>
+    <script src="js/ourDogs_scr.js?v=11"></script>
     <script src="../scripts/adm_exit.js?v=1"></script>
     <script src="../scripts/contact_control.js?v=1"></script>
     <title>Наши собаки</title>
